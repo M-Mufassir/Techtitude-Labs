@@ -1,54 +1,9 @@
 import { motion } from "framer-motion";
 import { Clock, MapPin, Users, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { workshops } from "../data/content";
 
 export default function Workshops() {
-  const workshops = [
-    {
-      id: "ws-001",
-      title: "React 19 & Next.js Architecture",
-      date: "Oct 12, 2026",
-      time: "10:00 AM - 1:00 PM",
-      location: "Colombo Campus & Remote",
-      instructor: "Kasun Silva",
-      capacity: "50 Seats",
-      status: "Register Open",
-      tag: "Engineering",
-    },
-    {
-      id: "ws-002",
-      title: "Introduction to Large Language Models",
-      date: "Oct 19, 2026",
-      time: "2:00 PM - 5:00 PM",
-      location: "Virtual Discord Stage",
-      instructor: "Dr. A. Fernando",
-      capacity: "100 Seats",
-      status: "Waitlist",
-      tag: "AI / ML",
-    },
-    {
-      id: "ws-003",
-      title: "Figma to Code: The Handoff",
-      date: "Nov 02, 2026",
-      time: "10:00 AM - 12:00 PM",
-      location: "Colombo Campus",
-      instructor: "Nethmi R.",
-      capacity: "30 Seats",
-      status: "Register Open",
-      tag: "Design",
-    },
-    {
-      id: "ws-004",
-      title: "Cloud Deployment on AWS",
-      date: "Nov 15, 2026",
-      time: "1:00 PM - 4:00 PM",
-      location: "Virtual",
-      instructor: "Mufassir M.",
-      capacity: "Unlimited",
-      status: "Register Open",
-      tag: "DevOps",
-    }
-  ];
 
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#00AEEF]/30">

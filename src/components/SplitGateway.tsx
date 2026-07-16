@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
+import { marqueeSnippets } from '../data/content';
 //import Logo from './Logo';
 
 // ACADEMY: Dropping Study Materials
@@ -48,20 +49,14 @@ const DroppingStudyMaterials = ({ active }: { active: boolean }) => {
   );
 };
 
-// DEVELOPMENT: Matrix Code Stream Marquee
-const MARQUEE_SNIPPETS = [
-  "import { deploy } from '@server/core'; await deploy({ environment: 'production', region: 'us-east-1' }); // SUCCESS",
-  "export const config = { runtime: 'edge', memory: 1024, maxDuration: 60 }; const handler = async (req) => { return new Response(); }",
-  "function optimizeAST(tree) { return tree.map(node => transform(node)); } // COMPILING CHUNKS [||||||||||] 100%",
-  "SELECT u.id, u.profile FROM users u INNER JOIN telemetry t ON u.id = t.user_id WHERE t.active = true;"
-];
+
 
 const MatrixMarqueeStream = ({ active }: { active: boolean }) => {
   if (!active) return null;
 
   return (
     <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden opacity-40 flex flex-col justify-around py-20" style={{ filter: "blur(4px)" }}>
-      {MARQUEE_SNIPPETS.map((code, i) => (
+      {marqueeSnippets.map((code, i) => (
         <motion.div
           key={i}
           initial={{ x: "100vw" }}

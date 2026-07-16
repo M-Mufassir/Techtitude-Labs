@@ -1,6 +1,6 @@
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
-import { values } from "../data/content";
+import { values, timelineNodes } from "../data/content";
 import { Code2, GraduationCap, Network } from "lucide-react";
 
 export default function About() {
@@ -81,32 +81,7 @@ export default function About() {
           </Reveal>
 
           <div className="relative border-l border-white/10 ml-4 md:ml-1/2 md:-translate-x-px space-y-16">
-            {[
-              {
-                year: "2021",
-                title: "The Inception",
-                desc: "Started as a specialized tutoring program aimed at bridging the gap in local O/L and A/L ICT curriculums, focusing purely on fundamentals.",
-                color: "#00AEEF"
-              },
-              {
-                year: "2022",
-                title: "The Code Core Expansion",
-                desc: "Launched our first advanced programming bootcamps. Students began moving beyond exams and started building actual software.",
-                color: "#4a72d6"
-              },
-              {
-                year: "2024",
-                title: "Studio Establishment",
-                desc: "Formally launched the Development Studio to handle enterprise client requests. Began architecting custom web systems and automations for local businesses.",
-                color: "#7B2CBF"
-              },
-              {
-                year: "2026",
-                title: "The Dual-Division Matrix",
-                desc: "Unified the Academy and Studio into a seamless, cyclical ecosystem. Producing world-class digital products and the next generation of engineers under one roof.",
-                color: "white"
-              }
-            ].map((node, i) => (
+            {timelineNodes.map((node, i) => (
               <Reveal key={node.year} delay={i * 0.1}>
                 <div className="relative pl-8 md:pl-0">
                   {/* Timeline Dot */}

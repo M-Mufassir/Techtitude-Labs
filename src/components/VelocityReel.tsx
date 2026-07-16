@@ -1,38 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
-
-const PROJECTS = [
-  {
-    title: "Project Nexus",
-    tag: "Real-time Platform",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-    hue: 200,
-  },
-  {
-    title: "Aura E-Commerce",
-    tag: "Web Infrastructure",
-    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80",
-    hue: 270,
-  },
-  {
-    title: "Neuro Predictor",
-    tag: "AI Operations",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
-    hue: 190,
-  },
-  {
-    title: "Health Automations",
-    tag: "n8n Pipelines",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
-    hue: 260,
-  },
-  {
-    title: "FinTech Dashboard",
-    tag: "Enterprise Web",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    hue: 210,
-  },
-];
+import { velocityProjects } from "../data/content";
 
 export default function VelocityReel() {
   const row1Ref = useRef<HTMLDivElement>(null);
@@ -80,7 +48,7 @@ export default function VelocityReel() {
         // Computational loop resetting structure
         // Assuming card width 400px + 32px margin = 432px
         const singleCardSpan = (row.children[0] as HTMLElement).offsetWidth + 32;
-        const maximumWrapLimit = singleCardSpan * PROJECTS.length;
+        const maximumWrapLimit = singleCardSpan * velocityProjects.length;
 
         if (positionalOffsets[idx] <= -maximumWrapLimit) positionalOffsets[idx] += maximumWrapLimit;
         if (positionalOffsets[idx] >= 0) positionalOffsets[idx] -= maximumWrapLimit;
@@ -112,8 +80,8 @@ export default function VelocityReel() {
     const allCards = [];
     let globalIndex = indexSeed;
     for (let m = 0; m < 4; m++) {
-      for (let i = 0; i < PROJECTS.length; i++) {
-        const project = PROJECTS[i];
+      for (let i = 0; i < velocityProjects.length; i++) {
+        const project = velocityProjects[i];
         allCards.push(
           <div key={`card-${m}-${i}`} className="dev-card group">
             <img 

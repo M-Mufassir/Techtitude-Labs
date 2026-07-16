@@ -1,67 +1,16 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Cpu, MonitorSmartphone, ArrowUpRight, Filter } from "lucide-react";
+import { Code2, Cpu, MonitorSmartphone, ArrowUpRight, Filter, type LucideIcon } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { studentShowcaseFilters, studentShowcaseProjects } from "../data/content";
+
+// Icon map for project iconKey strings
+const PROJECT_ICONS: Record<string, LucideIcon> = { Code2, Cpu, MonitorSmartphone };
 
 export default function StudentShowcase() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filters = ["All", "Web App", "AI Model", "Mobile App"];
-
-  const projects = [
-    {
-      id: 1,
-      title: "NeuroSync API",
-      category: "AI Model",
-      student: "Sarah Jenkins",
-      desc: "A highly optimized neural network API built with FastAPI that classifies brainwave telemetry in real-time.",
-      icon: <Cpu size={32} className="text-[#00AEEF]" />,
-      colSpan: "col-span-1 md:col-span-2 row-span-2",
-      bg: "bg-gradient-to-br from-[#00AEEF]/10 to-[#070B14]",
-    },
-    {
-      id: 2,
-      title: "DeFi Dashboard",
-      category: "Web App",
-      student: "Aisha T.",
-      desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 3,
-      title: "EcoTrack",
-      category: "Mobile App",
-      student: "David M.",
-      desc: "React Native application helping users track and offset their daily carbon footprint.",
-      icon: <MonitorSmartphone size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 4,
-      title: "Atlas CRM",
-      category: "Web App",
-      student: "Marcus R.",
-      desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1 md:col-span-2",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 5,
-      title: "VisionScan",
-      category: "AI Model",
-      student: "Elena G.",
-      desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
-      icon: <Cpu size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    }
-  ];
-
-  const filteredProjects = projects.filter(
+  const filteredProjects = studentShowcaseProjects.filter(
     (p) => activeFilter === "All" || p.category === activeFilter
   );
 
@@ -88,7 +37,7 @@ export default function StudentShowcase() {
               {/* FILTERS */}
               <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                 <Filter size={16} className="text-[#8A99AD] mr-2 hidden sm:block" />
-                {filters.map(f => (
+                {studentShowcaseFilters.map(f => (
                   <button
                     key={f}
                     onClick={() => setActiveFilter(f)}
@@ -110,39 +59,42 @@ export default function StudentShowcase() {
         <section>
           <motion.div layout className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-[250px]">
             <AnimatePresence>
-              {filteredProjects.map((project, idx) => (
-                <motion.div
-                  key={project.id}
-                  layout
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.9 }}
-                  transition={{ duration: 0.4, delay: idx * 0.05 }}
-                  className={`relative group rounded-3xl border border-white/5 overflow-hidden ${project.bg} ${project.colSpan}`}
-                >
-                  <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
-                    <div className="flex items-start justify-between">
-                      <div className="w-14 h-14 rounded-2xl bg-[#070B14] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-                        {project.icon}
+              {filteredProjects.map((project, idx) => {
+                const IconComponent = PROJECT_ICONS[project.iconKey];
+                return (
+                  <motion.div
+                    key={project.id}
+                    layout
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    exit={{ opacity: 0, scale: 0.9 }}
+                    transition={{ duration: 0.4, delay: idx * 0.05 }}
+                    className={`relative group rounded-3xl border border-white/5 overflow-hidden ${project.bg} ${project.colSpan}`}
+                  >
+                    <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+                      <div className="flex items-start justify-between">
+                        <div className="w-14 h-14 rounded-2xl bg-[#070B14] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
+                          <IconComponent size={32} className={project.iconColor} />
+                        </div>
+                        <span className="px-3 py-1 rounded-md bg-[#070B14]/50 border border-white/5 font-mono text-xs text-[#8A99AD] backdrop-blur-sm">
+                          {project.category}
+                        </span>
                       </div>
-                      <span className="px-3 py-1 rounded-md bg-[#070B14]/50 border border-white/5 font-mono text-xs text-[#8A99AD] backdrop-blur-sm">
-                        {project.category}
-                      </span>
+
+                      <div>
+                        <div className="text-sm font-mono text-[#00AEEF] mb-2">{project.student}</div>
+                        <h3 className="text-2xl font-bold font-display mb-2 pr-8">{project.title}</h3>
+                        <p className="text-[#8A99AD] text-sm line-clamp-2 md:line-clamp-3">{project.desc}</p>
+                      </div>
                     </div>
 
-                    <div>
-                      <div className="text-sm font-mono text-[#00AEEF] mb-2">{project.student}</div>
-                      <h3 className="text-2xl font-bold font-display mb-2 pr-8">{project.title}</h3>
-                      <p className="text-[#8A99AD] text-sm line-clamp-2 md:line-clamp-3">{project.desc}</p>
+                    {/* Hover Overlay Link Icon */}
+                    <div className="absolute top-8 right-8 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-md cursor-pointer hover:bg-[#00AEEF] hover:text-[#070B14]">
+                      <ArrowUpRight size={20} />
                     </div>
-                  </div>
-
-                  {/* Hover Overlay Link Icon */}
-                  <div className="absolute top-8 right-8 w-10 h-10 rounded-full bg-white/10 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 backdrop-blur-md cursor-pointer hover:bg-[#00AEEF] hover:text-[#070B14]">
-                    <ArrowUpRight size={20} />
-                  </div>
-                </motion.div>
-              ))}
+                  </motion.div>
+                );
+              })}
             </AnimatePresence>
           </motion.div>
         </section>

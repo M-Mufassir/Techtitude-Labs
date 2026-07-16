@@ -1,32 +1,17 @@
 import { type FormEvent, useState } from "react";
-import { Mail, Phone, MessageCircle, ArrowUpRight, GraduationCap, Briefcase, ChevronRight } from "lucide-react";
+import { Mail, Phone, MessageCircle, ArrowUpRight, GraduationCap, Briefcase, ChevronRight, type LucideIcon } from "lucide-react";
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { motion, AnimatePresence } from "framer-motion";
+import {
+  contactChannels,
+  academyCourseOptions,
+  studioCapabilityTags,
+  studioTimelineOptions,
+} from "../data/content";
 
-const contacts = [
-  {
-    title: "Email",
-    value: "techtitude.labs@gmail.com",
-    link: "mailto:techtitude.labs@gmail.com",
-    icon: Mail,
-    description: "For courses, projects & business inquiries",
-  },
-  {
-    title: "WhatsApp",
-    value: "+94 71 423 3425",
-    link: "https://wa.me/94714233425",
-    icon: MessageCircle,
-    description: "Fast communication",
-  },
-  {
-    title: "Phone",
-    value: "+94 76 265 7472",
-    link: "tel:+94762657472",
-    icon: Phone,
-    description: "General inquiries",
-  },
-];
+// Icon map for contactChannels iconKey strings
+const CONTACT_ICONS: Record<string, LucideIcon> = { Mail, Phone, MessageCircle };
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'academy' | 'studio'>('academy');
@@ -111,8 +96,8 @@ export default function Contact() {
 
             <div className="space-y-4 mt-8 xl:mt-4">
               <p className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4">Direct Channels</p>
-              {contacts.map((contact) => {
-                const Icon = contact.icon;
+              {contactChannels.map((contact) => {
+                const Icon = CONTACT_ICONS[contact.iconKey];
                 return (
                   <a
                     key={contact.value}
@@ -168,11 +153,10 @@ export default function Contact() {
                       <label className="font-mono text-xs text-gray-400 ml-2">Select Course Path</label>
                       <div className="mt-2 relative">
                         <select name="course" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
-                          <option value="" disabled selected>Choose a track...</option>
-                          <option value="Code Core (Grade 10 & 11)">Code Core (Grade 10 & 11 ICT)</option>
-                          <option value="Web Engineering">Advanced Web Engineering</option>
-                          <option value="AI & ML">Next-Gen AI & ML</option>
-                          <option value="UI/UX Design">Interactive UI/UX Design</option>
+                          <option value="" disabled>Choose a track...</option>
+                          {academyCourseOptions.map(opt => (
+                            <option key={opt.value} value={opt.value}>{opt.label}</option>
+                          ))}
                         </select>
                         <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
                       </div>
@@ -240,7 +224,7 @@ export default function Contact() {
                     <div>
                       <label className="font-mono text-xs text-gray-400 ml-2 block mb-3">Required Capabilities (Optional)</label>
                       <div className="flex flex-wrap gap-2">
-                        {['Web App', 'Mobile App', 'E-Commerce', 'AI/LLM Integration', 'Automation/n8n', 'UI/UX Redesign'].map(tech => (
+                        {studioCapabilityTags.map(tech => (
                           <label key={tech} className="cursor-pointer relative">
                             <input type="checkbox" name="stack" value={tech} className="peer sr-only" />
                             <div className="px-4 py-2 rounded-xl border border-white/10 bg-[#0A0A0C] text-sm text-gray-400 peer-checked:bg-[#7B2CBF]/10 peer-checked:border-[#7B2CBF] peer-checked:text-white transition-all">
@@ -256,10 +240,9 @@ export default function Contact() {
                         <label className="font-mono text-xs text-gray-400 ml-2">Target Timeline</label>
                         <div className="mt-2 relative">
                           <select name="timeline" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all">
-                            <option value="ASAP">ASAP (Expedited)</option>
-                            <option value="1-3 Months">1-3 Months</option>
-                            <option value="3-6 Months">3-6 Months</option>
-                            <option value="6+ Months">6+ Months</option>
+                            {studioTimelineOptions.map(opt => (
+                              <option key={opt.value} value={opt.value}>{opt.label}</option>
+                            ))}
                           </select>
                           <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
                         </div>

@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Terminal, Workflow, Database, Shield } from "lucide-react";
+import { ArrowRight, Terminal, Workflow, Database, Shield, type LucideIcon } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { studioCapabilities } from "../data/content";
+
+// Icon map for studioCapabilities iconKey strings
+const CAP_ICONS: Record<string, LucideIcon> = { Terminal, Workflow, Database, Shield };
 
 export default function StudioHome() {
-  const capabilities = [
-    { title: "System Architecture", desc: "Designing scalable, fault-tolerant infrastructure for enterprise applications.", icon: <Workflow className="text-[#7B2CBF]" size={24} /> },
-    { title: "Core Engineering", desc: "Building high-performance React, Node, and Python architectures.", icon: <Terminal className="text-[#7B2CBF]" size={24} /> },
-    { title: "Data Pipelines", desc: "Automating massive datasets and training custom machine learning models.", icon: <Database className="text-[#7B2CBF]" size={24} /> },
-    { title: "Cybersecurity", desc: "Penetration testing and ensuring banking-grade security protocols.", icon: <Shield className="text-[#7B2CBF]" size={24} /> },
-  ];
-
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#7B2CBF]/30 overflow-clip">
       <div className="max-w-7xl mx-auto px-6">
@@ -61,17 +58,20 @@ export default function StudioHome() {
           </Reveal>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {capabilities.map((cap, idx) => (
-              <Reveal key={idx} delay={idx * 0.1}>
-                <div className="group glass p-8 rounded-3xl border border-white/5 hover:border-[#7B2CBF]/40 transition-all duration-500 hover:bg-white/[0.02]">
-                  <div className="w-14 h-14 rounded-2xl bg-[#0B101E] border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
-                    {cap.icon}
+            {studioCapabilities.map((cap, idx) => {
+              const IconComponent = CAP_ICONS[cap.iconKey];
+              return (
+                <Reveal key={idx} delay={idx * 0.1}>
+                  <div className="group glass p-8 rounded-3xl border border-white/5 hover:border-[#7B2CBF]/40 transition-all duration-500 hover:bg-white/[0.02]">
+                    <div className="w-14 h-14 rounded-2xl bg-[#0B101E] border border-white/10 flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-transform duration-300 shadow-lg">
+                      <IconComponent className="text-[#7B2CBF]" size={24} />
+                    </div>
+                    <h3 className="text-2xl font-bold font-display mb-3">{cap.title}</h3>
+                    <p className="text-[#8A99AD] leading-relaxed">{cap.desc}</p>
                   </div>
-                  <h3 className="text-2xl font-bold font-display mb-3">{cap.title}</h3>
-                  <p className="text-[#8A99AD] leading-relaxed">{cap.desc}</p>
-                </div>
-              </Reveal>
-            ))}
+                </Reveal>
+              );
+            })}
           </div>
         </section>
 

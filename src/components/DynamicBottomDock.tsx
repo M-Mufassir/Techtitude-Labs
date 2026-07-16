@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { Home, MoreHorizontal, X } from "lucide-react";
+import { navigationLinks } from "../data/content";
 
 export default function DynamicBottomDock() {
   const location = useLocation();
@@ -31,23 +32,7 @@ export default function DynamicBottomDock() {
 
   const isAcademy = activeDivision === 'academy';
 
-  const academyLinks = [
-    { label: "About", path: "/about" },
-    { label: "Courses", path: "/courses" },
-    { label: "Workshops", path: "/workshops" },
-    { label: "Builds", path: "/builds" },
-    { label: "Contact", path: "/contact" },
-  ];
-
-  const studioLinks = [
-    { label: "About", path: "/about" },
-    { label: "Services", path: "/services" },
-    { label: "Portfolio", path: "/portfolio" },
-    { label: "Process", path: "/process" },
-    { label: "Contact", path: "/contact" },
-  ];
-
-  const currentLinks = isAcademy ? academyLinks : studioLinks;
+  const currentLinks = isAcademy ? navigationLinks.academy : navigationLinks.studio;
 
   return (
     <>

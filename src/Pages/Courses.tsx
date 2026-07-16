@@ -2,6 +2,14 @@ import { motion } from "framer-motion";
 import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
 import VelocityReel from "../components/VelocityReel";
+import {
+  coursesLiveCounters,
+  coursesEcosystemCards,
+  careerSteps,
+  upcomingMasterclasses,
+  courseFAQs,
+  coursesEnrollmentTracks,
+} from "../data/content";
 
 export default function Courses() {
   return (
@@ -45,18 +53,12 @@ export default function Courses() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16"
           >
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">1.2k+</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Active Students</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">450+</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Projects Built</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">03</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Days to Workshop</div>
-            </div>
+            {coursesLiveCounters.map((counter) => (
+              <div key={counter.label} className="text-center">
+                <div className="text-4xl font-bold text-[#00AEEF] font-mono">{counter.value}</div>
+                <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">{counter.label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -66,45 +68,19 @@ export default function Courses() {
         <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-12">The Ecosystem</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1 (Double Width) */}
-          <div className="lg:col-span-2 relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-[#00AEEF] uppercase mb-4 block">Grade 10 & 11 ICT</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Code Core</h3>
-              <p className="text-gray-400 font-body max-w-md">Complete syllabus coverage paired with practical programming labs. Designed specifically to build strong foundational logic early.</p>
+          {coursesEcosystemCards.map((card) => (
+            <div
+              key={card.title}
+              className={`relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden ${card.colSpanClass}`}
+            >
+              <div className={card.glowClass} />
+              <div className="relative z-10">
+                <span className={`text-xs font-mono tracking-widest uppercase mb-4 block ${card.tagColor}`}>{card.tag}</span>
+                <h3 className="text-2xl font-bold font-display text-white mb-4">{card.title}</h3>
+                <p className="text-gray-400 font-body max-w-md">{card.desc}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#00AEEF]/10 blur-[40px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Advanced</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Web Engineering</h3>
-              <p className="text-gray-400 font-body text-sm">Full-stack architectures, JavaScript ecosystems, and advanced database engineering.</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#00AEEF]/10 blur-[40px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Future Tech</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Next-Gen AI & ML</h3>
-              <p className="text-gray-400 font-body text-sm">Neural networks, data science pipelines, and practical implementation of automation models.</p>
-            </div>
-          </div>
-
-          {/* Card 4 (Double Width on Tablet, Single on Desktop) */}
-          <div className="md:col-span-2 lg:col-span-2 relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Design</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">UI/UX & Interactive Design</h3>
-              <p className="text-gray-400 font-body max-w-md">Design thinking, high-fidelity wireframing, motion design prototyping, and Figma workflows.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -120,12 +96,8 @@ export default function Courses() {
             <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00AEEF]/50 via-[#00AEEF]/20 to-transparent" />
             
             <div className="space-y-12 pl-12 md:pl-20 relative">
-              {[
-                { step: "01", title: "Foundational Deep-Dive", desc: "Mastering syntax and structural logic. Building the bedrock of computer science." },
-                { step: "02", title: "Final Year Project Guidance", desc: "Dedicated mentorship to architect, build, and deploy production-ready capstone systems." },
-                { step: "03", title: "Career Development Bootcamps", desc: "Technical resume building, mock engineering interviews, portfolio optimization, and direct placement drives." }
-              ].map((item, i) => (
-                <div key={i} className="relative group">
+              {careerSteps.map((item) => (
+                <div key={item.step} className="relative group">
                   {/* Glowing Node */}
                   <div className="absolute -left-12 md:-left-20 top-1 w-3 h-3 rounded-full bg-[#00AEEF] shadow-[0_0_15px_rgba(0,174,239,0.8)]" />
                   <span className="text-sm font-mono text-[#00AEEF] tracking-widest mb-2 block">STEP {item.step}</span>
@@ -154,24 +126,20 @@ export default function Courses() {
                 </tr>
               </thead>
               <tbody className="text-white font-body text-sm md:text-base">
-                <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="py-6">Oct 12, 2026</td>
-                  <td className="py-6 font-medium">Building Workflows with Advanced Automations</td>
-                  <td className="py-6 text-right">
-                    <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
-                      Reserve Seat
-                    </button>
-                  </td>
-                </tr>
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="py-6">Oct 26, 2026</td>
-                  <td className="py-6 font-medium">Modern React Server Components Architecture</td>
-                  <td className="py-6 text-right">
-                    <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
-                      Reserve Seat
-                    </button>
-                  </td>
-                </tr>
+                {upcomingMasterclasses.map((mc, idx) => (
+                  <tr
+                    key={idx}
+                    className={`${idx < upcomingMasterclasses.length - 1 ? 'border-b border-white/5' : ''} hover:bg-white/5 transition-colors`}
+                  >
+                    <td className="py-6">{mc.date}</td>
+                    <td className="py-6 font-medium">{mc.topic}</td>
+                    <td className="py-6 text-right">
+                      <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
+                        Reserve Seat
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -186,11 +154,7 @@ export default function Courses() {
           {/* FAQ */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-8">Questions?</h2>
-            <Accordion items={[
-              { title: "Do I need prior coding experience?", content: "Not for the Code Core track. We start from the absolute basics of logic and computational thinking before moving into specific syntax." },
-              { title: "Are classes online or in-person?", content: "We offer hybrid models. You can join the live streams from anywhere or attend in-person sessions at our campus." },
-              { title: "Do you provide job placement?", content: "Our Career Accelerator bootcamps connect top-performing students directly with our industry partners for internships and junior roles." }
-            ]} />
+            <Accordion items={courseFAQs} />
           </div>
 
           {/* Enroll Form */}
@@ -204,11 +168,10 @@ export default function Courses() {
                   className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-white font-body focus:outline-none focus:border-[#00AEEF] transition-colors placeholder:text-gray-600"
                 />
                 <select className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-gray-400 font-body focus:outline-none focus:border-[#00AEEF] transition-colors appearance-none">
-                  <option value="" disabled selected>Select a Track</option>
-                  <option value="core">Code Core</option>
-                  <option value="web">Web Engineering</option>
-                  <option value="ai">Next-Gen AI & ML</option>
-                  <option value="design">UI/UX Design</option>
+                  <option value="" disabled>Select a Track</option>
+                  {coursesEnrollmentTracks.map(track => (
+                    <option key={track.value} value={track.value}>{track.label}</option>
+                  ))}
                 </select>
                 <button type="button" className="mt-8 px-8 py-4 bg-[#00AEEF] text-black font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,174,239,0.4)] transition-shadow duration-300">
                   Submit Application

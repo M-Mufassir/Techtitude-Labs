@@ -3,6 +3,8 @@ import TiltCard from "../components/TiltCard";
 import Marquee from "../components/Marquee";
 import ProjectShowcase from "../components/ProjectShowcase";
 import CircuitGrid from "../components/CircuitGrid";
+import { studioServiceCards, techStackMatrix, clientLogos } from "../data/content";
+
 export default function Services() {
   return (
     <motion.div
@@ -44,29 +46,16 @@ export default function Services() {
       {/* 2. Core Engineering Capabilities */}
       <section className="relative px-6 py-24 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Custom Software & Mobile Solutions</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Building native iOS/Android applications and cross-platform ecosystems engineered for high performance.</p>
-          </TiltCard>
-
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Next-Gen Web & E-Commerce</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Developing custom web solutions and high-conversion platforms optimized for speed and fluidity.</p>
-          </TiltCard>
-
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">AI Solutions & Intelligent Automation</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Implementing custom LLM pipelines, BI tools, and automated operations to eliminate overhead.</p>
-          </TiltCard>
-
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-             <div className="absolute top-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Digital Transformation Suites</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Complete overhauls of legacy business software systems into modern web-based internal tool architectures.</p>
-          </TiltCard>
+          {studioServiceCards.map((card) => (
+            <TiltCard
+              key={card.title}
+              className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden"
+            >
+              <div className={card.glowClass} />
+              <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">{card.title}</h3>
+              <p className="text-gray-400 font-body relative z-10 max-w-md">{card.desc}</p>
+            </TiltCard>
+          ))}
         </div>
       </section>
 
@@ -78,33 +67,16 @@ export default function Services() {
             <p className="text-gray-400 font-body mb-8">We don't limit ourselves to one tool. We pick the bleeding-edge stack that makes the most sense for the scale of your infrastructure.</p>
           </div>
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {/* Frontend */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#7B2CBF]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Frontend Architecture</h4>
-              <div className="flex flex-wrap gap-2">
-                {["React", "Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
+            {Object.values(techStackMatrix).map((category) => (
+              <div key={category.label} className={`glass rounded-2xl p-6 border-t-2 ${category.borderColor}`}>
+                <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">{category.label}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {category.techs.map(tech => (
+                    <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Backend */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#b37be8]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Backend & Database</h4>
-              <div className="flex flex-wrap gap-2">
-                {["Node.js", "Python", "PostgreSQL", "MongoDB", "AWS", "Vercel"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
-              </div>
-            </div>
-            {/* Automation */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#e0c4ff]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Automation Engines</h4>
-              <div className="flex flex-wrap gap-2">
-                {["n8n", "Webhooks", "REST APIs", "GraphQL", "Zapier", "Make"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -117,7 +89,7 @@ export default function Services() {
         {/* Client Logos Marquee */}
         <div className="mb-24 opacity-60">
           <Marquee speed={30}>
-            {["Acme Corp", "Global Tech", "Stark Industries", "Wayne Enterprises", "Cyberdyne", "Umbrella Corp", "Massive Dynamic"].map((logo) => (
+            {clientLogos.map((logo) => (
               <span key={logo} className="text-2xl font-display font-bold text-gray-500 uppercase tracking-widest">{logo}</span>
             ))}
           </Marquee>
