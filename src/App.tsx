@@ -2,11 +2,11 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useEffect } from "react";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import Home from "./pages/Home";
-import About from "./pages/About";
-import Services from "./pages/Services";
-import Courses from "./pages/Courses";
-import Contact from "./pages/Contact";
+import { Home, Contact } from "lucide-react";
+import About from "./Pages/About";
+import Courses from "./Pages/Courses";
+import Services from "./Pages/Services";
+
 
 function ScrollToTop() {
   const { pathname } = useLocation();
