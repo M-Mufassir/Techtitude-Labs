@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
-import Logo from './Logo';
+//import Logo from './Logo';
 
 // ACADEMY: Dropping Study Materials
 const STUDY_ICONS = [BookOpen, GraduationCap, Book, Bookmark, Library, PenTool];
