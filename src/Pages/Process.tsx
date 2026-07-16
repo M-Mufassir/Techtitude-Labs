@@ -70,7 +70,7 @@ export default function Process() {
           <div className="absolute left-[39px] md:left-[50px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#7B2CBF]/50 via-[#7B2CBF]/10 to-transparent z-0" />
 
           <div className="flex flex-col gap-16 md:gap-24">
-            {steps.map((step, idx) => (
+            {steps.map((step, /*idx*/) => (
               <div key={step.id} className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-16 items-start group">
                 
                 {/* Node / Icon */}

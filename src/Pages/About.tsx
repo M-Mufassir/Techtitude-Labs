@@ -1,7 +1,7 @@
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { values } from "../data/content";
-import { ArrowDown, Code2, GraduationCap, Network } from "lucide-react";
+import { Code2, GraduationCap, Network } from "lucide-react";
 
 export default function About() {
   return (

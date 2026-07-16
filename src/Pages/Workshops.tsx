@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Calendar, Clock, MapPin, Users, ArrowUpRight } from "lucide-react";
+import { Clock, MapPin, Users, ArrowUpRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 
 export default function Workshops() {

@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Cpu, Monitor, Zap, Clock, ChevronRight } from "lucide-react";
 import Reveal from "../components/Reveal";

@@ -1,19 +1,9 @@
-import { motion, useScroll, useVelocity, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import TiltCard from "../components/TiltCard";
 import Marquee from "../components/Marquee";
-import { ArrowRight } from "lucide-react";
 import ProjectShowcase from "../components/ProjectShowcase";
 import CircuitGrid from "../components/CircuitGrid";
-
 export default function Services() {
-  const { scrollY } = useScroll();
-  const scrollVelocity = useVelocity(scrollY);
-  const smoothVelocity = useSpring(scrollVelocity, {
-    damping: 50,
-    stiffness: 400
-  });
-  
-  const velocityRotationX = useTransform(smoothVelocity, [-1000, 0, 1000], [15, 0, -15]);
   return (
     <motion.div
       initial={{ opacity: 0 }}

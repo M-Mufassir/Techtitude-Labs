@@ -1,4 +1,3 @@
-import { motion } from "framer-motion";
 import { ArrowUpRight, Code2, Database, Layout } from "lucide-react";
 import Reveal from "../components/Reveal";
 

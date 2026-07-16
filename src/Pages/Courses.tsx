@@ -22,8 +22,8 @@ export default function Courses() {
         
         <div className="z-10 text-center max-w-4xl mx-auto">
           <motion.h1 
-            initial={{ tracking: "0.2em", opacity: 0, y: 20 }}
-            animate={{ tracking: "-0.03em", opacity: 1, y: 0 }}
+            initial={{ letterSpacing: "0.2em", opacity: 0, y: 20 }}
+            animate={{ letterSpacing: "-0.03em", opacity: 1, y: 0 }}
             transition={{ duration: 1.2, ease: "easeOut" }}
             className="text-6xl md:text-8xl font-bold font-display text-white mb-6"
           >

@@ -1,58 +1,8 @@
-import { useState, useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { useState } from 'react';
+import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, GraduationCap, Settings, Hexagon, Terminal, Cpu, Book, Bookmark, Library, PenTool } from 'lucide-react';
+import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
 import Logo from './Logo';
-
-// --- Internal Subcomponents for Complex Animations ---
-
-interface MagneticButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  children: React.ReactNode;
-  className?: string;
-  onClick?: () => void;
-}
-
-const MagneticButton = ({ children, className, onClick, ...props }: MagneticButtonProps) => {
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
-  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
-  const ref = useRef<HTMLDivElement>(null);
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const { clientX, clientY } = e;
-    const { height, width, left, top } = ref.current!.getBoundingClientRect();
-    const middleX = clientX - (left + width / 2);
-    const middleY = clientY - (top + height / 2);
-    
-    // Check if within magnetic radius (padded via wrapper)
-    x.set(middleX * 0.4); 
-    y.set(middleY * 0.4);
-  };
-
-  const handleMouseLeave = () => {
-    x.set(0);
-    y.set(0);
-  };
-
-  return (
-    <div 
-      ref={ref} 
-      onMouseMove={handleMouseMove} 
-      onMouseLeave={handleMouseLeave} 
-      className="p-10 -m-10 relative z-10" // The 40px radius detection area
-    >
-      <motion.button
-        onClick={onClick}
-        style={{ x: springX, y: springY }}
-        className={className}
-        {...props}
-      >
-        {children}
-      </motion.button>
-    </div>
-  );
-};
 
 // ACADEMY: Dropping Study Materials
 const STUDY_ICONS = [BookOpen, GraduationCap, Book, Bookmark, Library, PenTool];
@@ -196,7 +146,7 @@ export default function SplitGateway() {
   };
 
   // Damped Inertia Physics
-  const flexTransition = { type: 'spring', stiffness: 45, damping: 22, mass: 1.2 };
+  const flexTransition = { type: 'spring' as const, stiffness: 45, damping: 22, mass: 1.2 };
 
   return (
     <>
@@ -225,21 +175,50 @@ export default function SplitGateway() {
           </button>
         </div>
 
-        {/* 2. CENTER PIECE: THE TYPOGRAPHIC ANCHOR */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 mt-10 w-full flex flex-col items-center justify-center text-center z-10 pointer-events-none">
-          {/* Brand Sub-Monogram */}
-          <div className="flex flex-col items-center mb-4">
-            <span className="text-xl font-bold tracking-[0.25em] text-white">TECHTITUDE</span>
-            <span className="text-xs font-bold tracking-[0.4em] text-[#00AEEF] uppercase -mt-0.5">LABS</span>
+        {/* ADVANCED TYPOGRAPHIC ARCHITECTURE CENTERPIECE */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center select-none w-full max-w-4xl px-4 flex flex-col items-center justify-center">
+          
+          {/* THE BACKDROP EMBLAZON (Giant Subtle Watermark) */}
+          <div className="absolute inset-0 flex items-center justify-center z-0 opacity-[0.03] select-none pointer-events-none">
+            <span className="font-['Space_Grotesk'] font-bold text-white text-[12vw] tracking-tighter leading-none uppercase">
+              TECH
+            </span>
           </div>
-          
-          {/* Hero Headline */}
-          <h1 className="text-4xl font-bold font-display text-white tracking-tight leading-tight max-w-[360px] mx-auto">
-            Where Learning <br /> Meets Innovation
-          </h1>
-          
-          {/* Soft Layout Divider Lines */}
-          <div className="w-px h-12 bg-gradient-to-b from-white/10 via-white/5 to-transparent mt-8"></div>
+
+          {/* THE INTERLOCKING LOGO AND SLOGAN CONTAINER */}
+          <div className="relative z-10 flex flex-col items-center">
+            
+            {/* Ultra-Premium Minimal Logo Header */}
+            <div className="flex items-center gap-3 mb-6 mix-blend-difference">
+              <span className="font-['Space_Grotesk'] font-bold text-white text-xs tracking-[0.4em] uppercase">
+                TECHTITUDE
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00AEEF] animate-pulse"></span>
+              <span className="font-['Space_Grotesk'] font-medium text-white/50 text-[11px] tracking-[0.3em] uppercase">
+                LABS
+              </span>
+            </div>
+
+            {/* The Kinetic Asymmetric Slogan */}
+            <h1 className="font-['Space_Grotesk'] font-bold text-white text-4xl sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.1] max-w-2xl mx-auto">
+              Where Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">Meets</span> Innovation
+            </h1>
+
+            {/* Inline Modern Descriptive Metric Matrix */}
+            <div className="flex items-center gap-6 mt-8 font-mono text-[10px] text-white/40 tracking-wider uppercase">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#00AEEF]"></span> ACADEMY.SYS
+              </div>
+              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#7B2CBF]"></span> DEV_STUDIO.EXE
+              </div>
+            </div>
+
+          </div>
+
+          {/* The Kinetic Interaction Line */}
+          <div className="w-px h-20 bg-gradient-to-b from-white/20 via-white/5 to-transparent mx-auto mt-8"></div>
         </div>
 
         {/* 3. BOTTOM HALF: DEVELOPMENT STUDIO BLOCK */}
@@ -275,7 +254,7 @@ export default function SplitGateway() {
         }
       `}</style>
 
-      {/* Global Entrance Headline Overlay */}
+      {/* ADVANCED TYPOGRAPHIC ARCHITECTURE CENTERPIECE (Desktop) */}
       <motion.div 
         animate={{ 
           opacity: hoveredZone === null ? 1 : 0,
@@ -283,24 +262,61 @@ export default function SplitGateway() {
           filter: hoveredZone === null ? "blur(0px)" : "blur(12px)"
         }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="absolute top-1/2 md:top-[25%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center justify-center pointer-events-none w-full max-w-2xl px-4"
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center select-none w-full max-w-4xl px-4 flex flex-col items-center justify-center"
       >
         <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "easeOut", delay: 0.1 }}
-          className="mb-4 md:mb-8"
+          className="relative w-full flex flex-col items-center justify-center"
         >
-          <Logo className="scale-[1.2] md:scale-[1.8]" />
+          {/* THE BACKDROP EMBLAZON (Giant Subtle Watermark) */}
+          <div className="absolute inset-0 flex items-center justify-center z-0 opacity-[0.03] select-none pointer-events-none">
+            <span className="font-['Space_Grotesk'] font-bold text-white text-[12vw] tracking-tighter leading-none uppercase">
+              TECH
+            </span>
+          </div>
+
+          {/* THE INTERLOCKING LOGO AND SLOGAN CONTAINER */}
+          <div className="relative z-10 flex flex-col items-center">
+            
+            {/* Ultra-Premium Minimal Logo Header */}
+            <div className="flex items-center gap-3 mb-6 mix-blend-difference">
+              <span className="font-['Space_Grotesk'] font-bold text-white text-xs tracking-[0.4em] uppercase">
+                TECHTITUDE
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#00AEEF] animate-pulse"></span>
+              <span className="font-['Space_Grotesk'] font-medium text-white/50 text-[11px] tracking-[0.3em] uppercase">
+                LABS
+              </span>
+            </div>
+
+            {/* The Kinetic Asymmetric Slogan */}
+            <motion.h1 
+              initial={{ filter: "blur(10px)", scale: 0.95, opacity: 0 }}
+              animate={{ filter: "blur(0px)", scale: 1, opacity: 1 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
+              className="font-['Space_Grotesk'] font-bold text-white text-4xl sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.1] max-w-2xl mx-auto"
+            >
+              Where Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">Meets</span> Innovation
+            </motion.h1>
+
+            {/* Inline Modern Descriptive Metric Matrix */}
+            <div className="flex items-center gap-6 mt-8 font-mono text-[10px] text-white/40 tracking-wider uppercase">
+              <div className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#00AEEF]"></span> ACADEMY.SYS
+              </div>
+              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
+              <div className="flex items-center gap-1.5">
+                <span className="w-1 h-1 rounded-full bg-[#7B2CBF]"></span> DEV_STUDIO.EXE
+              </div>
+            </div>
+
+          </div>
+
+          {/* The Kinetic Interaction Line */}
+          <div className="w-px h-20 bg-gradient-to-b from-white/20 via-white/5 to-transparent mx-auto mt-8"></div>
         </motion.div>
-        <motion.h1 
-          initial={{ filter: "blur(10px)", scale: 0.95, opacity: 0 }}
-          animate={{ filter: "blur(0px)", scale: 1, opacity: 1 }}
-          transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
-          className="text-2xl md:text-6xl font-bold text-white tracking-tight mb-4 font-display text-center"
-        >
-          Where Learning Meets Innovation
-        </motion.h1>
       </motion.div>
 
       {/* Global Entrance Split Line */}

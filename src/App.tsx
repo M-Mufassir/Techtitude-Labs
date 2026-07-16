@@ -53,7 +53,7 @@ function AppContent() {
         {isLoading && <Preloader />}
       </AnimatePresence>
       <div className="min-h-screen flex flex-col font-body bg-[#070B14]">
-      <main className="flex-1 pb-40 lg:pb-32"> {/* Increased padding to clear bottom dock on mobile */}
+      <main className="flex-1">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname}>
             {/* Gateway */}
