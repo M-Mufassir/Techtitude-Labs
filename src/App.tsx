@@ -5,6 +5,7 @@ import { AnimatePresence } from "framer-motion";
 // Components
 import Footer from "./components/Footer";
 import DynamicBottomDock from "./components/DynamicBottomDock";
+import GlobalCursor from "./components/GlobalCursor";
 import Preloader from "./components/Preloader";
 
 // Pages
@@ -47,6 +48,7 @@ function AppContent() {
 
   return (
     <>
+      <GlobalCursor />
       <AnimatePresence>
         {isLoading && <Preloader />}
       </AnimatePresence>

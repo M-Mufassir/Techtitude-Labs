@@ -48,6 +48,11 @@
     outline: 2px solid var(--color-accent-glow);
     outline-offset: 3px;
   }
+  @media (min-width: 768px) {
+    body, a, button, [role="button"] {
+      cursor: none !important;
+    }
+  }
 }
 
 @layer utilities {

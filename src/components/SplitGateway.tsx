@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, GraduationCap, Settings, Hexagon, Terminal, Cpu, Book, Bookmark, Library, PenTool } from 'lucide-react';
@@ -179,6 +179,7 @@ const CircuitTraceWithNodes = ({ active }: { active: boolean }) => {
 };
 
 
+
 // --- Main Gateway Component ---
 
 export default function SplitGateway() {
@@ -320,6 +321,7 @@ export default function SplitGateway() {
           if (window.innerWidth < 768 && hoveredZone !== 'academy') setHoveredZone('academy');
           else navigate('/academy');
         }}
+        data-zone="academy"
         className="relative w-full md:w-auto h-full border-b md:border-b-0 md:border-r border-white/5 flex flex-col justify-start md:justify-end p-8 md:p-12 cursor-pointer overflow-hidden group basis-1/2"
       >
         {/* The Knowledge Bloom Mesh */}
@@ -367,7 +369,9 @@ export default function SplitGateway() {
                animate={{ opacity: hoveredZone === 'academy' ? 0.4 : 0 }}
                className="absolute inset-0 bg-[#00AEEF] blur-xl rounded-full transition-opacity duration-500"
              />
-             <button className="relative overflow-hidden px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-full text-sm transition-all duration-300">
+             <button 
+                className="relative overflow-hidden px-8 py-4 bg-white/5 backdrop-blur-md border border-white/20 text-white font-bold rounded-full text-sm transition-all duration-300"
+              >
                 <div className="absolute inset-0 bg-white translate-y-[101%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                 <span className="relative z-10 group-hover/btn:text-[#00AEEF] transition-colors duration-300 flex items-center gap-2">
                   Enter Academy <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
@@ -387,6 +391,7 @@ export default function SplitGateway() {
           if (window.innerWidth < 768 && hoveredZone !== 'dev') setHoveredZone('dev');
           else navigate('/studio');
         }}
+        data-zone="dev"
         className="relative w-full md:w-auto h-full flex flex-col justify-end p-8 md:p-12 cursor-pointer overflow-hidden group basis-1/2"
       >
         {/* Deep Purple Radial Beam Pulse */}
