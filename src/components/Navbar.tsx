@@ -23,16 +23,19 @@ export default function Navbar() {
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-colors duration-300 ${
-        scrolled ? "glass" : "bg-transparent border-b border-transparent"
+      className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        scrolled
+          ? "bg-[#070B14]/70 backdrop-blur-2xl border-b border-white/10 shadow-sm"
+          : "bg-transparent border-b border-transparent"
       }`}
     >
-      <nav className="max-w-6xl mx-auto flex items-center justify-between px-6 py-4">
-        <NavLink to="/" onClick={() => setOpen(false)}>
+      <nav className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4 relative">
+        <NavLink to="/" onClick={() => setOpen(false)} className="z-10">
           <Logo />
         </NavLink>
 
-        <div className="hidden md:flex items-center gap-8 font-mono text-sm">
+        {/* Centered Navigation for Desktop */}
+        <div className="hidden md:flex absolute left-1/2 -translate-x-1/2 items-center gap-8 font-mono text-[13px] tracking-wide">
           {links.map((l) => (
             <NavLink
               key={l.to}
@@ -40,7 +43,7 @@ export default function Navbar() {
               end={l.to === "/"}
               className={({ isActive }) =>
                 `transition-colors ${
-                  isActive ? "text-accent" : "text-muted hover:text-ink"
+                  isActive ? "text-accent font-medium" : "text-gray-400 hover:text-white"
                 }`
               }
             >
@@ -49,15 +52,17 @@ export default function Navbar() {
           ))}
         </div>
 
-        <NavLink
-          to="/contact"
-          className="hidden md:inline-flex items-center rounded-full bg-accent px-5 py-2 text-sm font-mono font-medium text-void hover:bg-accent-glow transition-colors"
-        >
-          Start a project
-        </NavLink>
+        <div className="hidden md:flex items-center z-10">
+          <NavLink
+            to="/contact"
+            className="inline-flex items-center rounded-full bg-white px-5 py-2 text-[13px] font-semibold text-black hover:scale-105 transition-transform"
+          >
+            Start a project
+          </NavLink>
+        </div>
 
         <button
-          className="md:hidden text-ink"
+          className="md:hidden text-gray-300 hover:text-white transition-colors z-10"
           onClick={() => setOpen((v) => !v)}
           aria-label="Toggle menu"
         >
@@ -65,15 +70,18 @@ export default function Navbar() {
         </button>
       </nav>
 
+      {/* Mobile Menu */}
       {open && (
-        <div className="md:hidden glass border-t border-elevated px-6 py-6 flex flex-col gap-5 font-mono text-sm">
+        <div className="md:hidden absolute top-full left-0 w-full bg-[#070B14]/95 backdrop-blur-3xl border-b border-white/10 px-6 py-8 flex flex-col gap-6 font-mono text-sm shadow-2xl">
           {links.map((l) => (
             <NavLink
               key={l.to}
               to={l.to}
               end={l.to === "/"}
               onClick={() => setOpen(false)}
-              className={({ isActive }) => (isActive ? "text-accent" : "text-muted")}
+              className={({ isActive }) =>
+                `transition-colors ${isActive ? "text-accent" : "text-gray-300 hover:text-white"}`
+              }
             >
               {l.label}
             </NavLink>
@@ -81,7 +89,7 @@ export default function Navbar() {
           <NavLink
             to="/contact"
             onClick={() => setOpen(false)}
-            className="inline-flex w-fit items-center rounded-full bg-accent px-5 py-2 text-void"
+            className="mt-2 inline-flex w-fit items-center rounded-full bg-white px-6 py-2.5 text-black font-semibold"
           >
             Start a project
           </NavLink>
