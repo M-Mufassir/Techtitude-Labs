@@ -5,14 +5,14 @@
   --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --color-void: #0b0b0b;
-  --color-surface: #1a1a1a;
-  --color-elevated: #2e2e2e;
-  --color-muted: #a0a0a0;
-  --color-ink: #f2f3f5;
-  --color-accent: #00a8ff;
-  --color-accent-glow: #5cc8ff;
-  --color-violet: #7b5cff;
+  --color-void: #0B0B0B;
+  --color-surface: #1A1A1A;
+  --color-elevated: #2E2E2E;
+  --color-muted: #A0A0A0;
+  --color-ink: #F2F3F5;
+  --color-accent: #00A8FF;
+  --color-accent-glow: #5CC8FF;
+  --color-violet: #7B5CFF;
 }
 
 @layer base {
@@ -32,9 +32,7 @@
     html {
       scroll-behavior: auto;
     }
-    *,
-    *::before,
-    *::after {
+    *, *::before, *::after {
       animation-duration: 0.01ms !important;
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
@@ -58,10 +56,7 @@
     border: 1px solid rgba(160, 160, 160, 0.14);
   }
   .glass-hover {
-    transition:
-      border-color 0.3s ease,
-      transform 0.3s ease,
-      box-shadow 0.3s ease;
+    transition: border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
   }
   .glass-hover:hover {
     border-color: rgba(0, 168, 255, 0.45);
@@ -69,15 +64,15 @@
     box-shadow: 0 12px 40px -12px rgba(0, 168, 255, 0.25);
   }
   .text-gradient {
-    background: linear-gradient(120deg, #00a8ff, #5cc8ff 45%, #7b5cff);
+    background: linear-gradient(120deg, #00A8FF, #5CC8FF 45%, #7B5CFF);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
   }
   .trace-grid {
     background-image:
-      linear-gradient(rgba(160, 160, 160, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(160, 160, 160, 0.06) 1px, transparent 1px);
+      linear-gradient(rgba(160,160,160,0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(160,160,160,0.06) 1px, transparent 1px);
     background-size: 42px 42px;
   }
 }

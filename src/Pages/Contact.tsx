@@ -1,585 +1,148 @@
-import { type FormEvent } from "react";
-import {
-  Mail,
-  Phone,
-  MessageCircle,
-  ArrowUpRight,
-} from "lucide-react";
-
+import { useState, type FormEvent } from "react";
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
+import { Mail, CheckCircle2 } from "lucide-react";
 
-
-const contacts = [
-  {
-    title: "Email",
-    value: "techtitude.labs@gmail.com",
-    link: "mailto:techtitude.labs@gmail.com",
-    icon: Mail,
-    description: "For courses, projects & business inquiries",
-  },
-
-  {
-    title: "WhatsApp",
-    value: "+94 71 423 3425",
-    link:
-      "https://wa.me/94714233425?text=Hello%20Techtitude%20Labs,%20I%20would%20like%20to%20know%20more.",
-    icon: MessageCircle,
-    description: "Fast communication through WhatsApp",
-  },
-
-  {
-    title: "Phone",
-    value: "+94 76 265 7472",
-    link: "tel:+94762657472",
-    icon: Phone,
-    description: "General inquiries",
-  },
-
-  {
-    title: "Phone",
-    value: "+94 75 745 6106",
-    link: "tel:+94757456106",
-    icon: Phone,
-    description: "Support & communication",
-  },
-
-  {
-    title: "Phone",
-    value: "+94 77 423 3426",
-    link: "tel:+94774233426",
-    icon: Phone,
-    description: "Business contact",
-  },
-];
-
-
+// Replace with your own Formspree endpoint: https://formspree.io (free tier)
+// 1. Create a form at formspree.io, grab the endpoint id (looks like "abcdwxyz")
+// 2. Set VITE_FORMSPREE_ID in a .env file, or paste it directly below.
+const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID || "";
 
 export default function Contact() {
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
 
-
-  function handleSubmit(e: FormEvent<HTMLFormElement>) {
-
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-
-
+    if (!FORMSPREE_ID) {
+      setStatus("error");
+      return;
+    }
+    setStatus("sending");
     const form = e.currentTarget;
-
     const data = new FormData(form);
-
-
-    const name = data.get("name");
-    const email = data.get("email");
-    const message = data.get("message");
-
-
-    const subject = encodeURIComponent(
-      `New Inquiry from ${name}`
-    );
-
-
-    const body = encodeURIComponent(
-`
-Name:
-${name}
-
-Email:
-${email}
-
-Message:
-${message}
-`
-    );
-
-
-    window.location.href =
-      `mailto:techtitude.labs@gmail.com?subject=${subject}&body=${body}`;
-
+    try {
+      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+        method: "POST",
+        body: data,
+        headers: { Accept: "application/json" },
+      });
+      if (res.ok) {
+        setStatus("sent");
+        form.reset();
+      } else {
+        setStatus("error");
+      }
+    } catch {
+      setStatus("error");
+    }
   }
 
-
-
   return (
-
-<div className="relative">
-
-
-{/* HERO */}
-
-<section className="relative pt-40 pb-16 px-6 overflow-hidden">
-
-<TraceBackground />
-
-
-<div className="max-w-6xl mx-auto">
-
-
-<Reveal>
-
-<span className="font-mono text-xs text-accent">
- // contact
-</span>
-
-
-<h1 className="font-display font-bold text-4xl sm:text-6xl mt-3 max-w-3xl">
-
-Let's build something{" "}
-
-<span className="text-gradient">
-impactful.
-</span>
-
-</h1>
-
-
-<p className="text-muted text-lg mt-6 max-w-xl">
-
-Have an idea, project, or learning goal?
-Connect with Techtitude Labs and let's transform ideas into reality.
-
-</p>
-
-
-</Reveal>
-
-
-</div>
-
-
-</section>
-
-
-
-
-
-{/* CONTACT SECTION */}
-
-
-<section className="px-6 pb-28">
-
-
-<div className="max-w-6xl mx-auto grid lg:grid-cols-5 gap-6">
-
-
-
-{/* FORM */}
-
-
-<Reveal className="lg:col-span-3">
-
-
-<form
-onSubmit={handleSubmit}
-className="glass rounded-3xl p-8 flex flex-col gap-5"
->
-
-
-
-<div>
-
-<label className="font-mono text-xs text-muted">
-Name
-</label>
-
-
-<input
-name="name"
-required
-placeholder="Your name"
-
-className="
-mt-2
-w-full
-rounded-xl
-bg-elevated/50
-border
-border-elevated
-px-4
-py-3
-text-sm
-outline-none
-focus:border-accent/50
-transition
-"
-/>
-
-</div>
-
-
-
-
-
-<div>
-
-
-<label className="font-mono text-xs text-muted">
-Email
-</label>
-
-
-<input
-
-name="email"
-
-type="email"
-
-required
-
-placeholder="you@example.com"
-
-
-className="
-mt-2
-w-full
-rounded-xl
-bg-elevated/50
-border
-border-elevated
-px-4
-py-3
-text-sm
-outline-none
-focus:border-accent/50
-transition
-"
-
-/>
-
-
-</div>
-
-
-
-
-
-
-<div>
-
-
-<label className="font-mono text-xs text-muted">
-Message
-</label>
-
-
-
-<textarea
-
-name="message"
-
-rows={6}
-
-required
-
-placeholder="What are you trying to build?"
-
-className="
-mt-2
-w-full
-rounded-xl
-bg-elevated/50
-border
-border-elevated
-px-4
-py-3
-text-sm
-outline-none
-focus:border-accent/50
-resize-none
-transition
-"
-
-/>
-
-
-</div>
-
-
-
-
-
-
-<button
-
-type="submit"
-
-className="
-inline-flex
-items-center
-justify-center
-gap-2
-rounded-full
-bg-accent
-px-7
-py-3
-font-mono
-text-sm
-font-medium
-text-void
-hover:bg-accent-glow
-transition-colors
-"
-
->
-
-
-Send Message
-
-<ArrowUpRight size={16}/>
-
-
-</button>
-
-
-
-<p className="text-xs text-muted font-mono">
-
-&gt; opens your email application automatically
-
-</p>
-
-
-
-</form>
-
-
-</Reveal>
-
-
-
-
-
-
-
-
-{/* DIRECT CONTACT */}
-
-
-
-<Reveal delay={0.15} className="lg:col-span-2">
-
-
-<div className="glass rounded-3xl p-7 space-y-4">
-
-
-<div>
-
-
-<span className="font-mono text-xs text-accent">
-
-// direct_channels
-
-</span>
-
-
-<h2 className="font-display text-2xl font-bold mt-3">
-
-Connect with us
-
-</h2>
-
-
-</div>
-
-
-
-
-
-{contacts.map((contact)=>{
-
-
-const Icon = contact.icon;
-
-
-
-return (
-
-<a
-
-key={contact.value}
-
-href={contact.link}
-
-target={
-contact.title==="WhatsApp"
-?
-"_blank"
-:
-undefined
-}
-
-className="
-group
-block
-rounded-2xl
-border
-border-elevated
-p-4
-hover:border-accent/40
-transition-all
-"
-
-
->
-
-
-
-<div className="flex gap-3 items-center">
-
-
-
-<div
-
-className="
-h-10
-w-10
-rounded-xl
-bg-accent/10
-flex
-items-center
-justify-center
-text-accent
-"
-
->
-
-<Icon size={18}/>
-
-</div>
-
-
-
-
-
-<div>
-
-
-<p className="font-mono text-xs text-muted">
-
-{contact.title}
-
-</p>
-
-
-<p className="
-text-sm
-mt-1
-group-hover:text-accent
-transition
-">
-
-{contact.value}
-
-</p>
-
-
-</div>
-
-
-
-</div>
-
-
-
-
-<p className="text-xs text-muted mt-3">
-
-{contact.description}
-
-</p>
-
-
-
-</a>
-
-
-)
-
-
-})}
-
-
-
-
-</div>
-
-
-</Reveal>
-
-
-
-</div>
-
-
-</section>
-
-
-
-
-{/* BOTTOM CTA */}
-
-
-<section className="px-6 pb-24">
-
-
-<Reveal>
-
-
-<div
-className="
-max-w-6xl
-mx-auto
-glass
-rounded-3xl
-p-10
-text-center
-relative
-overflow-hidden
-"
->
-
-
-<div
-className="
-absolute
-top-0
-left-1/2
--translate-x-1/2
-h-40
-w-40
-bg-accent/20
-blur-[80px]
-"
-/>
-
-
-
-<h2 className="relative font-display font-bold text-3xl">
-
-Ready to start your next project?
-
-</h2>
-
-
-<p className="relative text-muted mt-4">
-
-Let's create technology that makes an impact.
-
-</p>
-
-
-</div>
-
-
-</Reveal>
-
-
-</section>
-
-
-
-</div>
-
-
+    <div className="relative">
+      <section className="relative pt-40 pb-16 px-6 overflow-hidden">
+        <TraceBackground />
+        <div className="max-w-4xl mx-auto">
+          <Reveal>
+            <span className="font-mono text-xs text-accent">// contact</span>
+            <h1 className="font-display font-bold text-4xl sm:text-5xl mt-3 max-w-xl">
+              Let's build something{" "}
+              <span className="text-gradient">real.</span>
+            </h1>
+            <p className="text-muted text-lg mt-6 max-w-xl">
+              Courses, final year projects, or a full product — tell us what
+              you need and we'll get back to you.
+            </p>
+          </Reveal>
+        </div>
+      </section>
+
+      <section className="px-6 pb-28">
+        <div className="max-w-4xl mx-auto grid md:grid-cols-5 gap-6">
+          <Reveal className="md:col-span-3">
+            <form onSubmit={handleSubmit} className="glass rounded-2xl p-7 sm:p-8 flex flex-col gap-5">
+              <div>
+                <label htmlFor="name" className="font-mono text-xs text-muted">
+                  Name
+                </label>
+                <input
+                  id="name"
+                  name="name"
+                  required
+                  className="mt-2 w-full rounded-xl bg-elevated/50 border border-elevated px-4 py-3 text-sm outline-none focus:border-accent/50 transition-colors"
+                  placeholder="Your name"
+                />
+              </div>
+              <div>
+                <label htmlFor="email" className="font-mono text-xs text-muted">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  className="mt-2 w-full rounded-xl bg-elevated/50 border border-elevated px-4 py-3 text-sm outline-none focus:border-accent/50 transition-colors"
+                  placeholder="you@example.com"
+                />
+              </div>
+              <div>
+                <label htmlFor="message" className="font-mono text-xs text-muted">
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  rows={5}
+                  className="mt-2 w-full rounded-xl bg-elevated/50 border border-elevated px-4 py-3 text-sm outline-none focus:border-accent/50 transition-colors resize-none"
+                  placeholder="What are you trying to build?"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={status === "sending"}
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-accent px-6 py-3 font-mono text-sm font-medium text-void hover:bg-accent-glow transition-colors disabled:opacity-60"
+              >
+                {status === "sending" ? "Sending…" : "Send message"}
+              </button>
+
+              {status === "sent" && (
+                <p className="flex items-center gap-2 text-sm text-accent-glow">
+                  <CheckCircle2 size={16} /> Message sent — we'll be in touch soon.
+                </p>
+              )}
+              {status === "error" && !FORMSPREE_ID && (
+                <p className="text-sm text-muted">
+                  Form isn't wired up yet — add your Formspree ID in{" "}
+                  <code className="font-mono text-accent">.env</code> as{" "}
+                  <code className="font-mono text-accent">VITE_FORMSPREE_ID</code>.
+                </p>
+              )}
+              {status === "error" && FORMSPREE_ID && (
+                <p className="text-sm text-muted">Something went wrong — try again, or email us directly.</p>
+              )}
+            </form>
+          </Reveal>
+
+          <Reveal delay={0.1} className="md:col-span-2">
+            <div className="glass rounded-2xl p-7 sm:p-8 h-full flex flex-col justify-between">
+              <div>
+                <span className="font-mono text-xs text-accent">// direct</span>
+                <a
+                  href="mailto:hello@techtitudelabs.com"
+                  className="mt-4 flex items-center gap-2 text-ink hover:text-accent transition-colors"
+                >
+                  <Mail size={18} /> hello@techtitudelabs.com
+                </a>
+              </div>
+              <p className="text-muted text-sm mt-8">
+                We typically reply within 1–2 business days.
+              </p>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+    </div>
   );
-
 }
