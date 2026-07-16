@@ -3,7 +3,7 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="relative border-t border-elevated mt-32">
+    <footer className="relative border-t border-elevated mt-16">
       <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3">
         <div>
           <Logo />
@@ -29,7 +29,7 @@ export default function Footer() {
         </div>
       </div>
 
-      <div className="border-t border-elevated py-6 text-center text-xs font-mono text-muted/70">
+      <div className="border-t border-elevated pt-6 pb-32 lg:pb-24 text-center text-xs font-mono text-muted/70">
         © {new Date().getFullYear()} Techtitude Labs. All rights reserved.
       </div>
     </footer>
