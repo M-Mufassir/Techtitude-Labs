@@ -2,8 +2,7 @@ import pos1 from './projects_images/POS-desktop/img-1.png';
 import pos2 from './projects_images/POS-desktop/img-2.png';
 import pos3 from './projects_images/POS-desktop/img-3.png';
 import pos4 from './projects_images/POS-desktop/img-4.png';
-import pos5 from './projects_images/POS-desktop/img-5.png';
-import pos6 from './projects_images/POS-desktop/img-6.png';
+
 
 import rest1 from './projects_images/restaurantwebsite/img-1.png';
 import rest2 from './projects_images/restaurantwebsite/img-2.png';
@@ -65,7 +64,7 @@ export const velocityReelImages = {
 };
 
 export const proofLedgerImages: Record<string, string[]> = {
-  "project-pos": [pos1, pos2, pos3, pos4, pos5, pos6],
+  "project-pos": [pos1, pos2, pos3, pos4],
   "project-detectx": [detect1, detect2, detect3, detect4, detect5, detect6, detect7],
   "project-restaurant": [rest1, rest2, rest3],
   "project-jewellery": [jew1, jew2, jew3],
