@@ -21,6 +21,14 @@ import hard1 from './projects_images/hardwarewebsite/img-1.png';
 import hard2 from './projects_images/hardwarewebsite/img-2.png';
 import hard3 from './projects_images/hardwarewebsite/img-3.png';
 
+import detect1 from './projects_images/Plant_Disease_Detection/image-1.png';
+import detect2 from './projects_images/Plant_Disease_Detection/image-2.png';
+import detect3 from './projects_images/Plant_Disease_Detection/image-3.png';
+import detect4 from './projects_images/Plant_Disease_Detection/image-4.png';
+import detect5 from './projects_images/Plant_Disease_Detection/image-5.png';
+import detect6 from './projects_images/Plant_Disease_Detection/image-6.png';
+import detect7 from './projects_images/Plant_Disease_Detection/image-7.png';
+
 export const projectShowcaseImages = {
   "image-1": "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?w=800&auto=format&fit=crop&q=60",
   "image-2": "https://images.unsplash.com/photo-1556304044-0699e31c6a34?w=800&auto=format&fit=crop&q=60",
@@ -58,6 +66,7 @@ export const velocityReelImages = {
 
 export const proofLedgerImages: Record<string, string[]> = {
   "project-pos": [pos1, pos2, pos3, pos4, pos5, pos6],
+  "project-detectx": [detect1, detect2, detect3, detect4, detect5, detect6, detect7],
   "project-restaurant": [rest1, rest2, rest3],
   "project-jewellery": [jew1, jew2, jew3],
   "project-booking": [book1, book2, book3],

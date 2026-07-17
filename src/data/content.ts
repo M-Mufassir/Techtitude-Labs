@@ -187,7 +187,7 @@ export const teamMembersContent = [
 ];
 
 export const projects = [
-  {
+    {
     id: "project-pos",
     client: "POS System",
     title: "Desktop Application",
@@ -199,6 +199,19 @@ export const projects = [
     ],
     stack: ["Modern", "Scalable", "Desktop"],
     category: "Retail Tech",
+  },
+  {
+    id: "project-detectx",
+    client: "Plant Disease AI",
+    title: "DetectX Web App",
+    description: "An AI-powered web application that identifies plant diseases from images of leaves. Uses a MobileNetV2 neural network trained on 38 classes to instantly diagnose crop health and provide treatments.",
+    metrics: [
+      { label: "Accuracy", value: "High" },
+      { label: "Type", value: "Web App" },
+      { label: "Industry", value: "Agriculture" }
+    ],
+    stack: ["Flask", "Keras", "Tailwind CSS"],
+    category: "AI / Agritech",
   },
   {
     id: "project-restaurant",
