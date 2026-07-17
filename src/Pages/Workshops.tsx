@@ -14,6 +14,7 @@ export default function Workshops() {
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "HTML",
+      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     },
     {
       id: "ws-002",
@@ -25,6 +26,7 @@ export default function Workshops() {
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Flowcharts",
+      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     },
     {
       id: "ws-003",
@@ -36,6 +38,7 @@ export default function Workshops() {
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Excel",
+      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     },
     {
       id: "ws-004",
@@ -47,6 +50,7 @@ export default function Workshops() {
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Number Systems",
+      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     }
   ];
 
@@ -128,9 +132,14 @@ export default function Workshops() {
                             Waitlist Full
                           </button>
                         ) : (
-                          <button className="px-6 py-2 bg-[#00AEEF] hover:bg-[#009ee0] text-[#070B14] rounded-full text-sm font-bold shadow-[0_0_15px_rgba(0,174,239,0.2)] hover:shadow-[0_0_25px_rgba(0,174,239,0.4)] transition-all duration-300 flex items-center justify-end gap-2 ml-auto">
+                          <a 
+                            href={ws.registrationLink || "#"} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="px-6 py-2 bg-[#00AEEF] hover:bg-[#009ee0] text-[#070B14] rounded-full text-sm font-bold shadow-[0_0_15px_rgba(0,174,239,0.2)] hover:shadow-[0_0_25px_rgba(0,174,239,0.4)] transition-all duration-300 flex items-center justify-end gap-2 ml-auto w-fit"
+                          >
                             Register <ArrowUpRight size={16} />
-                          </button>
+                          </a>
                         )}
                       </td>
                     </motion.tr>
