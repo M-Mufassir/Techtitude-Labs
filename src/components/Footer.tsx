@@ -10,7 +10,7 @@ export default function Footer() {
   const particleColor = isStudioRoute ? "#7B2CBF" : "#00AEEF";
 
   return (
-    <footer className="relative border-t border-elevated mt-16 overflow-hidden bg-[#070B14]">
+    <footer className="relative border-t border-elevated overflow-hidden bg-[#070B14]">
       {/* Background Animation */}
       <div className="absolute inset-0 z-0 opacity-60">
         <NeuralBackground color={particleColor} particleCount={isStudioRoute ? 400 : 500} speed={isStudioRoute ? 0.9 : 0.7} />

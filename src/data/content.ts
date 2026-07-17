@@ -146,36 +146,42 @@ export const teamMembersContent = [
     id: '1',
     name: 'Chadrack',
     role: 'director of photography',
+    qualification: 'BA in Film & Media',
     social: { twitter: '#', linkedin: '#', behance: '#' },
   },
   {
     id: '2',
     name: 'Mak VieSAinte',
     role: 'FOUNDER',
+    qualification: 'MSc. Software Engineering',
     social: { twitter: '#', linkedin: '#' },
   },
   {
     id: '3',
     name: 'Osiris Balonga',
     role: 'LEAD FRONT-END',
+    qualification: 'BSc. Computer Science',
     social: { twitter: '#', linkedin: '#' },
   },
   {
     id: '4',
     name: 'Jacques',
     role: 'PRODUCT OWNER',
+    qualification: 'Certified Scrum Master',
     social: { linkedin: '#' },
   },
   {
     id: '5',
     name: 'Riche Makso',
     role: 'CTO - PRODUCT DESIGNER',
+    qualification: 'BEng. Software Engineering',
     social: { twitter: '#', linkedin: '#' },
   },
   {
     id: '6',
     name: 'Jemima',
     role: 'MAKE-UP ARTISTE',
+    qualification: 'Certified Cosmetologist',
     social: { instagram: '#' }
   },
 ];

@@ -7,6 +7,7 @@ export interface TeamMember {
   id: string;
   name: string;
   role: string;
+  qualification?: string;
   image: string;
   social?: {
     twitter?: string;
@@ -41,14 +42,14 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
   return (
     <div className="flex flex-col md:flex-row items-start gap-8 md:gap-10 lg:gap-14 select-none w-full max-w-5xl mx-auto py-8 px-4 md:px-6 font-body">
       {/* ── Left: photo grid ── */}
-      <div className="flex gap-2 md:gap-3 flex-shrink-0 overflow-x-auto pb-1 md:pb-0 hide-scrollbar max-w-full">
+      <div className="flex gap-2 md:gap-3 flex-shrink-0 self-center md:self-start overflow-x-auto pb-1 md:pb-0 hide-scrollbar max-w-full">
         {/* Column 1 */}
         <div className="flex flex-col gap-2 md:gap-3">
           {col1.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[110px] h-[120px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
+              className="w-[95px] h-[105px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -56,12 +57,12 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
         </div>
 
         {/* Column 2 */}
-        <div className="flex flex-col gap-2 md:gap-3 mt-[48px] sm:mt-[56px] md:mt-[68px]">
+        <div className="flex flex-col gap-2 md:gap-3 mt-[36px] sm:mt-[56px] md:mt-[68px]">
           {col2.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[122px] h-[132px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
+              className="w-[106px] h-[116px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -69,12 +70,12 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
         </div>
 
         {/* Column 3 */}
-        <div className="flex flex-col gap-2 md:gap-3 mt-[22px] sm:mt-[26px] md:mt-[32px]">
+        <div className="flex flex-col gap-2 md:gap-3 mt-[16px] sm:mt-[26px] md:mt-[32px]">
           {col3.map((member) => (
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[115px] h-[125px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
+              className="w-[100px] h-[110px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -174,7 +175,7 @@ function MemberRow({
         />
         <span
           className={cn(
-            'text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300',
+            'text-[18px] md:text-[20px] font-semibold leading-none tracking-tight transition-colors duration-300',
             isActive ? 'text-white' : 'text-gray-300',
           )}
         >
@@ -243,10 +244,17 @@ function MemberRow({
         )}
       </div>
 
-      {/* Role */}
-      <p className="mt-1.5 pl-[27px] text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-[#00AEEF]">
-        {member.role}
-      </p>
+      {/* Role and Qualification */}
+      <div className="mt-1.5 pl-[27px] flex flex-col gap-1">
+        <p className="text-[9px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-[#00AEEF]">
+          {member.role}
+        </p>
+        {member.qualification && (
+          <p className="text-[11px] md:text-xs font-mono text-gray-400">
+            {member.qualification}
+          </p>
+        )}
+      </div>
     </div>
   );
 }
