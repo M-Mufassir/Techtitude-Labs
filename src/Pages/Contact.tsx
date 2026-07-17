@@ -38,12 +38,15 @@ export default function Contact() {
     const data = new FormData(form);
     const name = data.get("name");
     const email = data.get("email");
+    const phone = data.get("phone");
+    const location = data.get("location");
     const course = data.get("course");
+    const intake = data.get("intake");
     const background = data.get("background");
 
     const subject = encodeURIComponent(`Academy Enrollment: ${name} - ${course}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nCourse: ${course}\nAcademic Background: ${background}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nCourse: ${course}\nPreferred Intake: ${intake}\nAcademic Background: ${background}`
     );
     window.location.href = `mailto:techtitude.labs@gmail.com?subject=${subject}&body=${body}`;
   }
@@ -53,6 +56,8 @@ export default function Contact() {
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = data.get("name");
+    const email = data.get("email");
+    const phone = data.get("phone");
     const company = data.get("company");
     const timeline = data.get("timeline");
     const details = data.get("details");
@@ -62,7 +67,7 @@ export default function Contact() {
 
     const subject = encodeURIComponent(`New Project Inquiry: ${company || name}`);
     const body = encodeURIComponent(
-      `Name: ${name}\nCompany: ${company || "N/A"}\nBudget: $${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`
+      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: $${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`
     );
     window.location.href = `mailto:techtitude.labs@gmail.com?subject=${subject}&body=${body}`;
   }
@@ -164,17 +169,42 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div>
-                      <label className="font-mono text-xs text-gray-400 ml-2">Select Course Path</label>
-                      <div className="mt-2 relative">
-                        <select name="course" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
-                          <option value="" disabled selected>Choose a track...</option>
-                          <option value="Code Core (Grade 10 & 11)">Code Core (Grade 10 & 11 ICT)</option>
-                          <option value="Web Engineering">Advanced Web Engineering</option>
-                          <option value="AI & ML">Next-Gen AI & ML</option>
-                          <option value="UI/UX Design">Interactive UI/UX Design</option>
-                        </select>
-                        <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Phone Number</label>
+                        <input name="phone" type="tel" required placeholder="+94 7X XXX XXXX" className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all" />
+                      </div>
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">City / Location</label>
+                        <input name="location" required placeholder="Colombo, Sri Lanka" className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all" />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Select Course Path</label>
+                        <div className="mt-2 relative">
+                          <select name="course" required defaultValue="" className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
+                            <option value="" disabled>Choose a track...</option>
+                            <option value="Code Core (Grade 10 & 11)">Code Core (Grade 10 & 11 ICT)</option>
+                            <option value="Web Engineering">Advanced Web Engineering</option>
+                            <option value="AI & ML">Next-Gen AI & ML</option>
+                            <option value="UI/UX Design">Interactive UI/UX Design</option>
+                          </select>
+                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                        </div>
+                      </div>
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Preferred Intake</label>
+                        <div className="mt-2 relative">
+                          <select name="intake" required defaultValue="" className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
+                            <option value="" disabled>Select intake...</option>
+                            <option value="Next Available">Next Available Batch</option>
+                            <option value="Summer">Summer Intake</option>
+                            <option value="Fall">Fall Intake</option>
+                          </select>
+                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                        </div>
                       </div>
                     </div>
 
@@ -215,24 +245,51 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    {/* Interactive Budget Slider */}
-                    <div className="mt-2">
-                      <div className="flex justify-between items-end mb-4">
-                        <label className="font-mono text-xs text-gray-400 ml-2">Estimated Budget (USD)</label>
-                        <span className="font-mono text-[#7B2CBF] font-bold">${budget.toLocaleString()}{budget >= 50000 ? '+' : ''}</span>
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Email Address</label>
+                        <input name="email" type="email" required placeholder="jane@example.com" className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all" />
                       </div>
-                      <input 
-                        type="range" 
-                        min="1000" 
-                        max="50000" 
-                        step="1000"
-                        value={budget}
-                        onChange={(e) => setBudget(Number(e.target.value))}
-                        className="w-full accent-[#7B2CBF] bg-[#0A0A0C] h-2 rounded-full outline-none"
-                      />
-                      <div className="flex justify-between text-gray-600 font-mono text-[10px] mt-2 px-2">
-                        <span>$1k</span>
-                        <span>$50k+</span>
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Phone Number</label>
+                        <input name="phone" type="tel" required placeholder="+94 7X XXX XXXX" className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all" />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-2">
+                      {/* Interactive Budget Slider */}
+                      <div>
+                        <div className="flex justify-between items-end mb-4">
+                          <label className="font-mono text-xs text-gray-400 ml-2">Estimated Budget (USD)</label>
+                          <span className="font-mono text-[#7B2CBF] font-bold">${budget.toLocaleString()}{budget >= 50000 ? '+' : ''}</span>
+                        </div>
+                        <input 
+                          type="range" 
+                          min="1000" 
+                          max="50000" 
+                          step="1000"
+                          value={budget}
+                          onChange={(e) => setBudget(Number(e.target.value))}
+                          className="w-full accent-[#7B2CBF] bg-[#0A0A0C] h-2 rounded-full outline-none"
+                        />
+                        <div className="flex justify-between text-gray-600 font-mono text-[10px] mt-2 px-2">
+                          <span>$1k</span>
+                          <span>$50k+</span>
+                        </div>
+                      </div>
+
+                      {/* Target Timeline */}
+                      <div>
+                        <label className="font-mono text-xs text-gray-400 ml-2">Target Timeline</label>
+                        <div className="mt-2 relative">
+                          <select name="timeline" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all">
+                            <option value="ASAP">ASAP (Expedited)</option>
+                            <option value="1-3 Months">1-3 Months</option>
+                            <option value="3-6 Months">3-6 Months</option>
+                            <option value="6+ Months">6+ Months</option>
+                          </select>
+                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                        </div>
                       </div>
                     </div>
 
@@ -251,24 +308,9 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6 mt-2">
-                      <div>
-                        <label className="font-mono text-xs text-gray-400 ml-2">Target Timeline</label>
-                        <div className="mt-2 relative">
-                          <select name="timeline" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all">
-                            <option value="ASAP">ASAP (Expedited)</option>
-                            <option value="1-3 Months">1-3 Months</option>
-                            <option value="3-6 Months">3-6 Months</option>
-                            <option value="6+ Months">6+ Months</option>
-                          </select>
-                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
-                        </div>
-                      </div>
-                    </div>
-
                     <div>
                       <label className="font-mono text-xs text-gray-400 ml-2">Project Details</label>
-                      <textarea name="details" rows={4} required placeholder="Describe the core problem you are trying to solve..." className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] resize-none transition-all" />
+                      <textarea name="details" rows={2} required placeholder="Describe the core problem you are trying to solve..." className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] resize-none transition-all" />
                     </div>
 
                     <button type="submit" className="mt-2 w-full flex items-center justify-center gap-2 rounded-full bg-[#7B2CBF] hover:bg-[#6a24a6] px-8 py-4 text-white text-sm font-bold font-display shadow-[0_0_20px_rgba(123,44,191,0.4)] transition-all duration-300">
