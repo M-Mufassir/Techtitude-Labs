@@ -16,50 +16,16 @@ export interface TeamMember {
   };
 }
 
-const DEFAULT_MEMBERS: TeamMember[] = [
-  {
-    id: '1',
-    name: 'Chadrack',
-    role: 'director of photography',
-    image: 'https://i.pravatar.cc/400?img=11',
-    social: { twitter: '#', linkedin: '#', behance: '#' },
-  },
-  {
-    id: '2',
-    name: 'Mak VieSAinte',
-    role: 'FOUNDER',
-    image: 'https://i.pravatar.cc/400?img=12',
-    social: { twitter: '#', linkedin: '#' },
-  },
-  {
-    id: '3',
-    name: 'Osiris Balonga',
-    role: 'LEAD FRONT-END',
-    image: 'https://i.pravatar.cc/400?img=13',
-    social: { twitter: '#', linkedin: '#' },
-  },
-  {
-    id: '4',
-    name: 'Jacques',
-    role: 'PRODUCT OWNER',
-    image: 'https://i.pravatar.cc/400?img=14',
-    social: { linkedin: '#' },
-  },
-  {
-    id: '5',
-    name: 'Riche Makso',
-    role: 'CTO - PRODUCT DESIGNER',
-    image: 'https://i.pravatar.cc/400?img=15',
-    social: { twitter: '#', linkedin: '#' },
-  },
-  {
-    id: '6',
-    name: 'Jemima',
-    role: 'MAKE-UP ARTISTE',
-    image: 'https://i.pravatar.cc/400?img=16',
-    social: { instagram: '#' } as TeamMember['social'],
-  },
-];
+import { teamMembersContent } from '../data/content';
+import { teamMembersImages } from '../assets/images';
+
+const DEFAULT_MEMBERS: TeamMember[] = teamMembersContent.map((member, i) => {
+  const imgKey = `image-${i + 1}` as keyof typeof teamMembersImages;
+  return {
+    ...member,
+    image: teamMembersImages[imgKey] || teamMembersImages["image-1"]
+  };
+});
 
 interface TeamShowcaseProps {
   members?: TeamMember[];

@@ -49,12 +49,9 @@ const DroppingStudyMaterials = ({ active }: { active: boolean }) => {
 };
 
 // DEVELOPMENT: Matrix Code Stream Marquee
-const MARQUEE_SNIPPETS = [
-  "import { deploy } from '@server/core'; await deploy({ environment: 'production', region: 'us-east-1' }); // SUCCESS",
-  "export const config = { runtime: 'edge', memory: 1024, maxDuration: 60 }; const handler = async (req) => { return new Response(); }",
-  "function optimizeAST(tree) { return tree.map(node => transform(node)); } // COMPILING CHUNKS [||||||||||] 100%",
-  "SELECT u.id, u.profile FROM users u INNER JOIN telemetry t ON u.id = t.user_id WHERE t.active = true;"
-];
+import { splitGatewayContent } from '../data/content';
+
+const MARQUEE_SNIPPETS = splitGatewayContent.marqueeSnippets;
 
 const MatrixMarqueeStream = ({ active }: { active: boolean }) => {
   if (!active) return null;
@@ -181,8 +178,9 @@ export default function SplitGateway() {
              <span className="font-['Space_Grotesk'] font-bold text-white text-[0.85rem] tracking-[0.35em]">TECHTITUDE</span>
              <span className="font-['Space_Grotesk'] font-medium text-[#00AEEF] text-[0.85rem] tracking-[0.2em]">LABS</span>
           </div>
-          <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em]">
-            Where Learning<br/>Meets Innovation
+          <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em] whitespace-pre-line">
+            {splitGatewayContent.mobile.titleLine1}
+            {splitGatewayContent.mobile.titleLine2}
           </h1>
         </motion.div>
 
@@ -219,7 +217,7 @@ export default function SplitGateway() {
               }}
               className="font-mono text-[0.6rem] tracking-[0.25em] uppercase mb-1.5"
             >
-              Learn • Build • Grow
+              {splitGatewayContent.mobile.academy.subtitle}
             </motion.span>
             
             <motion.h2 
@@ -229,7 +227,7 @@ export default function SplitGateway() {
               }}
               className="font-['Space_Grotesk'] font-bold tracking-[-0.02em] text-white"
             >
-              ACADEMY
+              {splitGatewayContent.mobile.academy.title}
             </motion.h2>
 
             <motion.div
@@ -248,7 +246,7 @@ export default function SplitGateway() {
                 }}
                 className="px-5 py-2.5 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md flex items-center gap-2"
               >
-                Enter Academy <span className="text-[#00AEEF]">→</span>
+                {splitGatewayContent.mobile.academy.cta} <span className="text-[#00AEEF]">→</span>
               </button>
             </motion.div>
           </motion.div>
@@ -287,7 +285,7 @@ export default function SplitGateway() {
               }}
               className="font-mono text-[0.6rem] tracking-[0.25em] uppercase mb-1.5"
             >
-              Design • Develop • Innovate
+              {splitGatewayContent.mobile.dev.subtitle}
             </motion.span>
             
             <motion.h2 
@@ -297,7 +295,7 @@ export default function SplitGateway() {
               }}
               className="font-['Space_Grotesk'] font-bold tracking-[-0.02em] text-white"
             >
-              DEVELOPMENT
+              {splitGatewayContent.mobile.dev.title}
             </motion.h2>
 
             <motion.div
@@ -316,7 +314,7 @@ export default function SplitGateway() {
                 }}
                 className="px-5 py-2.5 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md flex items-center gap-2"
               >
-                Enter Studio <span className="text-[#7B2CBF]">→</span>
+                {splitGatewayContent.mobile.dev.cta} <span className="text-[#7B2CBF]">→</span>
               </button>
             </motion.div>
           </motion.div>
@@ -386,7 +384,9 @@ export default function SplitGateway() {
               transition={{ duration: 1.2, ease: "easeOut", delay: 0.2 }}
               className="font-['Space_Grotesk'] font-bold text-white text-4xl sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.1] max-w-2xl mx-auto"
             >
-              Where Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">Meets</span> Innovation
+              {splitGatewayContent.desktop.titleLine1}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">{splitGatewayContent.desktop.titleHighlight}</span>
+              {splitGatewayContent.desktop.titleLine2}
             </motion.h1>
 
             {/* Inline Modern Descriptive Metric Matrix */}
@@ -454,7 +454,7 @@ export default function SplitGateway() {
             }}
             className="text-xs font-mono tracking-[0.3em] uppercase block mb-2 transition-colors duration-500"
           >
-            Learn • Build • Grow
+            {splitGatewayContent.desktop.academy.subtitle}
           </motion.span>
           <motion.h2 
             animate={{ 
@@ -465,7 +465,7 @@ export default function SplitGateway() {
             transition={{ duration: 0.4 }}
             className="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight font-display"
           >
-            ACADEMY
+            {splitGatewayContent.desktop.academy.title}
           </motion.h2>
           
           <div className="relative inline-block pointer-events-auto group/btn">
@@ -478,7 +478,7 @@ export default function SplitGateway() {
               >
                 <div className="absolute inset-0 bg-white translate-y-[101%] group-hover/btn:translate-y-0 transition-transform duration-500 ease-[cubic-bezier(0.19,1,0.22,1)]" />
                 <span className="relative z-10 group-hover/btn:text-[#00AEEF] transition-colors duration-300 flex items-center gap-2">
-                  Enter Academy <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
+                  {splitGatewayContent.desktop.academy.cta} <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
                 </span>
              </button>
           </div>
@@ -519,7 +519,7 @@ export default function SplitGateway() {
             }}
             className="text-xs font-mono tracking-[0.3em] uppercase block mb-2 transition-colors duration-500"
           >
-            Design • Develop • Innovate
+            {splitGatewayContent.desktop.dev.subtitle}
           </motion.span>
           <motion.h2 
             animate={{ 
@@ -530,7 +530,7 @@ export default function SplitGateway() {
             transition={{ duration: 0.4 }}
             className="text-3xl md:text-5xl font-bold text-white mb-8 tracking-tight font-display"
           >
-            DEVELOPMENT
+            {splitGatewayContent.desktop.dev.title}
           </motion.h2>
           
           <div className="relative inline-block pointer-events-auto">
@@ -545,7 +545,7 @@ export default function SplitGateway() {
                  className={`relative block w-full px-8 py-4 text-white font-bold rounded-full text-sm transition-all duration-300 z-10 flex items-center justify-center gap-2
                  ${hoveredZone === 'dev' ? 'shadow-[0_10px_30px_rgba(123,44,191,0.4)] bg-[#110f21]' : 'bg-[#111520]'}`}
                >
-                 Enter Development <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
+                 {splitGatewayContent.desktop.dev.cta} <span className="inline-block transition-transform duration-300 group-hover/btn:translate-x-1.5">→</span>
                </button>
              </div>
           </div>

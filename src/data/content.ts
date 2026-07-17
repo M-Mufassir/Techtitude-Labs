@@ -66,3 +66,116 @@ export const courseTracks = [
     desc: "One-on-one mentorship for undergraduates — from proposal through to final defense.",
   },
 ];
+
+export const splitGatewayContent = {
+  marqueeSnippets: [
+    "import { deploy } from '@server/core'; await deploy({ environment: 'production', region: 'us-east-1' }); // SUCCESS",
+    "export const config = { runtime: 'edge', memory: 1024, maxDuration: 60 }; const handler = async (req) => { return new Response(); }",
+    "function optimizeAST(tree) { return tree.map(node => transform(node)); } // COMPILING CHUNKS [||||||||||] 100%",
+    "SELECT u.id, u.profile FROM users u INNER JOIN telemetry t ON u.id = t.user_id WHERE t.active = true;"
+  ],
+  mobile: {
+    titleLine1: "Where Learning",
+    titleLine2: "Meets Innovation",
+    academy: {
+      subtitle: "Learn • Build • Grow",
+      title: "ACADEMY",
+      cta: "Enter Academy",
+    },
+    dev: {
+      subtitle: "Design • Develop • Innovate",
+      title: "DEVELOPMENT",
+      cta: "Enter Studio",
+    }
+  },
+  desktop: {
+    titleLine1: "Where Learning ",
+    titleHighlight: "Meets",
+    titleLine2: " Innovation",
+    academy: {
+      subtitle: "Learn • Build • Grow",
+      title: "ACADEMY",
+      cta: "Enter Academy",
+    },
+    dev: {
+      subtitle: "Design • Develop • Innovate",
+      title: "DEVELOPMENT",
+      cta: "Enter Development",
+    }
+  }
+};
+
+export const velocityReelContent = {
+  heading: "Student Innovation Lab",
+  projects: [
+    {
+      title: "Project Nexus",
+      tag: "Real-time Platform",
+      hue: 200,
+    },
+    {
+      title: "Aura E-Commerce",
+      tag: "Web Infrastructure",
+      hue: 270,
+    },
+    {
+      title: "Neuro Predictor",
+      tag: "AI Operations",
+      hue: 190,
+    },
+    {
+      title: "Health Automations",
+      tag: "n8n Pipelines",
+      hue: 260,
+    },
+    {
+      title: "FinTech Dashboard",
+      tag: "Enterprise Web",
+      hue: 210,
+    },
+  ]
+};
+
+export const projectShowcaseContent = {
+  headerTitle: "our\nwork.",
+  headerSubtitle: "Scroll down to explore showcased creative engineering."
+};
+
+export const teamMembersContent = [
+  {
+    id: '1',
+    name: 'Chadrack',
+    role: 'director of photography',
+    social: { twitter: '#', linkedin: '#', behance: '#' },
+  },
+  {
+    id: '2',
+    name: 'Mak VieSAinte',
+    role: 'FOUNDER',
+    social: { twitter: '#', linkedin: '#' },
+  },
+  {
+    id: '3',
+    name: 'Osiris Balonga',
+    role: 'LEAD FRONT-END',
+    social: { twitter: '#', linkedin: '#' },
+  },
+  {
+    id: '4',
+    name: 'Jacques',
+    role: 'PRODUCT OWNER',
+    social: { linkedin: '#' },
+  },
+  {
+    id: '5',
+    name: 'Riche Makso',
+    role: 'CTO - PRODUCT DESIGNER',
+    social: { twitter: '#', linkedin: '#' },
+  },
+  {
+    id: '6',
+    name: 'Jemima',
+    role: 'MAKE-UP ARTISTE',
+    social: { instagram: '#' }
+  },
+];

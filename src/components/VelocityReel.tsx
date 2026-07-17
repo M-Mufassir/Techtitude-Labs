@@ -1,38 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { ArrowRight } from "lucide-react";
+import { velocityReelContent } from '../data/content';
+import { velocityReelImages } from '../assets/images';
 
-const PROJECTS = [
-  {
-    title: "Project Nexus",
-    tag: "Real-time Platform",
-    image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=800&q=80",
-    hue: 200,
-  },
-  {
-    title: "Aura E-Commerce",
-    tag: "Web Infrastructure",
-    image: "https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=800&q=80",
-    hue: 270,
-  },
-  {
-    title: "Neuro Predictor",
-    tag: "AI Operations",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
-    hue: 190,
-  },
-  {
-    title: "Health Automations",
-    tag: "n8n Pipelines",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
-    hue: 260,
-  },
-  {
-    title: "FinTech Dashboard",
-    tag: "Enterprise Web",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
-    hue: 210,
-  },
-];
+const PROJECTS = velocityReelContent.projects.map((project, index) => {
+  const imgKey = `image-${index + 1}` as keyof typeof velocityReelImages;
+  return {
+    ...project,
+    image: velocityReelImages[imgKey] || velocityReelImages["image-1"]
+  };
+});
 
 export default function VelocityReel() {
   const row1Ref = useRef<HTMLDivElement>(null);
@@ -307,7 +284,7 @@ export default function VelocityReel() {
 
       <section className="velocity-section">
         <div className="reel-heading">
-          <h2>Student Innovation Lab</h2>
+          <h2>{velocityReelContent.heading}</h2>
           <div className="matrix-counter">ENGINE_VELOCITY // <span>{velocityDisplay}</span> RAD</div>
         </div>
 
