@@ -48,7 +48,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[85px] h-[95px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
+              className="w-[95px] h-[105px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -61,7 +61,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[95px] h-[105px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
+              className="w-[106px] h-[116px] sm:w-[145px] sm:h-[155px] md:w-[172px] md:h-[182px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
@@ -74,7 +74,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[88px] h-[98px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
+              className="w-[100px] h-[110px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
