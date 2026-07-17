@@ -186,7 +186,7 @@ export const teamMembersContent = [
   },
 ];
 
-export const proofLedgerContent = [
+export const projects = [
   {
     id: "project-pos",
     client: "POS System",
@@ -253,3 +253,4 @@ export const proofLedgerContent = [
     category: "Industrial",
   },
 ];
+
