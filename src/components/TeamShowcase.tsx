@@ -175,7 +175,7 @@ function MemberRow({
         />
         <span
           className={cn(
-            'text-base md:text-[18px] font-semibold leading-none tracking-tight transition-colors duration-300',
+            'text-[18px] md:text-[20px] font-semibold leading-none tracking-tight transition-colors duration-300',
             isActive ? 'text-white' : 'text-gray-300',
           )}
         >
@@ -246,11 +246,11 @@ function MemberRow({
 
       {/* Role and Qualification */}
       <div className="mt-1.5 pl-[27px] flex flex-col gap-1">
-        <p className="text-[7px] md:text-[10px] font-medium uppercase tracking-[0.2em] text-[#00AEEF]">
+        <p className="text-[9px] md:text-[11px] font-medium uppercase tracking-[0.2em] text-[#00AEEF]">
           {member.role}
         </p>
         {member.qualification && (
-          <p className="text-[9px] md:text-[11px] font-mono text-gray-400">
+          <p className="text-[11px] md:text-xs font-mono text-gray-400">
             {member.qualification}
           </p>
         )}
