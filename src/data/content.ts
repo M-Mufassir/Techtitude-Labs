@@ -213,6 +213,29 @@ export const projects = [
     stack: ["Flask", "Keras", "Tailwind CSS"],
     category: "AI / Agritech",
   },
+    {
+  id: "project-herit-edge",
+  client: "HERIT EDGE",
+  title: "HERIT EDGE E-Commerce Platform",
+  description: "An AI-powered e-commerce platform dedicated to Sri Lankan handmade products, enabling artisans to showcase and sell clay pottery, wood carvings, antiques, and other handicrafts. Features multilingual support, AI image-based product search, a customer chatbot, and a comprehensive seller dashboard.",
+  metrics: [
+    { label: "Platform", value: "E-Commerce" },
+    { label: "AI Features", value: "Image Search" },
+    { label: "Industry", value: "Handicrafts" }
+  ],
+  stack: [
+    "HTML",
+    "CSS",
+    "JavaScript",
+    "PHP",
+    "MySQL",
+    "Python",
+    "FastAPI",
+    "TensorFlow",
+    "Uvicorn"
+  ],
+  category: "AI / E-Commerce",
+},
   {
     id: "project-restaurant",
     client: "Restaurant Platform",
