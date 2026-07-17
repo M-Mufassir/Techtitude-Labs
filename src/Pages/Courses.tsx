@@ -1,7 +1,16 @@
 import { motion } from "framer-motion";
 import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
-import VelocityReel from "../components/VelocityReel";
+import { CardStack, type CardStackItem } from "../components/CardStack";
+import { velocityReelImages } from "../assets/images";
+
+const workshopStudents: CardStackItem[] = [
+  { id: 1, title: "Code Core Batch 04", description: "O/L ICT students learning HTML basics.", imageSrc: velocityReelImages["image-1"] },
+  { id: 2, title: "React Workshop", description: "Advanced web engineering students building dashboards.", imageSrc: velocityReelImages["image-2"] },
+  { id: 3, title: "Python Data Science", description: "Introductory session to data pipelines.", imageSrc: velocityReelImages["image-3"] },
+  { id: 4, title: "AI & ML Seminar", description: "Exploring neural networks with our future tech batch.", imageSrc: velocityReelImages["image-4"] },
+  { id: 5, title: "UI/UX Prototyping", description: "Figma design workflows in action.", imageSrc: velocityReelImages["image-5"] }
+];
 
 export default function Courses() {
   return (
@@ -177,7 +186,17 @@ export default function Courses() {
           </div>
         </div>
 
-        <VelocityReel />
+        <div className="mt-24 mb-16">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-4">Workshop Students</h2>
+            <p className="text-gray-400">Glimpses from our recent active learning sessions and student interactions.</p>
+          </div>
+          <CardStack 
+            items={workshopStudents} 
+            autoAdvance={true} 
+            className="max-w-4xl mx-auto"
+          />
+        </div>
       </section>
 
       {/* 5. Proof & Connection */}
