@@ -5,27 +5,29 @@ import Reveal from "../components/Reveal";
 
 // Sub-components
 const Countdown = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 14, hours: 22, minutes: 45, seconds: 0 });
+  const calculateTimeLeft = () => {
+    const targetDate = new Date("August 2, 2026 09:00:00").getTime();
+    const now = new Date().getTime();
+    const difference = targetDate - now;
+
+    let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
+
+    if (difference > 0) {
+      timeLeft = {
+        days: Math.floor(difference / (1000 * 60 * 60 * 24)),
+        hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
+        minutes: Math.floor((difference / 1000 / 60) % 60),
+        seconds: Math.floor((difference / 1000) % 60),
+      };
+    }
+    return timeLeft;
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        let { days, hours, minutes, seconds } = prev;
-        if (seconds > 0) seconds--;
-        else {
-          seconds = 59;
-          if (minutes > 0) minutes--;
-          else {
-            minutes = 59;
-            if (hours > 0) hours--;
-            else {
-              hours = 23;
-              if (days > 0) days--;
-            }
-          }
-        }
-        return { days, hours, minutes, seconds };
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
   }, []);
@@ -151,8 +153,8 @@ export default function AcademyHome() {
                 <div className="flex items-center gap-2 text-[#00AEEF] font-mono text-sm uppercase tracking-widest mb-4">
                   <Clock size={16} /> Next Masterclass
                 </div>
-                <h2 className="text-4xl font-bold font-display mb-4">React 19 & Next.js Architecture</h2>
-                <p className="text-[#8A99AD] mb-8">Join our lead engineers for a free 3-hour intensive workshop on building highly scalable front-end architectures.</p>
+                <h2 className="text-4xl font-bold font-display mb-4">Grade 10 & 11 O/L ICT - HTML Fundamentals Module</h2>
+                <p className="text-[#8A99AD] mb-8">Join our ICT workshop and learn HTML fundamentals through practical sessions. Build your first webpage, understand web structures, and develop essential skills for your O/L ICT journey.</p>
                 <Link to="/workshops" className="inline-flex items-center gap-2 text-white font-bold hover:text-[#00AEEF] transition-colors border-b border-white/20 pb-1 hover:border-[#00AEEF]">
                   View All Workshops <ChevronRight size={16} />
                 </Link>
