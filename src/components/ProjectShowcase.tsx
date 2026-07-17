@@ -238,6 +238,8 @@ export default function ProjectShowcase() {
           transform: translate(-50%, -50%);
           width: 100%;
           height: 100%;
+          max-width: none;
+          aspect-ratio: auto;
           object-fit: cover;
           border-radius: 1rem;
           will-change: width, height;
