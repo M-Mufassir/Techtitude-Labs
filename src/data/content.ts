@@ -215,8 +215,8 @@ export const projects = [
   },
     {
   id: "project-herit-edge",
-  client: "HERIT EDGE",
-  title: "HERIT EDGE E-Commerce Platform",
+  client: "E-Commerce",
+  title: "HERIT EDGE",
   description: "An AI-powered e-commerce platform dedicated to Sri Lankan handmade products, enabling artisans to showcase and sell clay pottery, wood carvings, antiques, and other handicrafts. Features multilingual support, AI image-based product search, a customer chatbot, and a comprehensive seller dashboard.",
   metrics: [
     { label: "Platform", value: "E-Commerce" },
