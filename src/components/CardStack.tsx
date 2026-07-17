@@ -87,26 +87,29 @@ export function CardStack<T extends CardStackItem>({
   const [dimensions, setDimensions] = React.useState({
     width: cardWidth,
     height: cardHeight,
+    mobileOverlap: overlap,
   });
 
   React.useEffect(() => {
     const updateDimensions = () => {
       const screenWidth = window.innerWidth;
       if (screenWidth < 640) {
-        const newWidth = screenWidth - 48; // 24px padding on each side
+        // Make the card slightly narrower relative to screen to leave room for fan
+        const newWidth = screenWidth * 0.75; 
         setDimensions({
           width: newWidth,
-          height: Math.round(newWidth * (cardHeight / cardWidth)), // maintain aspect ratio
+          height: Math.round(newWidth * (cardHeight / cardWidth)),
+          mobileOverlap: Math.max(overlap, 0.7), // Increase overlap so cards don't fan out past screen edges
         });
       } else {
-        setDimensions({ width: cardWidth, height: cardHeight });
+        setDimensions({ width: cardWidth, height: cardHeight, mobileOverlap: overlap });
       }
     };
 
     updateDimensions();
     window.addEventListener("resize", updateDimensions);
     return () => window.removeEventListener("resize", updateDimensions);
-  }, [cardWidth, cardHeight]);
+  }, [cardWidth, cardHeight, overlap]);
 
   React.useEffect(() => {
     setActive((a) => wrapIndex(a, len));
@@ -118,7 +121,7 @@ export function CardStack<T extends CardStackItem>({
   }, [active]);
 
   const maxOffset = Math.max(0, Math.floor(maxVisible / 2));
-  const cardSpacing = Math.max(10, Math.round(dimensions.width * (1 - overlap)));
+  const cardSpacing = Math.max(10, Math.round(dimensions.width * (1 - dimensions.mobileOverlap)));
   const stepDeg = maxOffset > 0 ? spreadDeg / maxOffset : 0;
 
   const canGoPrev = loop || active > 0;
@@ -154,7 +157,7 @@ export function CardStack<T extends CardStackItem>({
 
   return (
     <div
-      className={cn("w-full overflow-hidden", className)}
+      className={cn("w-full", className)}
       onMouseEnter={() => setHovering(true)}
       onMouseLeave={() => setHovering(false)}
     >
