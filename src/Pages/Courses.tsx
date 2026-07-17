@@ -4,11 +4,11 @@ import CircuitGrid from "../components/CircuitGrid";
 import { CardStack, type CardStackItem } from "../components/CardStack";
 import { velocityReelImages } from "../assets/images";
 
-import workshopImg1 from "../assets/Workshop_Images/images-1.jpeg";
-import workshopImg2 from "../assets/Workshop_Images/images-2.jpeg";
-import workshopImg3 from "../assets/Workshop_Images/images-3.jpeg";
-import workshopImg4 from "../assets/Workshop_Images/images-4.jpg";
-import workshopImg5 from "../assets/Workshop_Images/images-5.jpg";
+import workshopImg1 from "../assets/Workshop_Images/images-1-v2.jpeg";
+import workshopImg2 from "../assets/Workshop_Images/images-2-v2.jpeg";
+import workshopImg3 from "../assets/Workshop_Images/images-3-v2.jpeg";
+import workshopImg4 from "../assets/Workshop_Images/images-4-v2.jpg";
+import workshopImg5 from "../assets/Workshop_Images/images-5-v2.jpg";
 
 const workshopStudents: CardStackItem[] = [
   { id: 1, title: "Code Core Batch 04", description: "O/L ICT students learning HTML basics.", imageSrc: workshopImg1 },
