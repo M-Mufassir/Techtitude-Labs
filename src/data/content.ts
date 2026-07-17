@@ -185,3 +185,71 @@ export const teamMembersContent = [
     social: { instagram: '#' }
   },
 ];
+
+export const proofLedgerContent = [
+  {
+    id: "project-pos",
+    client: "POS System",
+    title: "Desktop Application",
+    description: "A highly scalable and modern Point of Sale system built for all kinds of businesses. Perfect for groceries, phone shops, wholesale shops, and supermarkets.",
+    metrics: [
+      { label: "Scalability", value: "High" },
+      { label: "Type", value: "Desktop" },
+      { label: "Business", value: "All" }
+    ],
+    stack: ["Modern", "Scalable", "Desktop"],
+    category: "Retail Tech",
+  },
+  {
+    id: "project-restaurant",
+    client: "Restaurant Platform",
+    title: "Restaurant Website",
+    description: "An elegant, highly responsive platform tailored for restaurants to showcase their menus, facilitate online orders, and manage table reservations effortlessly.",
+    metrics: [
+      { label: "Responsive", value: "100%" },
+      { label: "Type", value: "Web App" },
+      { label: "Focus", value: "Hospitality" }
+    ],
+    stack: ["Web", "Responsive", "UI/UX"],
+    category: "Hospitality",
+  },
+  {
+    id: "project-jewellery",
+    client: "E-Commerce",
+    title: "Jewellery Website",
+    description: "A premium online store designed for luxury jewellery brands, featuring high-quality product galleries, immersive shopping experiences, and secure checkout.",
+    metrics: [
+      { label: "Conversion", value: "High" },
+      { label: "Type", value: "E-Commerce" },
+      { label: "Quality", value: "Premium" }
+    ],
+    stack: ["E-Commerce", "Web", "Design"],
+    category: "Luxury Retail",
+  },
+  {
+    id: "project-booking",
+    client: "Booking Engine",
+    title: "Booking System",
+    description: "An online scalable web application for managing bookings. Fully mobile responsive and engineered to handle high traffic and complex scheduling logic.",
+    metrics: [
+      { label: "Platform", value: "Web App" },
+      { label: "Responsive", value: "Mobile" },
+      { label: "Availability", value: "24/7" }
+    ],
+    stack: ["Web App", "Scalable", "Responsive"],
+    category: "Services",
+  },
+  {
+    id: "project-hardware",
+    client: "Industrial Catalog",
+    title: "Hardware Website",
+    description: "A robust digital presence for hardware components and industrial supplies, making it easy for customers to browse extensive catalogs and request quotes.",
+    metrics: [
+      { label: "Catalog Size", value: "Massive" },
+      { label: "Type", value: "Showcase" },
+      { label: "Industry", value: "Hardware" }
+    ],
+    stack: ["Web", "Showcase", "B2B"],
+    category: "Industrial",
+  },
+];
