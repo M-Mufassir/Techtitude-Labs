@@ -13,7 +13,7 @@ export default function Services() {
       className="relative w-full min-h-screen bg-[#070B14] overflow-clip"
     >
       {/* 1. Hero Section (The Studio Intro) */}
-      <section className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden">
+      <section className="relative min-h-screen flex flex-col items-center justify-center px-4 md:px-6 overflow-hidden">
         {/* Animated Background */}
         <div className="absolute inset-0 pointer-events-none">
           <CircuitGrid active={true} color="#7B2CBF" />
@@ -25,7 +25,7 @@ export default function Services() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-5xl md:text-7xl font-bold font-display text-white mb-6 uppercase tracking-tight"
+            className="text-4xl sm:text-5xl md:text-7xl font-bold font-display text-white mb-6 uppercase tracking-tight"
           >
             We Architect Digital <br/>
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#7B2CBF] to-[#b37be8]">Infrastructure.</span>
@@ -42,7 +42,7 @@ export default function Services() {
       </section>
 
       {/* 2. Core Engineering Capabilities */}
-      <section className="relative px-6 py-24 max-w-7xl mx-auto">
+      <section className="relative px-4 md:px-6 py-24 max-w-7xl mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
@@ -71,7 +71,7 @@ export default function Services() {
       </section>
 
       {/* 3. The Interactive Tech Stack Matrix */}
-      <section className="relative px-6 py-24 bg-white/[0.02] border-y border-white/5">
+      <section className="relative px-4 md:px-6 py-24 bg-white/[0.02] border-y border-white/5">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row gap-16 items-center">
           <div className="lg:w-1/3">
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-6">Tech Stack Matrix</h2>
@@ -123,11 +123,11 @@ export default function Services() {
           </Marquee>
         </div>
 
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="glass rounded-3xl p-8 md:p-16 relative overflow-hidden border border-[#7B2CBF]/30">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="glass rounded-3xl p-6 md:p-16 relative overflow-hidden border border-[#7B2CBF]/30">
             <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#7B2CBF]/20 blur-[100px] rounded-full pointer-events-none" />
             
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 relative z-10">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 md:gap-16 relative z-10">
               <div>
                 <h2 className="text-3xl md:text-5xl font-bold font-display text-white mb-6">Project Ingestion Engine</h2>
                 <p className="text-gray-400 font-body text-lg mb-12">Submit your requirements and let's architect the next major leap for your infrastructure.</p>
@@ -145,9 +145,9 @@ export default function Services() {
               </div>
 
               {/* Ingestion Form */}
-              <div className="bg-[#070B14]/80 p-8 rounded-2xl border border-white/10">
+              <div className="bg-[#070B14]/80 p-6 md:p-8 rounded-2xl border border-white/10">
                 <form className="flex flex-col gap-6">
-                  <div className="grid grid-cols-2 gap-6">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     <div className="flex flex-col gap-2">
                       <label className="text-xs font-mono text-gray-400 uppercase tracking-wider">Name</label>
                       <input type="text" className="bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-[#7B2CBF] transition-colors" />
