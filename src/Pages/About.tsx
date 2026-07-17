@@ -2,6 +2,7 @@ import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { values } from "../data/content";
 import { Code2, GraduationCap, Network } from "lucide-react";
+import TeamShowcase from "../components/TeamShowcase";
 
 export default function About() {
   return (
@@ -124,6 +125,19 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* THE TEAM */}
+      <section className="px-6 py-24 bg-[#0A0A0C] border-t border-white/5">
+        <div className="max-w-6xl mx-auto">
+          <Reveal>
+            <div className="text-center mb-16">
+              <span className="font-mono text-xs text-[#00AEEF] tracking-widest uppercase block mb-4">The People Behind The Code</span>
+              <h2 className="font-display font-bold text-4xl text-white">Meet the Team</h2>
+            </div>
+          </Reveal>
+          <TeamShowcase />
         </div>
       </section>
 
