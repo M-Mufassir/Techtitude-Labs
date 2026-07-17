@@ -134,6 +134,7 @@ const CircuitTraceWithNodes = ({ active }: { active: boolean }) => {
 
 export default function SplitGateway() {
   const [hoveredZone, setHoveredZone] = useState<'academy' | 'dev' | null>(null);
+  const [activeMobileZone, setActiveMobileZone] = useState<'academy' | 'dev' | null>(null);
   const navigate = useNavigate();
   
   // Parallax tracking
@@ -148,91 +149,178 @@ export default function SplitGateway() {
   // Damped Inertia Physics
   const flexTransition = { type: 'spring' as const, stiffness: 45, damping: 22, mass: 1.2 };
 
+  const toggleMobileZone = (zone: 'academy' | 'dev', e: React.MouseEvent) => {
+    // If user clicks directly on the actual active CTA navigation link, let it go through
+    if ((e.target as HTMLElement).closest('button')) return;
+    e.preventDefault();
+    setActiveMobileZone(prev => prev === zone ? null : zone);
+  };
+
   return (
     <>
-      {/* MOBILE GATEWAY LAYOUT */}
+      {/* MOBILE GATEWAY LAYOUT (AWWWARDS-LEVEL TOUCH INTERFACE) */}
       <motion.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
         transition={{ duration: 0.5 }}
-        className="md:hidden relative w-full min-h-[100dvh] bg-[#070B14] flex flex-col justify-between overflow-hidden p-6 select-none font-sans"
+        className="md:hidden relative w-full h-[100dvh] flex flex-col bg-[#070B14] overflow-hidden select-none font-sans"
       >
-        {/* BACKGROUND GRADIENT GLOW MESHES */}
-        <div className="absolute top-0 left-0 w-72 h-72 bg-[#00AEEF]/5 rounded-full filter blur-[80px] pointer-events-none"></div>
-        <div className="absolute bottom-0 right-0 w-72 h-72 bg-[#7B2CBF]/5 rounded-full filter blur-[80px] pointer-events-none"></div>
+        {/* CENTERPIECE */}
+        <motion.div
+          animate={{
+            y: activeMobileZone === 'academy' ? "15vh" : activeMobileZone === 'dev' ? "-35vh" : "-50%",
+            x: "-50%",
+            opacity: activeMobileZone ? 0.15 : 1,
+            scale: activeMobileZone ? 0.85 : 1,
+          }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="absolute top-1/2 left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
+        >
+          <div className="flex items-center justify-center gap-2 mb-3">
+             <span className="font-['Space_Grotesk'] font-bold text-white text-[0.85rem] tracking-[0.35em]">TECHTITUDE</span>
+             <span className="font-['Space_Grotesk'] font-medium text-[#00AEEF] text-[0.85rem] tracking-[0.2em]">LABS</span>
+          </div>
+          <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em]">
+            Where Learning<br/>Meets Innovation
+          </h1>
+        </motion.div>
 
-        {/* 1. TOP HALF: ACADEMY INGESTION BLOCK */}
-        <div className="relative w-full pt-24 flex flex-col items-center text-center z-20 group cursor-pointer" onClick={() => navigate('/academy')}>
-          <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#00AEEF] mb-2 font-medium">
-            Learn • Build • Grow
-          </span>
-          <h2 className="text-3xl font-bold font-display tracking-tight text-white mb-4">
-            ACADEMY
-          </h2>
-          <button className="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white text-xs font-medium tracking-wide flex items-center gap-2 active:scale-95 transition-all duration-200 shadow-lg shadow-black/20">
-            Enter Academy <span className="text-[#00AEEF]">→</span>
-          </button>
-        </div>
-
-        {/* ADVANCED TYPOGRAPHIC ARCHITECTURE CENTERPIECE */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center select-none w-full max-w-4xl px-4 flex flex-col items-center justify-center">
+        {/* ACADEMY PANE */}
+        <motion.div
+          animate={{
+            flex: activeMobileZone === 'academy' ? 1.8 : activeMobileZone === 'dev' ? 0.4 : 1,
+            opacity: activeMobileZone === 'dev' ? 0.3 : 1
+          }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          onClick={(e) => toggleMobileZone('academy', e)}
+          className="relative w-full flex flex-col justify-center items-center z-10 overflow-hidden border-b border-white/5 cursor-pointer"
+          style={{ background: 'linear-gradient(to bottom, rgba(0, 174, 239, 0.02), transparent)' }}
+        >
+          <motion.div 
+            animate={{ opacity: activeMobileZone === 'academy' ? 1 : 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(circle at 50% 30%, rgba(0, 174, 239, 0.12), transparent 60%)' }}
+          />
+          <div className="absolute inset-0 pointer-events-none opacity-30">
+             <DroppingStudyMaterials active={activeMobileZone === 'academy'} />
+          </div>
           
-          {/* THE BACKDROP EMBLAZON (Giant Subtle Watermark) */}
-          <div className="absolute inset-0 flex items-center justify-center z-0 opacity-[0.03] select-none pointer-events-none">
-            <span className="font-['Space_Grotesk'] font-bold text-white text-[12vw] tracking-tighter leading-none uppercase">
-              TECH
-            </span>
-          </div>
-
-          {/* THE INTERLOCKING LOGO AND SLOGAN CONTAINER */}
-          <div className="relative z-10 flex flex-col items-center">
+          <motion.div
+            animate={{ y: activeMobileZone === 'academy' ? 0 : -20 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center z-10"
+          >
+            <motion.span 
+              animate={{ 
+                opacity: activeMobileZone === 'academy' ? 1 : 0.5,
+                color: activeMobileZone === 'academy' ? '#00AEEF' : '#FFFFFF'
+              }}
+              className="font-mono text-[0.6rem] tracking-[0.25em] uppercase mb-1.5"
+            >
+              Learn • Build • Grow
+            </motion.span>
             
-            {/* Ultra-Premium Minimal Logo Header */}
-            <div className="flex items-center gap-3 mb-6 mix-blend-difference">
-              <span className="font-['Space_Grotesk'] font-bold text-white text-xs tracking-[0.4em] uppercase">
-                TECHTITUDE
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00AEEF] animate-pulse"></span>
-              <span className="font-['Space_Grotesk'] font-medium text-white/50 text-[11px] tracking-[0.3em] uppercase">
-                LABS
-              </span>
-            </div>
+            <motion.h2 
+              animate={{ 
+                opacity: activeMobileZone === 'academy' ? 1 : 0.8,
+                fontSize: activeMobileZone === 'academy' ? '2rem' : '1.6rem'
+              }}
+              className="font-['Space_Grotesk'] font-bold tracking-[-0.02em] text-white"
+            >
+              ACADEMY
+            </motion.h2>
 
-            {/* The Kinetic Asymmetric Slogan */}
-            <h1 className="font-['Space_Grotesk'] font-bold text-white text-4xl sm:text-5xl lg:text-6xl tracking-[-0.03em] leading-[1.1] max-w-2xl mx-auto">
-              Where Learning <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">Meets</span> Innovation
-            </h1>
+            <motion.div
+              animate={{
+                height: activeMobileZone === 'academy' ? 'auto' : 0,
+                opacity: activeMobileZone === 'academy' ? 1 : 0,
+                scale: activeMobileZone === 'academy' ? 1 : 0.9,
+                marginTop: activeMobileZone === 'academy' ? '1rem' : '0px'
+              }}
+              className="overflow-hidden flex items-center justify-center"
+            >
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate('/academy');
+                }}
+                className="px-5 py-2.5 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md flex items-center gap-2"
+              >
+                Enter Academy <span className="text-[#00AEEF]">→</span>
+              </button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
 
-            {/* Inline Modern Descriptive Metric Matrix */}
-            <div className="flex items-center gap-6 mt-8 font-mono text-[10px] text-white/40 tracking-wider uppercase">
-              <div className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#00AEEF]"></span> ACADEMY.SYS
-              </div>
-              <div className="w-1 h-1 bg-white/20 rounded-full"></div>
-              <div className="flex items-center gap-1.5">
-                <span className="w-1 h-1 rounded-full bg-[#7B2CBF]"></span> DEV_STUDIO.EXE
-              </div>
-            </div>
-
+        {/* DEVELOPMENT PANE */}
+        <motion.div
+          animate={{
+            flex: activeMobileZone === 'dev' ? 1.8 : activeMobileZone === 'academy' ? 0.4 : 1,
+            opacity: activeMobileZone === 'academy' ? 0.3 : 1
+          }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          onClick={(e) => toggleMobileZone('dev', e)}
+          className="relative w-full flex flex-col justify-center items-center z-10 overflow-hidden cursor-pointer"
+          style={{ background: 'linear-gradient(to top, rgba(123, 44, 191, 0.02), transparent)' }}
+        >
+          <motion.div 
+            animate={{ opacity: activeMobileZone === 'dev' ? 1 : 0 }}
+            transition={{ duration: 0.6 }}
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'radial-gradient(circle at 50% 70%, rgba(123, 44, 191, 0.12), transparent 60%)' }}
+          />
+          <div className="absolute inset-0 pointer-events-none opacity-50">
+             <MatrixMarqueeStream active={activeMobileZone === 'dev'} />
           </div>
+          
+          <motion.div
+            animate={{ y: activeMobileZone === 'dev' ? 0 : 20 }}
+            transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-col items-center z-10"
+          >
+            <motion.span 
+              animate={{ 
+                opacity: activeMobileZone === 'dev' ? 1 : 0.5,
+                color: activeMobileZone === 'dev' ? '#7B2CBF' : '#FFFFFF'
+              }}
+              className="font-mono text-[0.6rem] tracking-[0.25em] uppercase mb-1.5"
+            >
+              Design • Develop • Innovate
+            </motion.span>
+            
+            <motion.h2 
+              animate={{ 
+                opacity: activeMobileZone === 'dev' ? 1 : 0.8,
+                fontSize: activeMobileZone === 'dev' ? '2rem' : '1.6rem'
+              }}
+              className="font-['Space_Grotesk'] font-bold tracking-[-0.02em] text-white"
+            >
+              DEVELOPMENT
+            </motion.h2>
 
-          {/* The Kinetic Interaction Line */}
-          <div className="w-px h-20 bg-gradient-to-b from-white/20 via-white/5 to-transparent mx-auto mt-8"></div>
-        </div>
-
-        {/* 3. BOTTOM HALF: DEVELOPMENT STUDIO BLOCK */}
-        <div className="relative w-full pb-24 flex flex-col items-center text-center z-20 group cursor-pointer" onClick={() => navigate('/studio')}>
-          <span className="text-[10px] uppercase tracking-[0.3em] font-mono text-[#7B2CBF] mb-2 font-medium">
-            Design • Develop • Innovate
-          </span>
-          <h2 className="text-3xl font-bold font-display tracking-tight text-white mb-4">
-            DEVELOPMENT
-          </h2>
-          <button className="px-5 py-2.5 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-white text-xs font-medium tracking-wide flex items-center gap-2 active:scale-95 transition-all duration-200 shadow-lg shadow-black/20">
-            Enter Development <span className="text-[#7B2CBF]">→</span>
-          </button>
-        </div>
+            <motion.div
+              animate={{
+                height: activeMobileZone === 'dev' ? 'auto' : 0,
+                opacity: activeMobileZone === 'dev' ? 1 : 0,
+                scale: activeMobileZone === 'dev' ? 1 : 0.9,
+                marginTop: activeMobileZone === 'dev' ? '1rem' : '0px'
+              }}
+              className="overflow-hidden flex items-center justify-center"
+            >
+              <button 
+                onClick={(e) => {
+                  e.stopPropagation();
+                  navigate('/studio');
+                }}
+                className="px-5 py-2.5 text-xs font-medium text-white bg-white/5 border border-white/10 rounded-full backdrop-blur-md flex items-center gap-2"
+              >
+                Enter Studio <span className="text-[#7B2CBF]">→</span>
+              </button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
       </motion.div>
 
       {/* DESKTOP GATEWAY LAYOUT */}
