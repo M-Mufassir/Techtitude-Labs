@@ -75,40 +75,87 @@ export default function StudioHome() {
           </div>
         </section>
 
-        {/* FEATURED CASE STUDY */}
-        <section>
-          <Reveal>
-            <div className="text-center mb-10">
-              <span className="text-[#7B2CBF] font-mono text-xs uppercase tracking-widest block mb-2">Featured Project</span>
-              <h2 className="text-3xl font-bold font-display">Project Nexus</h2>
-            </div>
-          </Reveal>
+        {/* ===================== ENGINEERING SHOWCASE ===================== */}
+<section className="mb-32">
+  <Reveal>
+    <div className="text-center mb-12">
+      <span className="inline-flex px-4 py-2 rounded-full border border-[#7B2CBF]/30 bg-[#7B2CBF]/10 text-[#7B2CBF] text-xs font-mono tracking-[0.3em] uppercase">
+        Engineering Showcase
+      </span>
 
-          <Reveal delay={0.1}>
-            <div className="relative w-full aspect-[16/9] md:aspect-[21/9] bg-[#0B101E] rounded-[2rem] border border-white/10 overflow-hidden group">
-              <div className="absolute inset-0 bg-gradient-to-r from-[#070B14] via-[#070B14]/80 to-transparent z-10 p-8 md:p-16 flex flex-col justify-center">
-                <div className="max-w-xl">
-                  <div className="flex gap-2 mb-4">
-                    <span className="px-3 py-1 rounded bg-[#7B2CBF]/20 text-[#7B2CBF] text-xs font-mono border border-[#7B2CBF]/30">FinTech</span>
-                    <span className="px-3 py-1 rounded bg-white/5 text-white/70 text-xs font-mono border border-white/10">React + Node</span>
-                  </div>
-                  <h3 className="text-3xl md:text-5xl font-bold font-display mb-4">Building a highly scalable trading engine.</h3>
-                  <p className="text-[#8A99AD] mb-8 text-sm md:text-base line-clamp-3">
-                    We designed and engineered a custom high-frequency trading dashboard capable of processing 10,000+ WebSocket events per second with zero UI latency.
-                  </p>
-                  <Link to="/portfolio" className="inline-flex items-center gap-2 text-white font-bold hover:text-[#7B2CBF] transition-colors">
-                    Read the Case Study <ArrowRight size={16} />
-                  </Link>
-                </div>
-              </div>
-              
-              {/* Abstract Placeholder Background */}
-              <div className="absolute top-0 right-0 w-[60%] h-full opacity-30 group-hover:opacity-60 transition-opacity duration-700">
-                <div className="w-full h-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#7B2CBF]/40 via-transparent to-transparent opacity-50 mix-blend-screen" />
-              </div>
-            </div>
-          </Reveal>
-        </section>
+      <h2 className="mt-6 text-4xl md:text-6xl font-bold font-display">
+        Building the Future
+      </h2>
+
+      <p className="mt-5 max-w-3xl mx-auto text-[#8A99AD] text-lg leading-relaxed">
+        Discover our latest innovations in Robotics, Artificial Intelligence,
+        Embedded Systems, Computer Vision, Machine Learning, and modern software
+        engineering through real-world demonstrations and prototypes.
+      </p>
+    </div>
+  </Reveal>
+
+  <Reveal delay={0.1}>
+    <div className="relative overflow-hidden rounded-[32px] border border-white/10 bg-[#0B101E] shadow-[0_0_80px_rgba(123,44,191,0.12)]">
+
+      {/* Purple Glow */}
+      <div className="absolute left-1/2 top-0 -translate-x-1/2 w-[700px] h-[350px] bg-[#7B2CBF]/15 blur-[140px] rounded-full pointer-events-none" />
+
+      <div className="relative p-4 md:p-8">
+
+        <div className="overflow-hidden rounded-3xl border border-white/10 shadow-2xl">
+
+          <div className="aspect-video">
+
+            <iframe
+            className="w-full h-full"
+            src="https://www.youtube.com/embed/CeAxevbaCF0?autoplay=1&mute=1&loop=1&playlist=CeAxevbaCF0&controls=0&rel=0&modestbranding=1&playsinline=1"
+            title="Engineering Showcase"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            />
+
+          </div>
+
+        </div>
+
+        <div className="mt-10 flex flex-wrap justify-center gap-3">
+
+          <span className="px-5 py-2 rounded-full bg-[#7B2CBF]/15 border border-[#7B2CBF]/30 text-[#d1b0ff] text-sm font-medium">
+            Robotics
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            Artificial Intelligence
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            Machine Learning
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            Embedded Systems
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            Computer Vision
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            IoT
+          </span>
+
+          <span className="px-5 py-2 rounded-full bg-white/5 border border-white/10 text-white/80 text-sm">
+            Software Engineering
+          </span>
+
+        </div>
+      </div>
+
+    </div>
+  </Reveal>
+</section>
+
 
       </div>
     </div>
