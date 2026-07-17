@@ -34,7 +34,7 @@ export default function Workshops() {
       date: "Aug 16, 2026",
       time: "9:00 AM - 12:00 PM",
       location: "Thihariya",
-      instructor: "Mohamed Mufassir",
+      instructor: "Ahamed Ishrath",
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Excel",
@@ -46,7 +46,7 @@ export default function Workshops() {
       date: "Aug 23, 2026",
       time: "9:00 AM - 12:00 PM",
       location: "Thihariya",
-      instructor: "Mohamed Mufassir",
+      instructor: "Mohamed Musharraf",
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Number Systems",
@@ -76,7 +76,8 @@ export default function Workshops() {
         {/* TIMELINE LEDGER */}
         <section>
           <Reveal>
-            <div className="w-full overflow-x-auto pb-8">
+            {/* Desktop Table View */}
+            <div className="hidden md:block w-full overflow-x-auto pb-8">
               <table className="w-full text-left border-collapse min-w-[800px]">
                 <thead>
                   <tr className="border-b border-white/10 text-sm font-mono text-[#8A99AD] uppercase tracking-wider">
@@ -146,6 +147,67 @@ export default function Workshops() {
                   ))}
                 </tbody>
               </table>
+            </div>
+
+            {/* Mobile Card View */}
+            <div className="md:hidden flex flex-col gap-4 pb-8">
+              {workshops.map((ws, idx) => (
+                <motion.div
+                  key={ws.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: idx * 0.1 }}
+                  className="border border-white/10 rounded-xl p-5 bg-white/[0.02] flex flex-col gap-4"
+                >
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <span className="px-2 py-0.5 rounded text-[10px] font-mono border border-white/10 text-white/70">
+                        {ws.tag}
+                      </span>
+                    </div>
+                    <h3 className="font-bold text-lg mb-1">{ws.title}</h3>
+                    <div className="text-sm text-[#8A99AD]">by {ws.instructor}</div>
+                  </div>
+                  
+                  <div className="grid grid-cols-2 gap-4 text-sm text-[#8A99AD] py-4 border-y border-white/5">
+                    <div>
+                      <div className="font-bold text-white mb-1">{ws.date}</div>
+                      <div className="flex items-center gap-2">
+                        <Clock size={14} /> 
+                        <span className="truncate">{ws.time}</span>
+                      </div>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <MapPin size={14} /> 
+                        <span className="truncate">{ws.location}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Users size={14} /> 
+                        <span>{ws.capacity}</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="pt-2">
+                    {ws.status === "Waitlist" ? (
+                      <button className="w-full py-3 border border-white/10 text-[#8A99AD] rounded-full text-sm font-bold opacity-70 cursor-not-allowed">
+                        Waitlist Full
+                      </button>
+                    ) : (
+                      <a 
+                        href={ws.registrationLink || "#"} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="w-full py-3 bg-[#00AEEF] hover:bg-[#009ee0] text-[#070B14] rounded-full text-sm font-bold shadow-[0_0_15px_rgba(0,174,239,0.2)] hover:shadow-[0_0_25px_rgba(0,174,239,0.4)] transition-all duration-300 flex items-center justify-center gap-2"
+                      >
+                        Register <ArrowUpRight size={16} />
+                      </a>
+                    )}
+                  </div>
+                </motion.div>
+              ))}
             </div>
           </Reveal>
         </section>
