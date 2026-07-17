@@ -1,3 +1,26 @@
+import pos1 from './projects_images/POS-desktop/img-1.png';
+import pos2 from './projects_images/POS-desktop/img-2.png';
+import pos3 from './projects_images/POS-desktop/img-3.png';
+import pos4 from './projects_images/POS-desktop/img-4.png';
+import pos5 from './projects_images/POS-desktop/img-5.png';
+import pos6 from './projects_images/POS-desktop/img-6.png';
+
+import rest1 from './projects_images/restaurantwebsite/img-1.png';
+import rest2 from './projects_images/restaurantwebsite/img-2.png';
+import rest3 from './projects_images/restaurantwebsite/img-3.png';
+
+import jew1 from './projects_images/jewellerywebsite/img-1.png';
+import jew2 from './projects_images/jewellerywebsite/img-2.png';
+import jew3 from './projects_images/jewellerywebsite/img-3.png';
+
+import book1 from './projects_images/bookingsystem/img-1.png';
+import book2 from './projects_images/bookingsystem/img-2.png';
+import book3 from './projects_images/bookingsystem/img-3.png';
+
+import hard1 from './projects_images/hardwarewebsite/img-1.png';
+import hard2 from './projects_images/hardwarewebsite/img-2.png';
+import hard3 from './projects_images/hardwarewebsite/img-3.png';
+
 export const projectShowcaseImages = {
   "image-1": "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?w=800&auto=format&fit=crop&q=60",
   "image-2": "https://images.unsplash.com/photo-1556304044-0699e31c6a34?w=800&auto=format&fit=crop&q=60",
@@ -31,4 +54,12 @@ export const velocityReelImages = {
   "image-3": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80",
   "image-4": "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?auto=format&fit=crop&w=800&q=80",
   "image-5": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+};
+
+export const proofLedgerImages: Record<string, string[]> = {
+  "project-pos": [pos1, pos2, pos3, pos4, pos5, pos6],
+  "project-restaurant": [rest1, rest2, rest3],
+  "project-jewellery": [jew1, jew2, jew3],
+  "project-booking": [book1, book2, book3],
+  "project-hardware": [hard1, hard2, hard3],
 };
