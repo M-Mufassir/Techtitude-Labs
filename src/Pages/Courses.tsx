@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
 import { CardStack, type CardStackItem } from "../components/CardStack";
-import { velocityReelImages } from "../assets/images";
+//import { velocityReelImages } from "../assets/images";
 
 import workshopImg1 from "../assets/Workshop_Images/images-1-v2.jpeg";
 import workshopImg2 from "../assets/Workshop_Images/images-2-v2.jpeg";
