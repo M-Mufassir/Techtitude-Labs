@@ -4,12 +4,18 @@ import CircuitGrid from "../components/CircuitGrid";
 import { CardStack, type CardStackItem } from "../components/CardStack";
 import { velocityReelImages } from "../assets/images";
 
+import workshopImg1 from "../assets/Workshop_Images/images-1-v2.jpeg";
+import workshopImg2 from "../assets/Workshop_Images/images-2-v2.jpeg";
+import workshopImg3 from "../assets/Workshop_Images/images-3-v2.jpeg";
+import workshopImg4 from "../assets/Workshop_Images/images-4-v2.jpg";
+import workshopImg5 from "../assets/Workshop_Images/images-5-v2.jpg";
+
 const workshopStudents: CardStackItem[] = [
-  { id: 1, title: "Code Core Batch 04", description: "O/L ICT students learning HTML basics.", imageSrc: velocityReelImages["image-1"] },
-  { id: 2, title: "React Workshop", description: "Advanced web engineering students building dashboards.", imageSrc: velocityReelImages["image-2"] },
-  { id: 3, title: "Python Data Science", description: "Introductory session to data pipelines.", imageSrc: velocityReelImages["image-3"] },
-  { id: 4, title: "AI & ML Seminar", description: "Exploring neural networks with our future tech batch.", imageSrc: velocityReelImages["image-4"] },
-  { id: 5, title: "UI/UX Prototyping", description: "Figma design workflows in action.", imageSrc: velocityReelImages["image-5"] }
+  { id: 1, title: "Code Core Batch 04", description: "O/L ICT students learning HTML basics.", imageSrc: workshopImg1 },
+  { id: 2, title: "React Workshop", description: "Advanced web engineering students building dashboards.", imageSrc: workshopImg2 },
+  { id: 3, title: "Python Data Science", description: "Introductory session to data pipelines.", imageSrc: workshopImg3 },
+  { id: 4, title: "AI & ML Seminar", description: "Exploring neural networks with our future tech batch.", imageSrc: workshopImg4 },
+  { id: 5, title: "UI/UX Prototyping", description: "Figma design workflows in action.", imageSrc: workshopImg5 }
 ];
 
 export default function Courses() {
