@@ -6,14 +6,26 @@ import {
 } from "lucide-react";
 import Reveal from "../components/Reveal";
 
-const DOMAINS = {
+type DomainKey = "software" | "webmobile" | "ai" | "hardware";
+
+const DOMAINS: Record<DomainKey, { label: string; icon: JSX.Element }> = {
   software: { label: "Software", icon: <Code2 size={14} /> },
   webmobile: { label: "Web & Mobile", icon: <Smartphone size={14} /> },
   ai: { label: "AI & ML", icon: <BrainCircuit size={14} /> },
   hardware: { label: "Hardware", icon: <Cpu size={14} /> },
 };
 
-const steps = [
+type Step = {
+  id: string;
+  title: string;
+  icon: JSX.Element;
+  desc: string;
+  detail: string;
+  deliverables: string[];
+  domains: DomainKey[];
+};
+
+const steps: Step[] = [
   {
     id: "01",
     title: "Discovery & Scope",
@@ -62,7 +74,7 @@ const steps = [
 ];
 
 export default function Process() {
-  const [openId, setOpenId] = useState(null);
+  const [openId, setOpenId] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#7B2CBF]/30">
