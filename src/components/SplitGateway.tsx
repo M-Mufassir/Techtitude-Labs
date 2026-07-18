@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool, Code, Terminal, Database, Server, Cpu, Monitor } from 'lucide-react';
+import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
 //import Logo from './Logo';
 
 // ACADEMY: Dropping Study Materials
