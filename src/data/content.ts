@@ -142,21 +142,21 @@ export const teamMembersContent = [
     name: 'Basith Ahamad',
     role: 'Founder',
     qualification: 'BSc (Hons) in Computer Science',
-    social: { twitter: '#', linkedin: '#', behance: '#' },
+    social: { linkedin: 'https://www.linkedin.com/in/m-a-b-ahamad-872195413' },
   },
   {
     id: '2',
     name: 'Mohamed Mufassir',
     role: 'Co- Founder',
     qualification: 'BSc in Computer Systems Engineer (UG)',
-    social: { twitter: '#', linkedin: '#' },
+    social: { linkedin: '#' },
   },
   {
     id: '3',
     name: 'Ahamed Ishrath',
     role: 'CEO',
     qualification: 'BSc Physical Science (Spcl) Computer Science',
-    social: { twitter: '#', linkedin: '#' },
+    social: { linkedin: '#' },
   },
   {
     id: '4',
@@ -170,7 +170,7 @@ export const teamMembersContent = [
     name: 'Muhammed Nashan',
     role: 'Software Engineer',
     qualification: 'BSc (Hons) in Computer Science',
-    social: { linkedin: '#', twitter: '#' },
+    social: { linkedin: '#' },
   },
 ];
 
