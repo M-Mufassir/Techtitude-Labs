@@ -41,34 +41,52 @@ export default function Services() {
         </div>
       </section>
 
-      {/* 2. Core Engineering Capabilities */}
-      <section className="relative px-4 md:px-6 py-24 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Custom Software & Mobile Solutions</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Building native iOS/Android applications and cross-platform ecosystems engineered for high performance.</p>
-          </TiltCard>
+{/* 2. Core Engineering Capabilities */}
+<section className="relative px-4 md:px-6 py-24 max-w-7xl mx-auto">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
 
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Next-Gen Web & E-Commerce</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Developing custom web solutions and high-conversion platforms optimized for speed and fluidity.</p>
-          </TiltCard>
+    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
+      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
+        Software Engineering & Digital Solutions
+      </h3>
+      <p className="text-gray-400 font-body relative z-10 max-w-md">
+        Designing scalable software, enterprise applications, and digital platforms that solve real-world business challenges.
+      </p>
+    </TiltCard>
 
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">AI Solutions & Intelligent Automation</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Implementing custom LLM pipelines, BI tools, and automated operations to eliminate overhead.</p>
-          </TiltCard>
+    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
+      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
+      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
+        Web, Mobile & Cloud Applications
+      </h3>
+      <p className="text-gray-400 font-body relative z-10 max-w-md">
+        Building secure, high-performance web platforms, mobile applications, and cloud-connected systems for modern businesses.
+      </p>
+    </TiltCard>
 
-          <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-             <div className="absolute top-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-            <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">Digital Transformation Suites</h3>
-            <p className="text-gray-400 font-body relative z-10 max-w-md">Complete overhauls of legacy business software systems into modern web-based internal tool architectures.</p>
-          </TiltCard>
-        </div>
-      </section>
+    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
+      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
+        AI, Automation & Smart Systems
+      </h3>
+      <p className="text-gray-400 font-body relative z-10 max-w-md">
+        Integrating artificial intelligence, intelligent automation, and data-driven solutions to improve productivity and decision making.
+      </p>
+    </TiltCard>
+
+    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
+      <div className="absolute top-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
+      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
+        Technology Education & Innovation
+      </h3>
+      <p className="text-gray-400 font-body relative z-10 max-w-md">
+        Empowering students, professionals, and organizations through hands-on workshops, practical learning, and emerging technologies.
+      </p>
+    </TiltCard>
+
+  </div>
+</section>
 
       {/* 3. The Interactive Tech Stack Matrix */}
       <section className="relative px-4 md:px-6 py-24 bg-white/[0.02] border-y border-white/5">

@@ -1,7 +1,7 @@
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { values } from "../data/content";
-import { Code2, GraduationCap, Network } from "lucide-react";
+import { Code2, GraduationCap, Network, Rocket } from "lucide-react";
 import TeamShowcase from "../components/TeamShowcase";
 
 export default function About() {
@@ -20,7 +20,7 @@ export default function About() {
           </Reveal>
           <Reveal delay={0.1}>
             <p className="text-gray-400 text-lg md:text-xl mt-8 max-w-3xl mx-auto leading-relaxed">
-              Techtitude Labs was forged with a singular philosophy: you cannot teach modern technology effectively if you are not actively building it. We exist as a dual-core ecosystem—an Academy that engineers the next generation of talent, and a Studio that builds production-grade software for the industry.
+              Techtitude Labs was forged in 2026 with a singular philosophy: you cannot teach modern technology effectively if you are not actively building it. We exist as a dual-core ecosystem from day one—an Academy that engineers the next generation of talent, and a Studio that builds production-grade software for the industry.
             </p>
           </Reveal>
         </div>
@@ -36,7 +36,7 @@ export default function About() {
                 <Network className="text-white mb-6" size={40} strokeWidth={1} />
                 <h2 className="text-3xl font-bold font-display text-white mb-4">The Dual-Core Synergy</h2>
                 <p className="text-gray-400 leading-relaxed mb-6">
-                  Traditional academies teach theory. Traditional agencies just write code. We do both, and they feed into each other.
+                  Traditional academies teach theory. Traditional agencies just write code. We're building both, together, from the ground up.
                 </p>
                 <ul className="space-y-4">
                   <li className="flex gap-4">
@@ -50,7 +50,7 @@ export default function About() {
                     <div className="mt-1 text-[#7B2CBF]"><Code2 size={20} /></div>
                     <div>
                       <strong className="text-white font-mono text-sm block mb-1">THE STUDIO</strong>
-                      <p className="text-sm text-gray-500">Delivers world-class enterprise software, staffed by veteran engineers and the top 1% of graduates produced by our Academy.</p>
+                      <p className="text-sm text-gray-500">Delivers modern, production-grade software, staffed by hands-on engineers and the sharpest talent coming through our Academy.</p>
                     </div>
                   </li>
                 </ul>
@@ -62,49 +62,52 @@ export default function About() {
               Our Standard for Architecture
             </h2>
             <p className="text-gray-400 leading-relaxed mb-6">
-              Whether we are structuring a curriculum for 15-year-olds or deploying a scalable cloud microservice for a global enterprise, our standard remains identical: <strong className="text-white">Clean, scalable, and relentlessly optimized.</strong>
+              Whether we are structuring a curriculum for a 15-year-old just starting out or deploying a scalable cloud microservice for a client, our standard remains identical: <strong className="text-white">Clean, scalable, and relentlessly optimized.</strong>
             </p>
             <p className="text-gray-400 leading-relaxed">
-              We despise bloat. We hate fragile code. Every syllabus we design and every application we ship is rooted in engineering discipline. We build systems that last, and we teach students how to do the same.
+              We despise bloat. We hate fragile code. Every syllabus we design and every application we ship is rooted in engineering discipline from day one. We're building systems that last, and teaching students how to do the same.
             </p>
           </Reveal>
         </div>
       </section>
 
-      {/* TIMELINE OF BRAND GROWTH */}
+      {/* THE JOURNEY BEGINS */}
       <section className="px-6 py-32 bg-[#070B14] relative overflow-hidden">
         <div className="max-w-4xl mx-auto relative z-10">
           <Reveal>
             <div className="text-center mb-20">
-              <span className="font-mono text-xs text-[#7B2CBF] tracking-widest uppercase block mb-4">Evolution</span>
-              <h2 className="font-display font-bold text-4xl text-white">How We Scaled</h2>
+              <span className="font-mono text-xs text-[#7B2CBF] tracking-widest uppercase block mb-4">Genesis</span>
+              <h2 className="font-display font-bold text-4xl text-white">Our Journey Starts Now</h2>
+              <p className="text-gray-500 mt-4 max-w-xl mx-auto leading-relaxed">
+                2026 marks year one. Here's the roadmap we're building toward — not a highlight reel of the past, but a commitment to what's next.
+              </p>
             </div>
           </Reveal>
 
           <div className="relative border-l border-white/10 ml-4 md:ml-1/2 md:-translate-x-px space-y-16">
             {[
               {
-                year: "2021",
+                year: "Q1 2026",
                 title: "The Inception",
-                desc: "Started as a specialized tutoring program aimed at bridging the gap in local O/L and A/L ICT curriculums, focusing purely on fundamentals.",
+                desc: "Techtitude Labs was founded on a simple bet: fuse hands-on industry engineering with modern, practical teaching — no fluff, no outdated syllabus.",
                 color: "#00AEEF"
               },
               {
-                year: "2022",
-                title: "The Code Core Expansion",
-                desc: "Launched our first advanced programming bootcamps. Students began moving beyond exams and started building actual software.",
+                year: "Q2 2026",
+                title: "Studio Goes Live",
+                desc: "Opened our Development Studio, taking on real client projects and using every build as a live case study for how modern software should be architected.",
                 color: "#4a72d6"
               },
               {
-                year: "2024",
-                title: "Studio Establishment",
-                desc: "Formally launched the Development Studio to handle enterprise client requests. Began architecting custom web systems and automations for local businesses.",
+                year: "Q3 2026",
+                title: "Academy Launch",
+                desc: "Rolling out our first cohort-based programs, built directly from patterns and constraints pulled out of active Studio projects — not textbook theory.",
                 color: "#7B2CBF"
               },
               {
-                year: "2026",
-                title: "The Dual-Division Matrix",
-                desc: "Unified the Academy and Studio into a seamless, cyclical ecosystem. Producing world-class digital products and the next generation of engineers under one roof.",
+                year: "What's Next",
+                title: "The Dual-Core Matrix",
+                desc: "Scaling both divisions in tandem — more students, more client systems, one continuous feedback loop between what we teach and what we ship.",
                 color: "white"
               }
             ].map((node, i) => (
@@ -125,6 +128,15 @@ export default function About() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal delay={0.3}>
+            <div className="mt-20 glass rounded-3xl p-8 border border-white/5 flex items-center gap-6 max-w-2xl mx-auto">
+              <Rocket className="text-[#00AEEF] flex-shrink-0" size={32} strokeWidth={1.5} />
+              <p className="text-sm text-gray-400 leading-relaxed">
+                We're not pretending to be a legacy institution. We're a new team, moving fast, building in public, and inviting early students and clients to grow with us from the ground floor.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

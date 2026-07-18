@@ -1,14 +1,30 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, Terminal, Workflow, Database, Shield } from "lucide-react";
+import { ArrowRight, Code2, Smartphone, BrainCircuit, Bot } from "lucide-react";
 import Reveal from "../components/Reveal";
 
 export default function StudioHome() {
   const capabilities = [
-    { title: "System Architecture", desc: "Designing scalable, fault-tolerant infrastructure for enterprise applications.", icon: <Workflow className="text-[#7B2CBF]" size={24} /> },
-    { title: "Core Engineering", desc: "Building high-performance React, Node, and Python architectures.", icon: <Terminal className="text-[#7B2CBF]" size={24} /> },
-    { title: "Data Pipelines", desc: "Automating massive datasets and training custom machine learning models.", icon: <Database className="text-[#7B2CBF]" size={24} /> },
-    { title: "Cybersecurity", desc: "Penetration testing and ensuring banking-grade security protocols.", icon: <Shield className="text-[#7B2CBF]" size={24} /> },
-  ];
+  {
+    title: "Software Engineering",
+    desc: "Building scalable, secure, and maintainable software solutions tailored for modern businesses and enterprise applications.",
+    icon: <Code2 className="text-[#7B2CBF]" size={24} />,
+  },
+  {
+    title: "Mobile App Development",
+    desc: "Creating fast, responsive, and intuitive mobile applications for Android, iOS, and cross-platform environments.",
+    icon: <Smartphone className="text-[#7B2CBF]" size={24} />,
+  },
+  {
+    title: "AI & Machine Learning",
+    desc: "Developing intelligent AI solutions, predictive models, and data-driven systems that automate complex processes.",
+    icon: <BrainCircuit className="text-[#7B2CBF]" size={24} />,
+  },
+  {
+    title: "Embedded & Robotics",
+    desc: "Designing embedded systems, IoT devices, and robotic solutions with reliable hardware and intelligent software integration.",
+    icon: <Bot className="text-[#7B2CBF]" size={24} />,
+  },
+];
 
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#7B2CBF]/30 overflow-clip">
