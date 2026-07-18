@@ -1,13 +1,13 @@
 export const services = [
   { title: "ICT Education", desc: "Grade 10 & 11 ICT tuition built around the school syllabus and real exam technique.", span: "col-span-2" },
-  { title: "Programming Courses", desc: "From first line of code to production-ready projects.", span: "" },
-  { title: "Web Development", desc: "Modern, responsive sites and web apps.", span: "" },
-  { title: "Mobile App Development", desc: "Native and cross-platform apps for iOS & Android.", span: "" },
-  { title: "AI & Machine Learning", desc: "Practical ML — from fundamentals to deployed models.", span: "col-span-2" },
-  { title: "Cloud Computing", desc: "Deploy, scale, and manage infrastructure.", span: "" },
-  { title: "Cybersecurity", desc: "Secure-by-design thinking for real systems.", span: "" },
+  { title: "Advanced Level ICT", desc: "Advanced Level ICT Modules with Practical Demonstration", span: "" },
+  { title: "Basic Programming", desc: "From first line of code to production-ready projects.", span: "" },
+  { title: "Introduction to Robotics", desc: "Get into Embedded Systems and Robotics and Real world Projects", span: "" },
+  { title: "AI & Machine Learning Fundamentals", desc: "Practical ML — from fundamentals to deployed models.", span: "col-span-2" },
+  { title: "Prompt Engineering", desc: "Prompt Engineering Basics To Advance", span: "" },
+  { title: "Software Development Fundamentals", desc: "Get into Real World Programming And Software Design Principles", span: "" },
   { title: "UI/UX Design", desc: "Interfaces people actually enjoy using.", span: "" },
-  { title: "Software Development", desc: "Custom systems built for how your business runs.", span: "col-span-2" },
+  { title: "University Project Guidance", desc: "A-Z Guidance For University Projects.", span: "col-span-2" },
   { title: "Business Automation", desc: "Cut manual work out of daily operations.", span: "" },
   { title: "Final Year Project Guidance", desc: "Mentorship from proposal to final defense.", span: "" },
 ];
@@ -31,6 +31,11 @@ export const courseTracks = [
     desc: "Full syllabus coverage with structured theory, past-paper practice, and exam technique for the O/L ICT curriculum.",
   },
   {
+    name: "Advanced Level ICT Practicals",
+    tag: "school",
+    desc: "Full syllabus coverage with structured theory, get into real world problem solutions.",
+  },
+  {
     name: "Programming Foundations",
     tag: "beginner",
     desc: "Core programming logic, syntax, and problem solving — the base every other track builds on.",
@@ -41,19 +46,9 @@ export const courseTracks = [
     desc: "Build and ship real front-end and full-stack projects using modern frameworks and tooling.",
   },
   {
-    name: "Mobile App Development",
-    tag: "hands-on",
-    desc: "Design and build apps for iOS and Android with production-grade workflows.",
-  },
-  {
-    name: "AI & Machine Learning",
-    tag: "advanced",
+    name: "Introduction to AI & Machine Learning",
+    tag: "Beginner",
     desc: "From core ML concepts to training and deploying practical models.",
-  },
-  {
-    name: "Cloud & Cybersecurity",
-    tag: "advanced",
-    desc: "Deploy systems on the cloud and secure them the way industry actually expects.",
   },
   {
     name: "UI/UX Design",
@@ -109,13 +104,13 @@ export const velocityReelContent = {
   heading: "Student Innovation Lab",
   projects: [
     {
-      title: "Project Nexus",
-      tag: "Real-time Platform",
+      title: "Hand Gesture Control Robot",
+      tag: "Robotics",
       hue: 200,
     },
     {
-      title: "Aura E-Commerce",
-      tag: "Web Infrastructure",
+      title: "POS-Desktop",
+      tag: "Desktop Infrastructure",
       hue: 270,
     },
     {
@@ -144,45 +139,31 @@ export const projectShowcaseContent = {
 export const teamMembersContent = [
   {
     id: '1',
-    name: 'Chadrack',
-    role: 'director of photography',
-    qualification: 'BA in Film & Media',
+    name: 'Bashith Ahamed',
+    role: 'CEO & Co- Founder',
+    qualification: 'BSc in Computer Science',
     social: { twitter: '#', linkedin: '#', behance: '#' },
   },
   {
     id: '2',
-    name: 'Mak VieSAinte',
-    role: 'FOUNDER',
-    qualification: 'MSc. Software Engineering',
+    name: 'Mohamed Mufassir',
+    role: 'Co-Founder & Embedded Software Engineer',
+    qualification: 'BSc in Computer Systems Engineer (UG)',
     social: { twitter: '#', linkedin: '#' },
   },
   {
     id: '3',
-    name: 'Osiris Balonga',
-    role: 'LEAD FRONT-END',
-    qualification: 'BSc. Computer Science',
+    name: 'Ahamed Ishrath',
+    role: 'Co-Founder & Software Engineer',
+    qualification: 'BSc Physical Science Spcl Computer Science',
     social: { twitter: '#', linkedin: '#' },
   },
   {
     id: '4',
-    name: 'Jacques',
-    role: 'PRODUCT OWNER',
-    qualification: 'Certified Scrum Master',
+    name: 'Mohamed Musharraf',
+    role: 'Co-Founder',
+    qualification: 'BSc in Data Science (UG)',
     social: { linkedin: '#' },
-  },
-  {
-    id: '5',
-    name: 'Riche Makso',
-    role: 'CTO - PRODUCT DESIGNER',
-    qualification: 'BEng. Software Engineering',
-    social: { twitter: '#', linkedin: '#' },
-  },
-  {
-    id: '6',
-    name: 'Jemima',
-    role: 'MAKE-UP ARTISTE',
-    qualification: 'Certified Cosmetologist',
-    social: { instagram: '#' }
   },
 ];
 
