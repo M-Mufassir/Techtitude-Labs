@@ -73,55 +73,37 @@ const MatrixMarqueeStream = ({ active }: { active: boolean }) => {
   );
 };
 
-// DEVELOPMENT: Circuit Trace with Nodes
-const CircuitTraceWithNodes = ({ active }: { active: boolean }) => {
+// DEVELOPMENT: Futuristic HUD Rings
+const CyberHudRings = ({ active }: { active: boolean }) => {
   if (!active) return null;
-  
-  const PATH1 = "M 100 100 L 250 100 L 300 150 L 300 400";
-  const PATH2 = "M -50 300 L 150 300 L 200 250 L 500 250";
-  const PATH3 = "M 400 600 L 400 450 L 250 300 L -50 300";
 
   return (
-    <svg className="absolute inset-0 w-full h-full pointer-events-none opacity-60 z-10" xmlns="http://www.w3.org/2000/svg">
-      <motion.path
-        d={PATH1}
-        fill="transparent"
-        stroke="#7B2CBF"
-        strokeWidth="3"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.5, ease: "easeInOut" }}
+    <div className="absolute inset-0 pointer-events-none overflow-hidden z-10 flex items-center justify-center opacity-70">
+      {/* Outer Dashed Ring */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 40, repeat: Infinity, ease: "linear" }}
+        className="absolute w-[80vw] md:w-[70vh] aspect-square rounded-full border-[1px] border-dashed border-[#7B2CBF]/30"
       />
-      <circle r="4" fill="#fff" filter="drop-shadow(0 0 5px #fff)">
-        <animateMotion dur="2s" repeatCount="indefinite" path={PATH1} />
-      </circle>
-
-      <motion.path
-        d={PATH2}
-        fill="transparent"
-        stroke="#7B2CBF"
-        strokeWidth="2"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 2, delay: 0.2, ease: "easeInOut" }}
+      {/* Middle Dotted Ring */}
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
+        className="absolute w-[60vw] md:w-[50vh] aspect-square rounded-full border-[2px] border-dotted border-[#7B2CBF]/40"
       />
-      <circle r="3" fill="#00AEEF" filter="drop-shadow(0 0 5px #00AEEF)">
-        <animateMotion dur="2.5s" repeatCount="indefinite" path={PATH2} />
-      </circle>
-
-      <motion.path
-        d={PATH3}
-        fill="transparent"
-        stroke="#b37be8"
-        strokeWidth="1.5"
-        initial={{ pathLength: 0, opacity: 0 }}
-        animate={{ pathLength: 1, opacity: 1 }}
-        transition={{ duration: 1.8, delay: 0.4, ease: "easeInOut" }}
+      {/* Inner Solid Tech Ring with accent arc */}
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+        className="absolute w-[40vw] md:w-[35vh] aspect-square rounded-full border-[1px] border-[#7B2CBF]/20 border-t-[#7B2CBF] border-r-[#7B2CBF]"
       />
-      <circle r="2" fill="#fff" filter="drop-shadow(0 0 3px #fff)">
-        <animateMotion dur="3s" repeatCount="indefinite" path={PATH3} />
-      </circle>
-    </svg>
+      {/* Core Glowing Pulse */}
+      <motion.div
+        animate={{ scale: [0.8, 1.2, 0.8], opacity: [0.1, 0.4, 0.1] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute w-[30vw] md:w-[25vh] aspect-square rounded-full bg-[#7B2CBF] blur-[50px]"
+      />
+    </div>
   );
 };
 
@@ -271,6 +253,7 @@ export default function SplitGateway() {
           />
           <div className="absolute inset-0 pointer-events-none opacity-50">
              <MatrixMarqueeStream active={activeMobileZone === 'dev'} />
+             <CyberHudRings active={activeMobileZone === 'dev'} />
           </div>
           
           <motion.div
@@ -508,8 +491,8 @@ export default function SplitGateway() {
         {/* Marquee Code Stream */}
         <MatrixMarqueeStream active={hoveredZone === 'dev'} />
 
-        {/* SVG Circuit Traces with Neon Nodes */}
-        <CircuitTraceWithNodes active={hoveredZone === 'dev'} />
+        {/* Futuristic HUD Rings */}
+        <CyberHudRings active={hoveredZone === 'dev'} />
 
         <div className="z-20 relative pointer-events-none">
           <motion.span 

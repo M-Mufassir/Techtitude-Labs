@@ -28,22 +28,45 @@ import detect5 from './projects_images/Plant_Disease_Detection/image-5.png';
 import detect6 from './projects_images/Plant_Disease_Detection/image-6.png';
 import detect7 from './projects_images/Plant_Disease_Detection/image-7.png';
 
+import herit1 from './projects_images/Heritedge/image-1.png';
+import herit2 from './projects_images/Heritedge/image-2.png';
+import herit3 from './projects_images/Heritedge/image-3.png';
+import herit4 from './projects_images/Heritedge/image-4.png';
+import herit5 from './projects_images/Heritedge/image-5.png';
+import herit6 from './projects_images/Heritedge/image-6.png';
+import herit7 from './projects_images/Heritedge/image-7.png';
+import herit8 from './projects_images/Heritedge/image-8.png';
+import herit9 from './projects_images/Heritedge/image-9.png';
+import herit10 from './projects_images/Heritedge/image-10.png';
+
+// Test images from Our_Work folder
+import testImage1 from './Our_Work/image-1.jpg';
+import testImage2 from './Our_Work/image-2.jpg';
+import testImage3 from './Our_Work/image-3.jpg';
+import testImage4 from './Our_Work/image-4.jpg';
+import testImage5 from './Our_Work/image-5.jpg';
+import testImage6 from './Our_Work/image-6.jpg';
+
+// Main focal video
+import focalVideoImport from './Our_Work/focal-vedio.mp4';
+export const focalVideo = focalVideoImport;
+
 export const projectShowcaseImages = {
-  "image-1": "https://images.unsplash.com/photo-1463100099107-aa0980c362e6?w=800&auto=format&fit=crop&q=60",
-  "image-2": "https://images.unsplash.com/photo-1556304044-0699e31c6a34?w=800&auto=format&fit=crop&q=60",
-  "image-3": "https://images.unsplash.com/photo-1590330297626-d7aff25a0431?w=800&auto=format&fit=crop&q=60",
-  "image-4": "https://images.unsplash.com/photo-1487222477894-8943e31ef7b2?w=800&auto=format&fit=crop&q=60",
-  "image-5": "https://images.unsplash.com/photo-1488161628813-04466f872be2?w=800&auto=format&fit=crop&q=60",
-  "image-6": "https://images.unsplash.com/photo-1565321590372-09331b9dd1eb?w=800&auto=format&fit=crop&q=60",
-  "image-7": "https://images.unsplash.com/photo-1531525645387-7f14be1bdbbd?w=800&auto=format&fit=crop&q=60",
-  "image-8": "https://images.unsplash.com/photo-1637414165749-9b3cd88b8271?w=800&auto=format&fit=crop&q=60",
-  "image-9": "https://images.unsplash.com/photo-1699911251220-8e0de3b5ce88?w=800&auto=format&fit=crop&q=60",
-  "image-10": "https://images.unsplash.com/photo-1667483629944-6414ad0648c5?w=800&auto=format&fit=crop&q=60",
-  "image-11": "https://plus.unsplash.com/premium_photo-1706078438060-d76ced26d8d5?w=800&auto=format&fit=crop&q=60",
-  "image-12": "https://images.unsplash.com/photo-1525385444278-b7968e7e28dc?w=800&auto=format&fit=crop&q=60",
-  "image-13": "https://images.unsplash.com/reserve/LJIZlzHgQ7WPSh5KVTCB_Typewriter.jpg?w=800&auto=format&fit=crop&q=60",
-  "image-14": "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=800&auto=format&fit=crop&q=60",
-  "image-15": "https://assets.codepen.io/605876/model-shades.jpg?format=auto&quality=100" // focal image
+  "image-1": testImage5,
+  "image-2": testImage1,
+  "image-3": testImage6,
+  "image-4": testImage3,
+  "image-5": testImage2,
+  "image-6": testImage4,
+  "image-7": testImage6,
+  "image-8": testImage2,
+  "image-9": testImage5,
+  "image-10": testImage1,
+  "image-11": testImage4,
+  "image-12": testImage3,
+  "image-13": testImage5,
+  "image-14": testImage2,
+  "image-15": herit3 // focal image
 };
 
 export const teamMembersImages = {
@@ -66,6 +89,7 @@ export const velocityReelImages = {
 export const proofLedgerImages: Record<string, string[]> = {
   "project-pos": [pos1, pos2, pos3, pos4],
   "project-detectx": [detect1, detect2, detect3, detect4, detect5, detect6, detect7],
+  "project-herit-edge": [herit1, herit2, herit3, herit4, herit5, herit6, herit7, herit8, herit9, herit10],
   "project-restaurant": [rest1, rest2, rest3],
   "project-jewellery": [jew1, jew2, jew3],
   "project-booking": [book1, book2, book3],
