@@ -92,7 +92,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
             <PhotoCard
               key={member.id}
               member={member}
-              className="w-[100px] h-[110px] sm:w-[136px] sm:h-[146px] md:w-[162px] md:h-[172px]"
+              className="w-[95px] h-[105px] sm:w-[130px] sm:h-[140px] md:w-[155px] md:h-[165px]"
               hoveredId={hoveredId}
               onHover={setHoveredId}
             />
