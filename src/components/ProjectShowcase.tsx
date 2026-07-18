@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import { animate, scroll } from 'framer-motion';
 import { projectShowcaseContent } from '../data/content';
-import { projectShowcaseImages } from '../assets/images';
+import { projectShowcaseImages, focalVideo } from '../assets/images';
 
 export default function ProjectShowcase() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -13,7 +13,7 @@ export default function ProjectShowcase() {
     const initAnimation = () => {
       if (!containerRef.current || !trackRef.current) return;
 
-      const focalImage = containerRef.current.querySelector('.scaler img') as HTMLElement;
+      const focalImage = containerRef.current.querySelector('.scaler .focal-media') as HTMLElement;
       const layers = containerRef.current.querySelectorAll('.grid > .layer');
 
       if (!focalImage) return;
@@ -233,7 +233,7 @@ export default function ProjectShowcase() {
           height: 100%;
         }
 
-        .project-showcase-wrap .scaler img {
+        .project-showcase-wrap .scaler .focal-media {
           position: absolute;
           top: 50%;
           left: 50%;
@@ -285,9 +285,9 @@ export default function ProjectShowcase() {
               <div><img src={projectShowcaseImages["image-14"]} alt="Work 14" /></div>
             </div>
 
-            {/* Center Scaler Anchor Image (This stars full-screen) */}
+            {/* Center Scaler Anchor Media (This starts full-screen) */}
             <div className="scaler">
-              <img src={projectShowcaseImages["image-15"]} alt="Featured Project Focus" />
+              <video src={focalVideo} className="focal-media" autoPlay loop muted playsInline />
             </div>
 
           </div>

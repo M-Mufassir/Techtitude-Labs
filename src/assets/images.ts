@@ -47,6 +47,10 @@ import testImage4 from './Our_Work/image-4.jpg';
 import testImage5 from './Our_Work/image-5.jpg';
 import testImage6 from './Our_Work/image-6.jpg';
 
+// Main focal video
+import focalVideoImport from './Our_Work/focal-vedio.mp4';
+export const focalVideo = focalVideoImport;
+
 export const projectShowcaseImages = {
   "image-1": testImage5,
   "image-2": testImage1,
