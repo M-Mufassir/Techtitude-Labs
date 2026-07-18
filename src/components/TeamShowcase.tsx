@@ -40,9 +40,9 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
   let col3: TeamMember[] = [];
 
   if (members.length === 5) {
-    // Symmetrical 2-1-2 layout for 5 members
-    col1 = [members[0], members[3]];
-    col2 = [members[1]];
+    // Symmetrical 2-1-2 layout: First member (Founder) in the center
+    col1 = [members[1], members[3]];
+    col2 = [members[0]];
     col3 = [members[2], members[4]];
   } else if (members.length === 4) {
     // 2-1-1 layout for 4 members
