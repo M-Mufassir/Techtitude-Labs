@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState  } from "react";
+import type {ReactNode} from "react";
 import { Link } from "react-router-dom";
 import {
   ArrowRight, Compass, Layers3, Hammer, ShieldCheck, Rocket,
@@ -8,7 +9,7 @@ import Reveal from "../components/Reveal";
 
 type DomainKey = "software" | "webmobile" | "ai" | "hardware";
 
-const DOMAINS: Record<DomainKey, { label: string; icon: JSX.Element }> = {
+const DOMAINS: Record<DomainKey, { label: string; icon: ReactNode }> = {
   software: { label: "Software", icon: <Code2 size={14} /> },
   webmobile: { label: "Web & Mobile", icon: <Smartphone size={14} /> },
   ai: { label: "AI & ML", icon: <BrainCircuit size={14} /> },
@@ -18,7 +19,7 @@ const DOMAINS: Record<DomainKey, { label: string; icon: JSX.Element }> = {
 type Step = {
   id: string;
   title: string;
-  icon: JSX.Element;
+  icon: ReactNode;
   desc: string;
   detail: string;
   deliverables: string[];
