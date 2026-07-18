@@ -35,9 +35,26 @@ interface TeamShowcaseProps {
 export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcaseProps) {
   const [hoveredId, setHoveredId] = useState<string | null>(null);
 
-  const col1 = members.filter((_, i) => i % 3 === 0);
-  const col2 = members.filter((_, i) => i % 3 === 1);
-  const col3 = members.filter((_, i) => i % 3 === 2);
+  let col1: TeamMember[] = [];
+  let col2: TeamMember[] = [];
+  let col3: TeamMember[] = [];
+
+  if (members.length === 5) {
+    // Symmetrical 2-1-2 layout for 5 members
+    col1 = [members[0], members[3]];
+    col2 = [members[1]];
+    col3 = [members[2], members[4]];
+  } else if (members.length === 4) {
+    // 2-1-1 layout for 4 members
+    col1 = [members[0], members[3]];
+    col2 = [members[1]];
+    col3 = [members[2]];
+  } else {
+    // Default round robin
+    col1 = members.filter((_, i) => i % 3 === 0);
+    col2 = members.filter((_, i) => i % 3 === 1);
+    col3 = members.filter((_, i) => i % 3 === 2);
+  }
 
   return (
     <div className="flex flex-col md:flex-row items-start gap-8 md:gap-10 lg:gap-14 select-none w-full max-w-5xl mx-auto py-8 px-4 md:px-6 font-body">
@@ -70,7 +87,7 @@ export default function TeamShowcase({ members = DEFAULT_MEMBERS }: TeamShowcase
         </div>
 
         {/* Column 3 */}
-        <div className="flex flex-col gap-2 md:gap-3 mt-[16px] sm:mt-[26px] md:mt-[32px]">
+        <div className={cn("flex flex-col gap-2 md:gap-3", members.length !== 5 && "mt-[16px] sm:mt-[26px] md:mt-[32px]")}>
           {col3.map((member) => (
             <PhotoCard
               key={member.id}

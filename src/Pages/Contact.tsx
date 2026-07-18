@@ -3,6 +3,7 @@ import { Mail, Phone, MessageCircle, ArrowUpRight, GraduationCap, Briefcase, Che
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { motion, AnimatePresence } from "framer-motion";
+import WhatsAppButton from "../components/WhatsAppButton";
 
 const contacts = [
   {
@@ -31,9 +32,15 @@ const contacts = [
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'academy' | 'studio'>('academy');
   const [budget, setBudget] = useState<number>(5000);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
 
-  function handleAcademySubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleAcademySubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = data.get("name");
@@ -44,15 +51,38 @@ export default function Contact() {
     const intake = data.get("intake");
     const background = data.get("background");
 
-    const subject = encodeURIComponent(`Academy Enrollment: ${name} - ${course}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nCourse: ${course}\nPreferred Intake: ${intake}\nAcademic Background: ${background}`
-    );
-    window.location.href = `mailto:techtitude.labs@gmail.com?subject=${subject}&body=${body}`;
+    const subject = `Academy Enrollment: ${name} - ${course}`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nCourse: ${course}\nPreferred Intake: ${intake}\nAcademic Background: ${background}`;
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ subject, body, senderEmail: email, senderName: name, formType: 'academy' }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Your application has been sent successfully!' });
+        form.reset();
+      } else {
+        const errorData = await response.json();
+        setSubmitStatus({ type: 'error', message: errorData.error || 'Failed to send application. Please try again.' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
 
-  function handleStudioSubmit(e: FormEvent<HTMLFormElement>) {
+  async function handleStudioSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    if (isSubmitting) return;
+
+    setIsSubmitting(true);
+    setSubmitStatus({ type: null, message: '' });
     const form = e.currentTarget;
     const data = new FormData(form);
     const name = data.get("name");
@@ -65,12 +95,38 @@ export default function Contact() {
     // Collect checked tech stacks
     const stacks = Array.from(form.querySelectorAll('input[name="stack"]:checked')).map(el => (el as HTMLInputElement).value).join(', ');
 
-    const subject = encodeURIComponent(`New Project Inquiry: ${company || name}`);
-    const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: $${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`
-    );
-    window.location.href = `mailto:techtitude.labs@gmail.com?subject=${subject}&body=${body}`;
+    const subject = `New Project Inquiry: ${company || name}`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: $${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`;
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ subject, body, senderEmail: email, senderName: name, formType: 'studio' }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus({ type: 'success', message: 'Your inquiry has been sent successfully! We will get back to you soon.' });
+        form.reset();
+        setBudget(5000); // reset budget slider
+      } else {
+        const errorData = await response.json();
+        setSubmitStatus({ type: 'error', message: errorData.error || 'Failed to send inquiry. Please try again.' });
+      }
+    } catch (error) {
+      setSubmitStatus({ type: 'error', message: 'An unexpected error occurred. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+    }
   }
+
+  // Clear status when switching tabs
+  const handleTabSwitch = (tab: 'academy' | 'studio') => {
+    setActiveTab(tab);
+    setSubmitStatus({ type: null, message: '' });
+  };
 
   return (
     <div className="relative">
@@ -98,7 +154,7 @@ export default function Contact() {
               />
               
               <button 
-                onClick={() => setActiveTab('academy')}
+                onClick={() => handleTabSwitch('academy')}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-3 py-4 rounded-xl font-bold font-display transition-colors ${activeTab === 'academy' ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}
               >
                 <GraduationCap size={20} className={activeTab === 'academy' ? 'text-[#00AEEF]' : ''} />
@@ -106,7 +162,7 @@ export default function Contact() {
               </button>
               
               <button 
-                onClick={() => setActiveTab('studio')}
+                onClick={() => handleTabSwitch('studio')}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-3 py-4 rounded-xl font-bold font-display transition-colors ${activeTab === 'studio' ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}
               >
                 <Briefcase size={20} className={activeTab === 'studio' ? 'text-[#7B2CBF]' : ''} />
@@ -213,8 +269,14 @@ export default function Contact() {
                       <textarea name="background" rows={3} required placeholder="Tell us about your current school/university and any prior programming experience..." className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] resize-none transition-all" />
                     </div>
 
-                    <button type="submit" className="mt-6 w-full flex items-center justify-center gap-2 rounded-full bg-[#00AEEF] hover:bg-[#009ee0] px-8 py-4 text-[#070B14] text-sm font-bold font-display shadow-[0_0_20px_rgba(0,174,239,0.4)] transition-all duration-300">
-                      Submit Application <ArrowUpRight size={18} />
+                    {submitStatus.type && (
+                      <div className={`p-4 rounded-xl text-sm font-medium ${submitStatus.type === 'success' ? 'bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
+                        {submitStatus.message}
+                      </div>
+                    )}
+
+                    <button type="submit" disabled={isSubmitting} className="mt-6 w-full flex items-center justify-center gap-2 rounded-full bg-[#00AEEF] hover:bg-[#009ee0] px-8 py-4 text-[#070B14] text-sm font-bold font-display shadow-[0_0_20px_rgba(0,174,239,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                      {isSubmitting ? 'Submitting...' : 'Submit Application'} <ArrowUpRight size={18} />
                     </button>
                   </motion.form>
                 )}
@@ -313,8 +375,14 @@ export default function Contact() {
                       <textarea name="details" rows={2} required placeholder="Describe the core problem you are trying to solve..." className="mt-2 w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white placeholder-gray-600 outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] resize-none transition-all" />
                     </div>
 
-                    <button type="submit" className="mt-2 w-full flex items-center justify-center gap-2 rounded-full bg-[#7B2CBF] hover:bg-[#6a24a6] px-8 py-4 text-white text-sm font-bold font-display shadow-[0_0_20px_rgba(123,44,191,0.4)] transition-all duration-300">
-                      Request Consultation <ArrowUpRight size={18} />
+                    {submitStatus.type && (
+                      <div className={`p-4 rounded-xl text-sm font-medium ${submitStatus.type === 'success' ? 'bg-[#25D366]/10 text-[#25D366] border border-[#25D366]/20' : 'bg-red-500/10 text-red-500 border border-red-500/20'}`}>
+                        {submitStatus.message}
+                      </div>
+                    )}
+
+                    <button type="submit" disabled={isSubmitting} className="mt-2 w-full flex items-center justify-center gap-2 rounded-full bg-[#7B2CBF] hover:bg-[#6a24a6] px-8 py-4 text-white text-sm font-bold font-display shadow-[0_0_20px_rgba(123,44,191,0.4)] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed">
+                      {isSubmitting ? 'Submitting...' : 'Request Consultation'} <ArrowUpRight size={18} />
                     </button>
                   </motion.form>
                 )}
@@ -325,6 +393,7 @@ export default function Contact() {
 
         </div>
       </section>
+      <WhatsAppButton />
     </div>
   );
 }

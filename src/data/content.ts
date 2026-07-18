@@ -165,6 +165,13 @@ export const teamMembersContent = [
     qualification: 'BSc in Data Science (UG)',
     social: { linkedin: '#' },
   },
+  {
+    id: '5',
+    name: 'New Team Member',
+    role: 'Role / Position',
+    qualification: 'Qualification (optional)',
+    social: { linkedin: '#', twitter: '#' },
+  },
 ];
 
 export const projects = [

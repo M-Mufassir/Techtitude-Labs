@@ -39,8 +39,8 @@ export default function Footer() {
 
           <div className="font-mono text-sm text-muted flex flex-col gap-2">
             <span className="text-ink/70 mb-1">// reach us</span>
-            <a href="mailto:hello@techtitudelabs.com" className="hover:text-accent w-fit transition-colors">
-              hello@techtitudelabs.com
+            <a href="mailto:techtitude.labs@gmail.com" className="hover:text-accent w-fit transition-colors">
+              techtitude.labs@gmail.com
             </a>
             <span className="mt-2 text-ink/40">Learn &middot; Build &middot; Innovate</span>
           </div>
