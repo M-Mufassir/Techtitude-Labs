@@ -149,7 +149,7 @@ export const teamMembersContent = [
     name: 'Mohamed Mufassir',
     role: 'Co-Founder & Embedded Software Engineer',
     qualification: 'BSc in Computer Systems Engineer (UG)',
-    social: { twitter: '#', linkedin: '#' },
+    social: { linkedin: 'https://www.linkedin.com/in/mohamedmufassir' },
   },
   {
     id: '3',
