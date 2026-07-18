@@ -51,6 +51,12 @@ import testImage6 from './Our_Work/image-6.jpg';
 import focalVideoImport from './Our_Work/focal-vedio.mp4';
 export const focalVideo = focalVideoImport;
 
+// Team Members
+import ceoImage from './Team_Members/CEO.png';
+import founderImage from './Team_Members/Founder.png';
+import coFounderImage from './Team_Members/Co- Founder.png';
+import softwareEngineerImage from './Team_Members/Software Engineer.png';
+
 export const projectShowcaseImages = {
   "image-1": testImage5,
   "image-2": testImage1,
@@ -70,11 +76,11 @@ export const projectShowcaseImages = {
 };
 
 export const teamMembersImages = {
-  "image-1": "https://i.pravatar.cc/400?img=11",
-  "image-2": "https://i.pravatar.cc/400?img=12",
-  "image-3": "https://i.pravatar.cc/400?img=13",
+  "image-1": founderImage,
+  "image-2": coFounderImage,
+  "image-3": ceoImage,
   "image-4": "https://i.pravatar.cc/400?img=14",
-  "image-5": "https://i.pravatar.cc/400?img=15",
+  "image-5": softwareEngineerImage,
   "image-6": "https://i.pravatar.cc/400?img=16"
 };
 

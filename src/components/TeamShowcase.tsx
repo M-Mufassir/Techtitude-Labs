@@ -138,6 +138,7 @@ function PhotoCard({
     <div
       className={cn(
         'overflow-hidden rounded-xl cursor-pointer flex-shrink-0 transition-opacity duration-300',
+        'bg-gradient-to-br from-[#7B2CBF]/30 via-[#0A0A0C] to-[#00AEEF]/30 border border-white/10 shadow-[0_0_20px_rgba(0,174,239,0.15)]',
         className,
         isDimmed ? 'opacity-30' : 'opacity-100',
       )}
