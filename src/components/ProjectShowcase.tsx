@@ -129,17 +129,20 @@ export default function ProjectShowcase() {
           margin: 0 auto;
         }
 
-        .project-showcase-header .fluid {
-          font-size: clamp(4rem, 12vw, 12rem);
-          line-height: 0.6;
+        .project-showcase-header h1.fluid {
+          font-size: clamp(5.5rem, 16vw, 14rem);
+          line-height: 0.85;
           margin: 0;
           font-family: inherit;
+          letter-spacing: -0.02em;
         }
 
         .project-showcase-header h2.fluid {
-          font-size: clamp(0.5rem, 2vw, 1.5rem);
-          padding-top: 48px;
-          line-height: 1.2;
+          font-size: clamp(1.2rem, 3vw, 1.8rem);
+          margin-top: 24px;
+          line-height: 1.4;
+          color: #9CA3AF;
+          max-width: 90%;
         }
 
         /* SCROLL WRAPPER & STICKY CONTAINER */
@@ -189,9 +192,16 @@ export default function ProjectShowcase() {
           .project-showcase-wrap .grid {
             grid-template-columns: repeat(3, 1fr);
             --offset: -1;
+            width: 250vw; /* Expands the grid on mobile so items are larger */
+            max-width: none;
+            --gap: 1rem;
           }
           .project-showcase-wrap .grid > .layer:nth-of-type(1) {
             display: none; /* Hide outer grid track on mobile devices */
+          }
+          .project-showcase-header {
+            padding-left: 24px;
+            padding-right: 24px;
           }
         }
 
