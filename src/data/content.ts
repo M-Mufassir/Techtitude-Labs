@@ -170,7 +170,7 @@ export const teamMembersContent = [
     name: 'Muhammed Nashan',
     role: 'Software Engineer',
     qualification: 'BSc (Hons) in Computer Science',
-    social: { linkedin: '#' },
+    social: { linkedin: 'https://www.linkedin.com/in/muhammed-nashan' },
   },
 ];
 
