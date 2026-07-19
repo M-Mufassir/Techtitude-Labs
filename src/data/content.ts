@@ -156,7 +156,7 @@ export const teamMembersContent = [
     name: 'Ahamed Ishrath',
     role: 'CEO',
     qualification: 'BSc Physical Science (Spcl) Computer Science',
-    social: { linkedin: '#' },
+    social: { linkedin: 'https://www.linkedin.com/in/ahamed-ishrath-471b7a383?utm_source=share_via&utm_content=profile&utm_medium=member_android' },
   },
   {
     id: '4',

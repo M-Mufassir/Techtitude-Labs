@@ -55,6 +55,7 @@ export const focalVideo = focalVideoImport;
 import ceoImage from './Team_Members/CEO.png';
 import founderImage from './Team_Members/Founder.png';
 import coFounderImage from './Team_Members/Co- Founder.png';
+import ctoImage from './Team_Members/CTO.png';
 import softwareEngineerImage from './Team_Members/Software Engineer.png';
 
 export const projectShowcaseImages = {
@@ -79,7 +80,7 @@ export const teamMembersImages = {
   "image-1": founderImage,
   "image-2": coFounderImage,
   "image-3": ceoImage,
-  "image-4": "https://i.pravatar.cc/400?img=14",
+  "image-4": ctoImage,
   "image-5": softwareEngineerImage,
   "image-6": "https://i.pravatar.cc/400?img=16"
 };
