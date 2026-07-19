@@ -31,7 +31,7 @@ const contacts = [
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'academy' | 'studio'>('academy');
-  const [budget, setBudget] = useState<number>(5000);
+  const [budget, setBudget] = useState<number>(50000);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: '' });
 
@@ -47,8 +47,8 @@ export default function Contact() {
     const email = data.get("email");
     const phone = data.get("phone");
     const location = data.get("location");
-    const course = data.get("course");
-    const intake = data.get("intake");
+    const course = data.get("gradeSelection");
+    const intake = data.get("preferredDay");
     const background = data.get("background");
 
     const subject = `Academy Enrollment: ${name} - ${course}`;
@@ -91,12 +91,12 @@ export default function Contact() {
     const company = data.get("company");
     const timeline = data.get("timeline");
     const details = data.get("details");
-    
+
     // Collect checked tech stacks
     const stacks = Array.from(form.querySelectorAll('input[name="stack"]:checked')).map(el => (el as HTMLInputElement).value).join(', ');
 
     const subject = `New Project Inquiry: ${company || name}`;
-    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: $${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`;
+    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: LKR ${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`;
 
     try {
       const response = await fetch('/api/contact', {
@@ -110,7 +110,7 @@ export default function Contact() {
       if (response.ok) {
         setSubmitStatus({ type: 'success', message: 'Your inquiry has been sent successfully! We will get back to you soon.' });
         form.reset();
-        setBudget(5000); // reset budget slider
+        setBudget(50000); // reset budget slider
       } else {
         const errorData = await response.json();
         setSubmitStatus({ type: 'error', message: errorData.error || 'Failed to send inquiry. Please try again.' });
@@ -132,9 +132,9 @@ export default function Contact() {
     <div className="relative">
       <section className="relative pt-32 pb-24 px-6 overflow-hidden min-h-screen flex flex-col justify-center">
         <TraceBackground />
-        
+
         <div className="max-w-6xl mx-auto w-full grid xl:grid-cols-12 gap-16 items-start">
-          
+
           {/* LEFT COLUMN: INFO & TABS */}
           <Reveal className="xl:col-span-5 flex flex-col gap-8 xl:sticky xl:top-32">
             <div>
@@ -148,20 +148,20 @@ export default function Contact() {
 
             {/* TAB SELECTOR */}
             <div className="flex bg-[#161618]/80 backdrop-blur-md rounded-2xl p-2 border border-white/10 relative">
-              <div 
+              <div
                 className="absolute top-2 bottom-2 left-2 w-[calc(50%-0.5rem)] rounded-xl bg-white/10 transition-transform duration-500 ease-in-out"
                 style={{ transform: activeTab === 'academy' ? 'translateX(0)' : 'translateX(100%)' }}
               />
-              
-              <button 
+
+              <button
                 onClick={() => handleTabSwitch('academy')}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-3 py-4 rounded-xl font-bold font-display transition-colors ${activeTab === 'academy' ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}
               >
                 <GraduationCap size={20} className={activeTab === 'academy' ? 'text-[#00AEEF]' : ''} />
                 Academy
               </button>
-              
-              <button 
+
+              <button
                 onClick={() => handleTabSwitch('studio')}
                 className={`relative z-10 w-1/2 flex items-center justify-center gap-3 py-4 rounded-xl font-bold font-display transition-colors ${activeTab === 'studio' ? 'text-white' : 'text-gray-500 hover:text-gray-300'}`}
               >
@@ -197,7 +197,7 @@ export default function Contact() {
           {/* RIGHT COLUMN: DYNAMIC FORM ENGINE */}
           <Reveal delay={0.15} className="xl:col-span-7">
             <div className="bg-[#161618]/80 backdrop-blur-xl border border-white/5 rounded-[40px] overflow-hidden shadow-2xl relative min-h-[600px]">
-              
+
               <AnimatePresence mode="wait">
                 {activeTab === 'academy' && (
                   <motion.form
@@ -236,32 +236,64 @@ export default function Contact() {
                       </div>
                     </div>
 
-                    <div className="grid md:grid-cols-2 gap-6">
-                      <div>
-                        <label className="font-mono text-xs text-gray-400 ml-2">Select Course Path</label>
-                        <div className="mt-2 relative">
-                          <select name="course" required defaultValue="" className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
-                            <option value="" disabled>Choose a track...</option>
-                            <option value="Code Core (Grade 10 & 11)">Code Core (Grade 10 & 11 ICT)</option>
-                            <option value="Web Engineering">Advanced Web Engineering</option>
-                            <option value="AI & ML">Next-Gen AI & ML</option>
-                            <option value="UI/UX Design">Interactive UI/UX Design</option>
+                    <div className="w-full flex flex-col sm:flex-row items-center gap-6 font-sans">
+
+                      {/* LEFT SIDE: GRADE SELECTION DROPDOWN */}
+                      <div className="w-full flex flex-col items-start group">
+                        <label htmlFor="gradeSelection" className="font-mono text-[10px] text-white/40 tracking-wider uppercase mb-2">
+                          Select Academic Class
+                        </label>
+                        <div className="relative w-full">
+                          <select
+                            id="gradeSelection"
+                            name="gradeSelection"
+                            required
+                            defaultValue=""
+                            className="w-full h-12 px-4 bg-[#0b101e]/60 border border-[#00AEEF] text-white text-xs rounded-xl appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#00AEEF]/50 transition-all duration-300 font-medium"
+                          >
+                            <option value="" disabled className="bg-[#070B14] text-white/50">Choose a class...</option>
+                            <option value="grade-6" className="bg-[#070B14] text-white">Grade 6 ICT </option>
+                            <option value="grade-7" className="bg-[#070B14] text-white">Grade 7 ICT </option>
+                            <option value="grade-8" className="bg-[#070B14] text-white">Grade 8 ICT </option>
+                            <option value="grade-9" className="bg-[#070B14] text-white">Grade 9 ICT </option>
+                            <option value="grade-10" className="bg-[#070B14] text-white">Grade 10 ICT</option>
+                            <option value="grade-11" className="bg-[#070B14] text-white">Grade 11 ICT</option>
                           </select>
-                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                          {/* Premium Custom Micro-Chevron Indicator */}
+                          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/40 group-hover:text-[#00AEEF] transition-colors duration-300">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
                         </div>
                       </div>
-                      <div>
-                        <label className="font-mono text-xs text-gray-400 ml-2">Preferred Intake</label>
-                        <div className="mt-2 relative">
-                          <select name="intake" required defaultValue="" className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#00AEEF] focus:ring-1 focus:ring-[#00AEEF] transition-all">
-                            <option value="" disabled>Select intake...</option>
-                            <option value="Next Available">Next Available Batch</option>
-                            <option value="Summer">Summer Intake</option>
-                            <option value="Fall">Fall Intake</option>
+
+                      {/* RIGHT SIDE: PREFERRED DAY DROPDOWN */}
+                      <div className="w-full flex flex-col items-start group">
+                        <label htmlFor="preferredDay" className="font-mono text-[10px] text-white/40 tracking-wider uppercase mb-2">
+                          Preferred Batch Day
+                        </label>
+                        <div className="relative w-full">
+                          <select
+                            id="preferredDay"
+                            name="preferredDay"
+                            required
+                            defaultValue=""
+                            className="w-full h-12 px-4 bg-[#0b101e]/40 border border-white/10 text-white text-xs rounded-xl appearance-none cursor-pointer focus:outline-none focus:border-[#00AEEF]/60 focus:ring-1 focus:ring-[#00AEEF]/30 transition-all duration-300 font-medium group-hover:border-white/20"
+                          >
+                            <option value="" disabled className="bg-[#070B14] text-white/50">Select preferred day...</option>
+                            <option value="saturday" className="bg-[#070B14] text-white">Saturday Batches</option>
+                            <option value="sunday" className="bg-[#070B14] text-white">Sunday Batches</option>
                           </select>
-                          <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
+                          {/* Premium Custom Micro-Chevron Indicator */}
+                          <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/40 group-hover:text-white/70 transition-colors duration-300">
+                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                          </div>
                         </div>
                       </div>
+
                     </div>
 
                     <div>
@@ -320,23 +352,25 @@ export default function Contact() {
 
                     <div className="grid md:grid-cols-2 gap-6 mt-2">
                       {/* Interactive Budget Slider */}
-                      <div>
-                        <div className="flex justify-between items-end mb-4">
-                          <label className="font-mono text-xs text-gray-400 ml-2">Estimated Budget (USD)</label>
-                          <span className="font-mono text-[#7B2CBF] font-bold">${budget.toLocaleString()}{budget >= 50000 ? '+' : ''}</span>
+                      <div className="flex flex-col justify-end pb-1">
+                        <div className="flex justify-between items-center mb-2 gap-2">
+                          <label className="font-mono text-xs text-gray-400 ml-2 whitespace-nowrap shrink-0">Estimated Budget</label>
+                          <span className="font-mono text-[#7B2CBF] font-bold whitespace-nowrap text-right">LKR {budget.toLocaleString()}{budget >= 150000 ? '+' : ''}</span>
                         </div>
-                        <input 
-                          type="range" 
-                          min="1000" 
-                          max="50000" 
-                          step="1000"
-                          value={budget}
-                          onChange={(e) => setBudget(Number(e.target.value))}
-                          className="w-full accent-[#7B2CBF] bg-[#0A0A0C] h-2 rounded-full outline-none"
-                        />
-                        <div className="flex justify-between text-gray-600 font-mono text-[10px] mt-2 px-2">
-                          <span>$1k</span>
-                          <span>$50k+</span>
+                        <div className="py-2">
+                          <input
+                            type="range"
+                            min="10000"
+                            max="150000"
+                            step="10000"
+                            value={budget}
+                            onChange={(e) => setBudget(Number(e.target.value))}
+                            className="w-full accent-[#7B2CBF] bg-[#0A0A0C] h-2 rounded-full outline-none"
+                          />
+                        </div>
+                        <div className="flex justify-between text-gray-600 font-mono text-[10px] mt-1 px-2">
+                          <span>LKR 10k</span>
+                          <span>LKR 150k+</span>
                         </div>
                       </div>
 
@@ -359,7 +393,7 @@ export default function Contact() {
                     <div>
                       <label className="font-mono text-xs text-gray-400 ml-2 block mb-3">Required Capabilities (Optional)</label>
                       <div className="flex flex-wrap gap-2">
-                        {['Web App', 'Mobile App', 'E-Commerce', 'AI/LLM Integration', 'Automation/n8n', 'UI/UX Redesign'].map(tech => (
+                        {['Web App', 'Final Year Projects', 'E-Commerce', 'AI/ML Integration', 'Automation/n8n', 'UI/UX Redesign','Wordpress Sites','Other'].map(tech => (
                           <label key={tech} className="cursor-pointer relative">
                             <input type="checkbox" name="stack" value={tech} className="peer sr-only" />
                             <div className="px-4 py-2 rounded-xl border border-white/10 bg-[#0A0A0C] text-sm text-gray-400 peer-checked:bg-[#7B2CBF]/10 peer-checked:border-[#7B2CBF] peer-checked:text-white transition-all">
