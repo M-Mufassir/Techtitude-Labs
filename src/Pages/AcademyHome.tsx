@@ -49,39 +49,43 @@ const Countdown = () => {
 export default function AcademyHome() {
   const pillars = [
     {
-      title: "Core Programming",
+      title: "A/L and O/L ICT Practicals",
       icon: <Code2 size={24} className="text-[#00AEEF]" />,
-      desc: "Python, JavaScript, and C++. The foundation of modern software engineering.",
+      desc: "O/L & A/L ICT curriculums mapped to real-world tech industry standards.",
       colSpan: "col-span-1 md:col-span-2",
       bg: "bg-gradient-to-br from-[#00AEEF]/10 to-transparent",
     },
     {
-      title: "AI & Machine Learning",
+      title: "ICT Fundamentals",
+      icon: <Zap size={24} className="text-[#00AEEF]" />,
+      desc: "Basics of ICT with Logic theory, Networking fundamentals and Troubleshooting ",
+      colSpan: "col-span-1",
+      bg: "bg-gradient-to-bl from-pink-500/10 to-transparent",
+      
+    },
+    {
+      title: "Basics of Programming",
       icon: <Cpu size={24} className="text-[#00AEEF]" />,
-      desc: "Neural networks, data science, and intelligent systems.",
+      desc: "Programming Fundamentals including basic core principles like OOP principles",
       colSpan: "col-span-1",
       bg: "bg-gradient-to-br from-[#7B2CBF]/10 to-transparent",
     },
+    
     {
-      title: "UI/UX Design",
+      title: "Software Development",
       icon: <Monitor size={24} className="text-[#00AEEF]" />,
-      desc: "Figma, wireframing, and creating beautiful user experiences.",
-      colSpan: "col-span-1",
-      bg: "bg-gradient-to-bl from-pink-500/10 to-transparent",
-    },
-    {
-      title: "ICT Fundamentals",
-      icon: <Zap size={24} className="text-[#00AEEF]" />,
-      desc: "O/L & A/L ICT curriculums mapped to real-world tech industry standards.",
+      desc: "Python, JavaScript, and C++. The foundation of modern software engineering.",
       colSpan: "col-span-1 md:col-span-2",
       bg: "bg-gradient-to-tr from-[#00AEEF]/5 to-transparent",
     }
+    
   ];
 
   const showcaseProjects = [
-    { title: "NeuroSync AI", type: "Machine Learning", author: "Sarah J." },
-    { title: "EcoTrack App", type: "Mobile Development", author: "David M." },
-    { title: "Defi Exchange UI", type: "UI/UX Design", author: "Aisha T." },
+    //after first workshop or practical, can update
+    { title: "Business Website", type: "Web Development", author: "Mohamed" },
+    // { title: "EcoTrack App", type: "Mobile Development", author: "David M." },
+    // { title: "Defi Exchange UI", type: "UI/UX Design", author: "Aisha T." },
   ];
 
   return (

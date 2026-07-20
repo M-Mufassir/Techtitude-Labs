@@ -61,11 +61,11 @@ export default function Courses() {
             className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16"
           >
             <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">1.2k+</div>
+              <div className="text-4xl font-bold text-[#00AEEF] font-mono">All Around Sri Lanka</div>
               <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Active Students</div>
             </div>
             <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">450+</div>
+              <div className="text-4xl font-bold text-[#00AEEF] font-mono">More</div>
               <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Projects Built</div>
             </div>
             <div className="text-center">
@@ -86,8 +86,8 @@ export default function Courses() {
             <div className="absolute top-0 right-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
             <div className="relative z-10">
               <span className="text-xs font-mono tracking-widest text-[#00AEEF] uppercase mb-4 block">Grade 10 & 11 ICT</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Code Core</h3>
-              <p className="text-gray-400 font-body max-w-md">Complete syllabus coverage paired with practical programming labs. Designed specifically to build strong foundational logic early.</p>
+              <h3 className="text-2xl font-bold font-display text-white mb-4">ICT Hands-on For O/L Students</h3>
+              <p className="text-gray-400 font-body max-w-md">Complete syllabus coverage paired with hand on practical sessions. Designed specifically to build strong foundational logic early.</p>
             </div>
           </div>
 
@@ -95,9 +95,9 @@ export default function Courses() {
           <div className="relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
             <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#00AEEF]/10 blur-[40px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
             <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Advanced</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Web Engineering</h3>
-              <p className="text-gray-400 font-body text-sm">Full-stack architectures, JavaScript ecosystems, and advanced database engineering.</p>
+              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Engineering Foundation</span>
+              <h3 className="text-2xl font-bold font-display text-white mb-4">Path To Web Engineering</h3>
+              <p className="text-gray-400 font-body text-sm">Introduction to Software Engineering and Fullstack Projects with New Technologies.</p>
             </div>
           </div>
 
@@ -107,7 +107,7 @@ export default function Courses() {
             <div className="relative z-10">
               <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Future Tech</span>
               <h3 className="text-2xl font-bold font-display text-white mb-4">Next-Gen AI & ML</h3>
-              <p className="text-gray-400 font-body text-sm">Neural networks, data science pipelines, and practical implementation of automation models.</p>
+              <p className="text-gray-400 font-body text-sm">Hands-on Practical with Prompt Engineering and their Application for Learning New things.</p>
             </div>
           </div>
 
@@ -115,9 +115,9 @@ export default function Courses() {
           <div className="md:col-span-2 lg:col-span-2 relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
             <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Design</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">UI/UX & Interactive Design</h3>
-              <p className="text-gray-400 font-body max-w-md">Design thinking, high-fidelity wireframing, motion design prototyping, and Figma workflows.</p>
+              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Advanced Level ICT</span>
+              <h3 className="text-2xl font-bold font-display text-white mb-4">ICT Hands-on For Advanced Level</h3>
+              <p className="text-gray-400 font-body max-w-md">Get into the real world with having knowledge with Advanced Level ICT, and Developing Yourselves with te Tech Field.</p>
             </div>
           </div>
         </div>
@@ -128,7 +128,7 @@ export default function Courses() {
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row gap-16">
           <div className="md:w-1/3">
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-6">Career Accelerator</h2>
-            <p className="text-gray-400 font-body">Our vertical track takes you from foundational syntax to a fully placed engineer.</p>
+            <p className="text-gray-400 font-body">Our vertical track takes you from Theory to a fully prepared future Students.</p>
           </div>
           <div className="md:w-2/3 relative">
             {/* Vertical Glowing Line */}
@@ -136,9 +136,9 @@ export default function Courses() {
             
             <div className="space-y-12 pl-12 md:pl-20 relative">
               {[
-                { step: "01", title: "Foundational Deep-Dive", desc: "Mastering syntax and structural logic. Building the bedrock of computer science." },
-                { step: "02", title: "Final Year Project Guidance", desc: "Dedicated mentorship to architect, build, and deploy production-ready capstone systems." },
-                { step: "03", title: "Career Development Bootcamps", desc: "Technical resume building, mock engineering interviews, portfolio optimization, and direct placement drives." }
+                { step: "01", title: "Foundational Deep-Dive", desc: "Mastering the Theory that align with the practical knowledge." },
+                { step: "02", title: "Successfully Complete A/L and O/L", desc: "with the hand-on practicals, and gained Knowledge, complete the milestone." },
+                { step: "03", title: "Career Development Bootcamps", desc: "Get into the real world with the knowledge of Software Engineering fondations and real world experience." }
               ].map((item, i) => (
                 <div key={i} className="relative group">
                   {/* Glowing Node */}
@@ -170,8 +170,8 @@ export default function Courses() {
               </thead>
               <tbody className="text-white font-body text-sm md:text-base">
                 <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="py-6">Oct 12, 2026</td>
-                  <td className="py-6 font-medium">Building Workflows with Advanced Automations</td>
+                  <td className="py-6">August, 2026</td>
+                  <td className="py-6 font-medium">O/L ICT Practical Workshop For grade 10 & 11 Students</td>
                   <td className="py-6 text-right">
                     <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
                       Reserve Seat
@@ -179,8 +179,8 @@ export default function Courses() {
                   </td>
                 </tr>
                 <tr className="hover:bg-white/5 transition-colors">
-                  <td className="py-6">Oct 26, 2026</td>
-                  <td className="py-6 font-medium">Modern React Server Components Architecture</td>
+                  <td className="py-6">October, 2026</td>
+                  <td className="py-6 font-medium">HTML and Programming Foundations for O/L Curriculum</td>
                   <td className="py-6 text-right">
                     <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
                       Reserve Seat
@@ -212,9 +212,9 @@ export default function Courses() {
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-8">Questions?</h2>
             <Accordion items={[
-              { title: "Do I need prior coding experience?", content: "Not for the Code Core track. We start from the absolute basics of logic and computational thinking before moving into specific syntax." },
+              { title: "Do I need to know the Basics", content: "Not for the Practicals, We start from the absolute basics of theory with a clear explainations and then to the practicals." },
               { title: "Are classes online or in-person?", content: "We offer hybrid models. You can join the live streams from anywhere or attend in-person sessions at our campus." },
-              { title: "Do you provide job placement?", content: "Our Career Accelerator bootcamps connect top-performing students directly with our industry partners for internships and junior roles." }
+              { title: "Do you provide Certificates", content: "Our bootcamps & Workshops based on the course content we provide a completion certification." }
             ]} />
           </div>
 

@@ -123,6 +123,15 @@ export default function Services() {
                 ))}
               </div>
             </div>
+            {/*Robotics & Embedded Systems */}
+            <div className="glass rounded-2xl p-6 border-t-2 border-[#e0c4ff]">
+              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Robotics & Embedded Systems</h4>
+              <div className="flex flex-wrap gap-2">
+                {["Embedded C", "ROS 2", "Python", "ESP-32","Raspberry Pi", "Linux"].map(tech => (
+                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -1,64 +1,64 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Cpu, MonitorSmartphone, ArrowUpRight, Filter } from "lucide-react";
+import { Cpu, ArrowUpRight, Filter } from "lucide-react";
 import Reveal from "../components/Reveal";
 
 export default function StudentShowcase() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filters = ["All", "Web App", "AI Model", "Mobile App"];
+  const filters = ["All", "AI", "Practicals", "Development"];
 
   const projects = [
     {
       id: 1,
-      title: "NeuroSync API",
-      category: "AI Model",
-      student: "Sarah Jenkins",
-      desc: "A highly optimized neural network API built with FastAPI that classifies brainwave telemetry in real-time.",
+      title: "Hand Controlled Car",
+      category: "AI & Embedded System Model",
+      student: "Umar Rashid",
+      desc: "A Hand controlled car DIY Project that operate with hand gesture signals - using Open CV library",
       icon: <Cpu size={32} className="text-[#00AEEF]" />,
       colSpan: "col-span-1 md:col-span-2 row-span-2",
       bg: "bg-gradient-to-br from-[#00AEEF]/10 to-[#070B14]",
     },
-    {
-      id: 2,
-      title: "DeFi Dashboard",
-      category: "Web App",
-      student: "Aisha T.",
-      desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 3,
-      title: "EcoTrack",
-      category: "Mobile App",
-      student: "David M.",
-      desc: "React Native application helping users track and offset their daily carbon footprint.",
-      icon: <MonitorSmartphone size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 4,
-      title: "Atlas CRM",
-      category: "Web App",
-      student: "Marcus R.",
-      desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1 md:col-span-2",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 5,
-      title: "VisionScan",
-      category: "AI Model",
-      student: "Elena G.",
-      desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
-      icon: <Cpu size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    }
+    // {
+    //   id: 2,
+    //   title: "DeFi Dashboard",
+    //   category: "Web App",
+    //   student: "Aisha T.",
+    //   desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
+    //   icon: <Code2 size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 3,
+    //   title: "EcoTrack",
+    //   category: "Mobile App",
+    //   student: "David M.",
+    //   desc: "React Native application helping users track and offset their daily carbon footprint.",
+    //   icon: <MonitorSmartphone size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Atlas CRM",
+    //   category: "Web App",
+    //   student: "Marcus R.",
+    //   desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
+    //   icon: <Code2 size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1 md:col-span-2",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 5,
+    //   title: "VisionScan",
+    //   category: "AI Model",
+    //   student: "Elena G.",
+    //   desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
+    //   icon: <Cpu size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // }
   ];
 
   const filteredProjects = projects.filter(
