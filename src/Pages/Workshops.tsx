@@ -6,50 +6,50 @@ export default function Workshops() {
   const workshops = [
     {
       id: "ws-001",
-      title: "Grade 10 & 11 O/L ICT - HTML Fundamentals Module",
+      title: "Grade 10 & 11 O/L ICT - Number Systems and Logic Gates",
       date: "Aug 02, 2026",
       time: "9:00 AM - 12:00 PM",
       location: "Thihariya",
-      instructor: "Mohamed Mufassir",
+      instructor: "Instructors from our team",
       capacity: "30 Seats",
       status: "Registration Open",
-      tag: "HTML",
-      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
-    },
-    {
-      id: "ws-002",
-      title: "Grade 10 & 11 O/L ICT - Flowcharts & Algorithms",
-      date: "Aug 09, 2026",
-      time: "9:00 AM - 12:00 PM",
-      location: "Thihariya",
-      instructor: "Mohamed Mufassir",
-      capacity: "30 Seats",
-      status: "Registration Open",
-      tag: "Flowcharts",
+      tag: "Gates, Number Systems",
       registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     },
     {
       id: "ws-003",
-      title: "Grade 10 & 11 O/L ICT - Microsoft Excel Essentials",
-      date: "Aug 16, 2026",
+      title: "Grade 10 & 11 O/L ICT - Microsoft Tools",
+      date: "Aug 09, 2026",
       time: "9:00 AM - 12:00 PM",
       location: "Thihariya",
-      instructor: "Ahamed Ishrath",
+      instructor: "Instructors from our team",
       capacity: "30 Seats",
       status: "Registration Open",
       tag: "Excel",
       registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     },
     {
+      id: "ws-002",
+      title: "Grade 10 & 11 O/L ICT - HTML Fundamentals ",
+      date: "Aug 13, 2026",
+      time: "9:00 AM - 12:00 PM",
+      location: "Thihariya",
+      instructor: "Instructors from our team",
+      capacity: "30 Seats",
+      status: "Registration Open",
+      tag: "HTML",
+      registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
+    },
+        {
       id: "ws-004",
-      title: "Grade 10 & 11 O/L ICT - Number Systems & Binary",
+      title: "Grade 10 & 11 O/L ICT - Programming Fundamentals",
       date: "Aug 23, 2026",
       time: "9:00 AM - 12:00 PM",
       location: "Thihariya",
-      instructor: "Mohamed Musharraf",
+      instructor: "Instructors from our team",
       capacity: "30 Seats",
       status: "Registration Open",
-      tag: "Number Systems",
+      tag: "Pseudo Code",
       registrationLink: "YOUR_GOOGLE_FORM_URL_HERE"
     }
   ];

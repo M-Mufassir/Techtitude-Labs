@@ -1,64 +1,79 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Cpu, MonitorSmartphone, ArrowUpRight, Filter } from "lucide-react";
+import { Code2,Cpu, ArrowUpRight, Filter } from "lucide-react";
 import Reveal from "../components/Reveal";
+import cafe1 from "../assets/Students_Works/Cafe_website.png";
+import robot1 from "../assets/Students_Works/robot_arm.png";
 
 export default function Builds() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filters = ["All", "Web App", "AI Model", "Mobile App"];
+  const filters = ["All", "Web App", "O/L", "A/L"];
 
   const projects = [
     {
       id: 1,
-      title: "NeuroSync API",
-      category: "AI Model",
-      student: "Sarah Jenkins",
-      desc: "A highly optimized neural network API built with FastAPI that classifies brainwave telemetry in real-time.",
-      icon: <Cpu size={32} className="text-[#00AEEF]" />,
+      title: "Cafe Website",
+      category: "Web Development",
+      student: "Workshop - 1",
+      desc: "A Cafe website Built to get a practical Knowledge of HTML.",
+      icon: <Code2 size={32} className="text-[#00AEEF]" />,
+      image: cafe1,
       colSpan: "col-span-1 md:col-span-2 row-span-2",
       bg: "bg-gradient-to-br from-[#00AEEF]/10 to-[#070B14]",
     },
     {
       id: 2,
-      title: "DeFi Dashboard",
-      category: "Web App",
-      student: "Aisha T.",
-      desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 3,
-      title: "EcoTrack",
-      category: "Mobile App",
-      student: "David M.",
-      desc: "React Native application helping users track and offset their daily carbon footprint.",
-      icon: <MonitorSmartphone size={32} className="text-white/50" />,
-      colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 4,
-      title: "Atlas CRM",
-      category: "Web App",
-      student: "Marcus R.",
-      desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
-      icon: <Code2 size={32} className="text-white/50" />,
-      colSpan: "col-span-1 md:col-span-2",
-      bg: "bg-[#0B101E]",
-    },
-    {
-      id: 5,
-      title: "VisionScan",
-      category: "AI Model",
-      student: "Elena G.",
-      desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
+      title: "Robot Arm",
+      category: "Embedded",
+      student: "Workshop - 2",
+      desc: "Robotic arm using Arduino.",
       icon: <Cpu size={32} className="text-white/50" />,
+      image: robot1,
       colSpan: "col-span-1",
-      bg: "bg-[#0B101E]",
-    }
+      bg: "bg-gradient-to-br from-[#00AEEF]/10 to-[#070B14]",
+    },
+
+    // {
+    //   id: 2,
+    //   title: "DeFi Dashboard",
+    //   category: "Web App",
+    //   student: "Aisha T.",
+    //   desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
+    //   icon: <Code2 size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 3,
+    //   title: "EcoTrack",
+    //   category: "Mobile App",
+    //   student: "David M.",
+    //   desc: "React Native application helping users track and offset their daily carbon footprint.",
+    //   icon: <MonitorSmartphone size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 4,
+    //   title: "Atlas CRM",
+    //   category: "Web App",
+    //   student: "Marcus R.",
+    //   desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
+    //   icon: <Code2 size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1 md:col-span-2",
+    //   bg: "bg-[#0B101E]",
+    // },
+    // {
+    //   id: 5,
+    //   title: "VisionScan",
+    //   category: "AI Model",
+    //   student: "Elena G.",
+    //   desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
+    //   icon: <Cpu size={32} className="text-white/50" />,
+    //   colSpan: "col-span-1",
+    //   bg: "bg-[#0B101E]",
+    // }
   ];
 
   const filteredProjects = projects.filter(
@@ -68,7 +83,7 @@ export default function Builds() {
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#00AEEF]/30">
       <div className="max-w-7xl mx-auto px-6">
-        
+
         {/* HEADER SECTION */}
         <section className="mb-20">
           <Reveal>
@@ -78,24 +93,27 @@ export default function Builds() {
             <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
               <div>
                 <h1 className="text-5xl md:text-6xl font-bold font-display tracking-tight mb-4">
-                  Student <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00AEEF] to-white">Builds.</span>
+                  Student{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-[#00AEEF] to-white">
+                    Builds.
+                  </span>
                 </h1>
                 <p className="text-[#8A99AD] text-lg max-w-xl">
-                  Explore the production-ready applications, AI pipelines, and systems engineered by our students in the Academy.
+                  Explore the Student's Works and Assignments and Workshop Practicals.
                 </p>
               </div>
-              
+
               {/* FILTERS */}
               <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                 <Filter size={16} className="text-[#8A99AD] mr-2 hidden sm:block" />
-                {filters.map(f => (
+                {filters.map((f) => (
                   <button
                     key={f}
                     onClick={() => setActiveFilter(f)}
                     className={`px-5 py-2 rounded-full text-sm font-bold font-display transition-all duration-300 whitespace-nowrap ${
-                      activeFilter === f 
-                        ? 'bg-[#00AEEF] text-[#070B14] shadow-[0_0_15px_rgba(0,174,239,0.3)]' 
-                        : 'border border-white/10 hover:bg-white/5 text-[#8A99AD] hover:text-white'
+                      activeFilter === f
+                        ? "bg-[#00AEEF] text-[#070B14] shadow-[0_0_15px_rgba(0,174,239,0.3)]"
+                        : "border border-white/10 hover:bg-white/5 text-[#8A99AD] hover:text-white"
                     }`}
                   >
                     {f}
@@ -120,6 +138,18 @@ export default function Builds() {
                   transition={{ duration: 0.4, delay: idx * 0.05 }}
                   className={`relative group rounded-3xl border border-white/5 overflow-hidden ${project.bg} ${project.colSpan}`}
                 >
+                  {/* Background image */}
+                  {project.image && (
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  )}
+
+                  {/* Gradient overlay so text stays readable over the image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#070B14] via-[#070B14]/70 to-[#070B14]/20 z-[5]" />
+
                   <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                     <div className="flex items-start justify-between">
                       <div className="w-14 h-14 rounded-2xl bg-[#070B14] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
