@@ -20,9 +20,11 @@ export default function ImageSlideshow({ images = [], alt = "" }: ImageSlideshow
 
   useEffect(() => {
     if (isHovered || images.length <= 1) return;
+    
     timerRef.current = setInterval(() => {
       setIndex((i) => (i + 1) % images.length);
-    }, 3200);
+    }, 3200); 
+    
     return () => {
       if (timerRef.current) clearInterval(timerRef.current);
     };
@@ -48,9 +50,13 @@ export default function ImageSlideshow({ images = [], alt = "" }: ImageSlideshow
           key={src}
           src={src}
           alt={`${alt} — screenshot ${i + 1} of ${images.length}`}
-          className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-700 ease-out ${
+          className={`absolute inset-0 w-full h-full object-cover ${
             i === index ? "opacity-100" : "opacity-0"
           }`}
+          style={{
+            objectPosition: isHovered && i === index ? "bottom" : "top",
+            transition: `opacity 700ms ease-out, object-position ${isHovered && i === index ? '4s linear' : '700ms ease-out'}`
+          }}
           loading="lazy"
         />
       ))}

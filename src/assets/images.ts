@@ -20,24 +20,12 @@ import hard1 from './projects_images/hardwarewebsite/img-1.png';
 import hard2 from './projects_images/hardwarewebsite/img-2.png';
 import hard3 from './projects_images/hardwarewebsite/img-3.png';
 
-import detect1 from './projects_images/Plant_Disease_Detection/image-1.png';
-import detect2 from './projects_images/Plant_Disease_Detection/image-2.png';
-import detect3 from './projects_images/Plant_Disease_Detection/image-3.png';
-import detect4 from './projects_images/Plant_Disease_Detection/image-4.png';
-import detect5 from './projects_images/Plant_Disease_Detection/image-5.png';
-import detect6 from './projects_images/Plant_Disease_Detection/image-6.png';
-import detect7 from './projects_images/Plant_Disease_Detection/image-7.png';
+import detect1 from './projects_images/Plant_Disease_Detection/Detex_Site-1.png';
+import detect2 from './projects_images/Plant_Disease_Detection/Detex_Site-2.png';
 
-import herit1 from './projects_images/Heritedge/image-1.png';
-import herit2 from './projects_images/Heritedge/image-2.png';
-import herit3 from './projects_images/Heritedge/image-3.png';
-import herit4 from './projects_images/Heritedge/image-4.png';
-import herit5 from './projects_images/Heritedge/image-5.png';
-import herit6 from './projects_images/Heritedge/image-6.png';
-import herit7 from './projects_images/Heritedge/image-7.png';
-import herit8 from './projects_images/Heritedge/image-8.png';
-import herit9 from './projects_images/Heritedge/image-9.png';
-import herit10 from './projects_images/Heritedge/image-10.png';
+import herit1 from './projects_images/Heritedge/Herit-Edge-1.png';
+import herit2 from './projects_images/Heritedge/Herit-Edge-2.png';
+import herit3 from './projects_images/Heritedge/Herit-Edge-3.png';
 
 // Test images from Our_Work folder
 import testImage1 from './Our_Work/image-1.jpg';
@@ -95,8 +83,8 @@ export const velocityReelImages = {
 
 export const proofLedgerImages: Record<string, string[]> = {
   "project-pos": [pos1, pos2, pos3, pos4],
-  "project-detectx": [detect1, detect2, detect3, detect4, detect5, detect6, detect7],
-  "project-herit-edge": [herit1, herit2, herit3, herit4, herit5, herit6, herit7, herit8, herit9, herit10],
+  "project-detectx": [detect1, detect2],
+  "project-herit-edge": [herit1, herit2, herit3],
   "project-restaurant": [rest1, rest2, rest3],
   "project-jewellery": [jew1, jew2, jew3],
   "project-booking": [book1, book2, book3],
