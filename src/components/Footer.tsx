@@ -22,8 +22,8 @@ export default function Footer() {
       {/* Footer Content layered on top */}
       <div className="relative z-10">
         <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3 md:items-center">
-          <div className="flex justify-start">
-            <Logo variant="footer" className="!h-32 sm:!h-48 lg:!h-56" />
+          <div className="flex justify-start mb-6 md:mb-0">
+            <Logo variant="footer" className="!h-20 sm:!h-28 md:!h-36 lg:!h-56 object-contain" />
           </div>
 
           <div className="font-mono text-sm text-muted flex flex-col gap-2">

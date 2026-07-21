@@ -70,7 +70,7 @@ export const splitGatewayContent = {
     "SELECT u.id, u.profile FROM users u INNER JOIN telemetry t ON u.id = t.user_id WHERE t.active = true;"
   ],
   mobile: {
-    titleLine1: "Where Learning",
+    titleLine1: "Where Learning\n",
     titleLine2: "Meets Innovation",
     academy: {
       subtitle: "Learn • Build • Grow",

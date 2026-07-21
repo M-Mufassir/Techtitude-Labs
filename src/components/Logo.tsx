@@ -17,7 +17,7 @@ export default function Logo({ className = "", variant = "header" }: LogoProps) 
     <img 
       src={src} 
       alt="Techtitude Labs Logo" 
-      className={`${baseSize} w-auto object-contain ${className}`}
+      className={`${baseSize} w-auto max-w-full object-contain ${className}`}
     />
   );
 }

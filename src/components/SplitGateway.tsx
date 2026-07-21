@@ -157,7 +157,7 @@ export default function SplitGateway() {
           className="absolute top-[40%] left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
         >
           <div className="flex items-center justify-center mb-2 mt-4">
-            <Logo className="!h-16 sm:!h-20" />
+            <Logo className="!h-24 sm:!h-32" />
           </div>
           <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em] whitespace-pre-line">
             {splitGatewayContent.mobile.titleLine1}
