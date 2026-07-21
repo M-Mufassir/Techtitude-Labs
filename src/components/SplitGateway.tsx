@@ -154,13 +154,14 @@ export default function SplitGateway() {
             scale: activeMobileZone ? 0.85 : 1,
           }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-[40%] left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
+          className="absolute top-[45%] left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
         >
           <div className="flex items-center justify-center mb-2 mt-4">
             <Logo className="!h-24 sm:!h-32" />
           </div>
           <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em] whitespace-pre-line">
             {splitGatewayContent.mobile.titleLine1}
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00AEEF] to-[#7B2CBF] font-medium">{splitGatewayContent.mobile.titleHighlight}</span>
             {splitGatewayContent.mobile.titleLine2}
           </h1>
         </motion.div>
@@ -210,6 +211,13 @@ export default function SplitGateway() {
             >
               {splitGatewayContent.mobile.academy.title}
             </motion.h2>
+
+            <motion.div
+              animate={{ opacity: activeMobileZone === 'academy' ? 1 : 0.5 }}
+              className="flex items-center gap-1.5 mt-1 font-mono text-[10px] text-white/40 tracking-wider uppercase"
+            >
+              <span className="w-1 h-1 rounded-full bg-[#00AEEF]"></span> ACADEMY.SYS
+            </motion.div>
 
             <motion.div
               animate={{
@@ -279,6 +287,13 @@ export default function SplitGateway() {
             >
               {splitGatewayContent.mobile.dev.title}
             </motion.h2>
+
+            <motion.div
+              animate={{ opacity: activeMobileZone === 'dev' ? 1 : 0.5 }}
+              className="flex items-center gap-1.5 mt-1 font-mono text-[10px] text-white/40 tracking-wider uppercase"
+            >
+              <span className="w-1 h-1 rounded-full bg-[#7B2CBF]"></span> DEV_STUDIO.EXE
+            </motion.div>
 
             <motion.div
               animate={{

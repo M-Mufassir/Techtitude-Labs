@@ -21,25 +21,25 @@ export default function Footer() {
 
       {/* Footer Content layered on top */}
       <div className="relative z-10">
-        <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3 md:items-center text-center md:text-left">
+        <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3 md:items-center">
           <div className="flex justify-center md:justify-start mb-6 md:mb-0">
             <Logo variant="footer" className="!h-32 sm:!h-40 md:!h-48 lg:!h-56 object-contain" />
           </div>
 
-          <div className="font-mono text-sm text-muted flex flex-col items-center md:items-start gap-2">
+          <div className="font-mono text-sm text-muted flex flex-col gap-2">
             <span className="text-ink/70 mb-1">// sitemap</span>
-            <NavLink to="/about" className="hover:text-accent transition-colors">About</NavLink>
-            <NavLink to="/services" className="hover:text-accent transition-colors">Services</NavLink>
-            <NavLink to="/courses" className="hover:text-accent transition-colors">Courses</NavLink>
-            <NavLink to="/contact" className="hover:text-accent transition-colors">Contact</NavLink>
+            <NavLink to="/about" className="hover:text-accent w-fit transition-colors">About</NavLink>
+            <NavLink to="/services" className="hover:text-accent w-fit transition-colors">Services</NavLink>
+            <NavLink to="/courses" className="hover:text-accent w-fit transition-colors">Courses</NavLink>
+            <NavLink to="/contact" className="hover:text-accent w-fit transition-colors">Contact</NavLink>
           </div>
 
-          <div className="font-mono text-sm text-muted flex flex-col items-center md:items-start gap-2">
+          <div className="font-mono text-sm text-muted flex flex-col gap-2">
             <span className="text-ink/70 mb-1">// reach us</span>
-            <a href="mailto:techtitude.labs@gmail.com" className="hover:text-accent transition-colors">
+            <a href="mailto:techtitude.labs@gmail.com" className="hover:text-accent w-fit transition-colors">
               techtitude.labs@gmail.com
             </a>
-            <span className="mt-2 text-ink/40 text-center md:text-left">Learn &middot; Build &middot; Innovate</span>
+            <span className="mt-2 text-ink/40 w-full text-center md:text-left">Learn &middot; Build &middot; Innovate</span>
           </div>
         </div>
 

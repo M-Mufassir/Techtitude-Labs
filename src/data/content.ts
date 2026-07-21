@@ -71,7 +71,8 @@ export const splitGatewayContent = {
   ],
   mobile: {
     titleLine1: "Where Learning\n",
-    titleLine2: "Meets Innovation",
+    titleHighlight: "Meets",
+    titleLine2: " Innovation",
     academy: {
       subtitle: "Learn • Build • Grow",
       title: "ACADEMY",
