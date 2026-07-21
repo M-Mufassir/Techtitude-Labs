@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
-//import Logo from './Logo';
+import Logo from './Logo';
 
 // ACADEMY: Dropping Study Materials
 const STUDY_ICONS = [BookOpen, GraduationCap, Book, Bookmark, Library, PenTool];
@@ -154,11 +154,10 @@ export default function SplitGateway() {
             scale: activeMobileZone ? 0.85 : 1,
           }}
           transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute top-1/2 left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
+          className="absolute top-[40%] left-1/2 z-50 text-center w-full px-6 pointer-events-none flex flex-col items-center"
         >
-          <div className="flex items-center justify-center gap-2 mb-3">
-             <span className="font-['Space_Grotesk'] font-bold text-white text-[0.85rem] tracking-[0.35em]">TECHTITUDE</span>
-             <span className="font-['Space_Grotesk'] font-medium text-[#00AEEF] text-[0.85rem] tracking-[0.2em]">LABS</span>
+          <div className="flex items-center justify-center mb-2 mt-4">
+            <Logo className="!h-16 sm:!h-20" />
           </div>
           <h1 className="font-['Space_Grotesk'] font-bold text-white text-[1.8rem] leading-[1.2] tracking-[-0.03em] whitespace-pre-line">
             {splitGatewayContent.mobile.titleLine1}
@@ -331,7 +330,7 @@ export default function SplitGateway() {
           filter: hoveredZone === null ? "blur(0px)" : "blur(12px)"
         }}
         transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center select-none w-full max-w-4xl px-4 flex flex-col items-center justify-center"
+        className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 z-50 pointer-events-none text-center select-none w-full max-w-4xl px-4 flex flex-col items-center justify-center"
       >
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -350,14 +349,8 @@ export default function SplitGateway() {
           <div className="relative z-10 flex flex-col items-center">
             
             {/* Ultra-Premium Minimal Logo Header */}
-            <div className="flex items-center gap-3 mb-6 mix-blend-difference">
-              <span className="font-['Space_Grotesk'] font-bold text-white text-xs tracking-[0.4em] uppercase">
-                TECHTITUDE
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#00AEEF] animate-pulse"></span>
-              <span className="font-['Space_Grotesk'] font-medium text-white/50 text-[11px] tracking-[0.3em] uppercase">
-                LABS
-              </span>
+            <div className="flex items-center justify-center mb-4">
+              <Logo className="!h-24 sm:!h-32 lg:!h-40" />
             </div>
 
             {/* The Kinetic Asymmetric Slogan */}

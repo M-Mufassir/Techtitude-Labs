@@ -1,23 +1,23 @@
+import headerLogo from "../assets/Icon/Header.png";
+import footerLogo from "../assets/Icon/Footer.png";
+
 type LogoProps = {
   className?: string;
+  variant?: "header" | "footer";
 };
 
-/**
- * Wordmark placeholder built to match the supplied brand guide
- * (Space Grotesk bold "TECHTITUDE" + spaced "LABS" in accent blue).
- *
- * To swap in the real logo file: drop it at /public/logo.png and replace
- * the JSX below with: <img src="/logo.png" alt="Techtitude Labs" className={className} />
- */
-export default function Logo({ className = "" }: LogoProps) {
+export default function Logo({ className = "", variant = "header" }: LogoProps) {
+  // Use footerLogo for the footer, and headerLogo for the header
+  const src = variant === "footer" ? footerLogo : headerLogo; 
+  
+  // Increase the base size for the footer variant, and also make the header larger
+  const baseSize = variant === "footer" ? "h-16 sm:h-20" : "h-12 sm:h-16 lg:h-20";
+
   return (
-    <div className={`flex flex-col leading-none select-none ${className}`}>
-      <span className="font-display font-bold tracking-tight text-ink text-lg sm:text-xl">
-        TECHTITUDE
-      </span>
-      <span className="font-display font-medium text-accent text-[0.65rem] sm:text-xs tracking-[0.45em] pl-[2px]">
-        LABS
-      </span>
-    </div>
+    <img 
+      src={src} 
+      alt="Techtitude Labs Logo" 
+      className={`${baseSize} w-auto object-contain ${className}`}
+    />
   );
 }

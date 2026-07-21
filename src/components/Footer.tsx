@@ -21,12 +21,9 @@ export default function Footer() {
 
       {/* Footer Content layered on top */}
       <div className="relative z-10">
-        <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3">
-          <div>
-            <Logo />
-            <p className="mt-4 text-sm text-muted max-w-xs">
-              Empowering the next generation of innovators through technology.
-            </p>
+        <div className="max-w-6xl mx-auto px-6 py-14 grid gap-10 md:grid-cols-3 md:items-center">
+          <div className="flex justify-start">
+            <Logo variant="footer" className="!h-32 sm:!h-48 lg:!h-56" />
           </div>
 
           <div className="font-mono text-sm text-muted flex flex-col gap-2">
@@ -47,7 +44,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/5 pt-6 pb-32 lg:pb-24 text-center text-xs font-mono text-muted/50">
-          © {new Date().getFullYear()} Techtitude Labs. All rights reserved.
+          © {new Date().getFullYear()} TechTitude Labs. All rights reserved.
         </div>
       </div>
     </footer>
