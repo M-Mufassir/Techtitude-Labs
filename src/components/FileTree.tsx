@@ -1,0 +1,196 @@
+import { useState } from "react"
+import { cn } from "../lib/utils"
+export interface FileNode {
+  name: string
+  type: "file" | "folder"
+  children?: FileNode[]
+  extension?: string
+}
+
+interface FileTreeProps {
+  data: FileNode[]
+  className?: string
+}
+
+interface FileItemProps {
+  node: FileNode
+  depth: number
+  isLast: boolean
+  parentPath: boolean[]
+}
+
+const getFileIcon = (extension?: string) => {
+  const iconMap: Record<string, { color: string; icon: string }> = {
+    tsx: { color: "text-[#00AEEF]", icon: "⚛" },
+    ts: { color: "text-[#00AEEF]", icon: "◆" },
+    jsx: { color: "text-[#00AEEF]", icon: "⚛" },
+    js: { color: "text-[#eab308]", icon: "◆" },
+    css: { color: "text-[#a855f7]", icon: "◈" },
+    json: { color: "text-[#10b981]", icon: "{}" },
+    md: { color: "text-[#00AEEF]", icon: "◈" },
+    svg: { color: "text-[#f97316]", icon: "◐" },
+    png: { color: "text-[#3b82f6]", icon: "◑" },
+    default: { color: "text-white/60", icon: "◇" },
+  }
+  return iconMap[extension || "default"] || iconMap.default
+}
+
+function FileItem({ node, depth, isLast, parentPath }: FileItemProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [isHovered, setIsHovered] = useState(false)
+
+  const isFolder = node.type === "folder"
+  const hasChildren = isFolder && node.children && node.children.length > 0
+  const fileIcon = getFileIcon(node.extension)
+
+  return (
+    <div className="select-none">
+      <div
+        className={cn(
+          "group relative flex items-center gap-2 py-1.5 px-2 rounded-md cursor-pointer",
+          "transition-all duration-200 ease-out",
+          isHovered && "bg-white/5",
+        )}
+        onClick={() => isFolder && setIsOpen(!isOpen)}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        style={{ paddingLeft: `${depth * 16 + 8}px` }}
+      >
+        {/* Tree lines */}
+        {depth > 0 && (
+          <div className="absolute left-0 top-0 bottom-0 flex" style={{ left: `${(depth - 1) * 16 + 16}px` }}>
+            <div className={cn("w-px transition-colors duration-200", isHovered ? "bg-[#00AEEF]/40" : "bg-white/10")} />
+          </div>
+        )}
+
+        {/* Folder/File indicator */}
+        <div
+          className={cn(
+            "flex items-center justify-center w-4 h-4 transition-transform duration-200 ease-out",
+            isFolder && isOpen && "rotate-90",
+          )}
+        >
+          {isFolder ? (
+            <svg
+              width="6"
+              height="8"
+              viewBox="0 0 6 8"
+              fill="none"
+              className={cn("transition-colors duration-200", isHovered ? "text-[#00AEEF]" : "text-white/40")}
+            >
+              <path
+                d="M1 1L5 4L1 7"
+                stroke="currentColor"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          ) : (
+            <span className={cn("text-xs transition-opacity duration-200", fileIcon.color)}>{fileIcon.icon}</span>
+          )}
+        </div>
+
+        {/* Icon */}
+        <div
+          className={cn(
+            "flex items-center justify-center w-5 h-5 rounded transition-all duration-200",
+            isFolder
+              ? isHovered
+                ? "text-[#00AEEF] scale-110"
+                : "text-white/60"
+              : isHovered
+                ? cn(fileIcon.color, "scale-110")
+                : cn(fileIcon.color, "opacity-70"),
+          )}
+        >
+          {isFolder ? (
+            <svg width="16" height="14" viewBox="0 0 16 14" fill="currentColor">
+              <path d="M1.5 1C0.671573 1 0 1.67157 0 2.5V11.5C0 12.3284 0.671573 13 1.5 13H14.5C15.3284 13 16 12.3284 16 11.5V4.5C16 3.67157 15.3284 3 14.5 3H8L6.5 1H1.5Z" />
+            </svg>
+          ) : (
+            <svg width="14" height="16" viewBox="0 0 14 16" fill="currentColor" opacity="0.8">
+              <path d="M1.5 0C0.671573 0 0 0.671573 0 1.5V14.5C0 15.3284 0.671573 16 1.5 16H12.5C13.3284 16 14 15.3284 14 14.5V4.5L9.5 0H1.5Z" />
+              <path d="M9 0V4.5H14" fill="currentColor" fillOpacity="0.5" />
+            </svg>
+          )}
+        </div>
+
+        {/* Name */}
+        <span
+          className={cn(
+            "font-mono text-sm transition-colors duration-200 text-left",
+            isFolder
+              ? isHovered
+                ? "text-white"
+                : "text-white/90"
+              : isHovered
+                ? "text-white"
+                : "text-white/80",
+          )}
+        >
+          {node.name}
+        </span>
+
+        {/* Hover indicator */}
+        <div
+          className={cn(
+            "absolute right-2 w-1.5 h-1.5 rounded-full bg-[#00AEEF] transition-all duration-200",
+            isHovered ? "opacity-100 scale-100" : "opacity-0 scale-0",
+          )}
+        />
+      </div>
+
+      {/* Children with animated height */}
+      {hasChildren && (
+        <div
+          className={cn(
+            "overflow-hidden transition-all duration-300 ease-out",
+            isOpen ? "opacity-100" : "opacity-0 h-0",
+          )}
+          style={{
+            maxHeight: isOpen ? `${node.children!.length * 100}px` : "0px",
+          }}
+        >
+          {node.children!.map((child, index) => (
+            <FileItem
+              key={child.name}
+              node={child}
+              depth={depth + 1}
+              isLast={index === node.children!.length - 1}
+              parentPath={[...parentPath, !isLast]}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  )
+}
+
+export function FileTree({ data, className }: FileTreeProps) {
+  return (
+    <div
+      className={cn(
+        "bg-[#070B14] rounded-2xl border border-white/5 p-4 font-mono shadow-2xl overflow-x-auto",
+        className,
+      )}
+    >
+      {/* Header */}
+      <div className="flex items-center gap-2 pb-3 mb-2 border-b border-white/5 min-w-[max-content]">
+        <div className="flex gap-1.5">
+          <div className="w-3 h-3 rounded-full bg-red-500/80" />
+          <div className="w-3 h-3 rounded-full bg-yellow-500/80" />
+          <div className="w-3 h-3 rounded-full bg-green-500/80" />
+        </div>
+        <span className="text-xs text-white/40 ml-2 uppercase tracking-widest">techtitude-academy-curriculum</span>
+      </div>
+
+      {/* Tree */}
+      <div className="space-y-0.5 min-w-[max-content]">
+        {data.map((node, index) => (
+          <FileItem key={node.name} node={node} depth={0} isLast={index === data.length - 1} parentPath={[]} />
+        ))}
+      </div>
+    </div>
+  )
+}

@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, Code2, Cpu, Monitor, Zap, Clock, ChevronRight } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { FileTree } from "../components/FileTree";
+import { fileStructure } from "../data/content";
 
 // Sub-components
 const Countdown = () => {
@@ -45,6 +47,8 @@ const Countdown = () => {
     </div>
   );
 };
+
+
 
 export default function AcademyHome() {
   const pillars = [
@@ -167,6 +171,27 @@ export default function AcademyHome() {
               <div className="relative z-10 w-full lg:w-auto flex justify-center">
                 <Countdown />
               </div>
+            </div>
+          </Reveal>
+        </section>
+
+        {/* ICT MODULES BY GRADE */}
+        <section className="mb-32">
+          <Reveal>
+            <div className="flex flex-col sm:flex-row items-start sm:items-end justify-between mb-10 gap-4">
+              <div>
+                <h2 className="text-3xl font-bold font-display mb-2 flex items-center gap-4">
+                  <span className="w-8 h-[2px] bg-[#00AEEF]"></span>
+                  ICT Curriculum Modules
+                </h2>
+                <p className="text-[#8A99AD]">Comprehensive syllabus mapped from Grade 6 to O/L structured logically.</p>
+              </div>
+            </div>
+          </Reveal>
+          
+          <Reveal delay={0.2}>
+            <div className="w-full max-w-2xl mx-auto md:max-w-4xl lg:max-w-5xl">
+              <FileTree data={fileStructure} />
             </div>
           </Reveal>
         </section>

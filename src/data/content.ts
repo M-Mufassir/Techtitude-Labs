@@ -320,3 +320,76 @@ export const projects = [
   },
 ];
 
+export const fileStructure = [
+  {
+    name: "Grade_6_Digital_Literacy",
+    type: "folder" as const,
+    children: [
+      { name: "6.1_Intro_to_Computers.md", type: "file" as const, extension: "md" },
+      { name: "6.2_Lab_Safety.md", type: "file" as const, extension: "md" },
+      { name: "6.3_OS_File_Management.md", type: "file" as const, extension: "md" },
+      { name: "6.4_Input_Output.md", type: "file" as const, extension: "md" },
+      { name: "6.5_Problem_Solving.md", type: "file" as const, extension: "md" },
+      { name: "6.6_WWW_Safe_Searching.md", type: "file" as const, extension: "md" },
+    ]
+  },
+  {
+    name: "Grade_7_Productivity",
+    type: "folder" as const,
+    children: [
+      { name: "7.1_Hardware_Ports.md", type: "file" as const, extension: "md" },
+      { name: "7.2_Word_Processing.md", type: "file" as const, extension: "md" },
+      { name: "7.3_Spreadsheets.md", type: "file" as const, extension: "md" },
+      { name: "7.4_Presentations.md", type: "file" as const, extension: "md" },
+      { name: "7.5_Algorithms_Flowcharts.md", type: "file" as const, extension: "md" },
+    ]
+  },
+  {
+    name: "Grade_8_Programming",
+    type: "folder" as const,
+    children: [
+      { name: "8.1_Data_Representation.md", type: "file" as const, extension: "md" },
+      { name: "8.2_Word_Processing_Adv.md", type: "file" as const, extension: "md" },
+      { name: "8.3_Spreadsheets_Adv.md", type: "file" as const, extension: "md" },
+      { name: "8.4_Scratch_Programming.md", type: "file" as const, extension: "md" },
+      { name: "8.5_Networks_Email.md", type: "file" as const, extension: "md" },
+    ]
+  },
+  {
+    name: "Grade_9_Systems_DB",
+    type: "folder" as const,
+    children: [
+      { name: "9.1_CPU_Architecture.md", type: "file" as const, extension: "md" },
+      { name: "9.2_Database_Fundamentals.md", type: "file" as const, extension: "md" },
+      { name: "9.3_Spreadsheets_Logic.md", type: "file" as const, extension: "md" },
+      { name: "9.4_Visual_Programming_Adv.md", type: "file" as const, extension: "md" },
+      { name: "9.5_Cyber_Security.md", type: "file" as const, extension: "md" },
+    ]
+  },
+  {
+    name: "Grade_10_Core_CS",
+    type: "folder" as const,
+    children: [
+      { name: "10.1_IT_Concepts.md", type: "file" as const, extension: "md" },
+      { name: "10.2_Data_Representation_Adv.md", type: "file" as const, extension: "md" },
+      { name: "10.3_Boolean_Logic.md", type: "file" as const, extension: "md" },
+      { name: "10.4_OS_Management.md", type: "file" as const, extension: "md" },
+      { name: "10.5_Spreadsheets_Complex.md", type: "file" as const, extension: "md" },
+      { name: "10.6_DB_Architecture.md", type: "file" as const, extension: "md" },
+    ]
+  },
+  {
+    name: "Grade_11_Software_Eng",
+    type: "folder" as const,
+    children: [
+      { name: "11.1_Relational_DB_SQL.md", type: "file" as const, extension: "md" },
+      { name: "11.2_Problem_Solving_Algorithms.md", type: "file" as const, extension: "md" },
+      { name: "11.3_High_Level_Programming.md", type: "file" as const, extension: "md" },
+      { name: "11.4_Web_Dev_HTML_CSS.md", type: "file" as const, extension: "md" },
+      { name: "11.5_Multimedia_Processing.md", type: "file" as const, extension: "md" },
+      { name: "11.6_Network_Topologies.md", type: "file" as const, extension: "md" },
+      { name: "11.7_SDLC.md", type: "file" as const, extension: "md" },
+      { name: "11.8_ICT_In_Society.md", type: "file" as const, extension: "md" },
+    ]
+  }
+];
