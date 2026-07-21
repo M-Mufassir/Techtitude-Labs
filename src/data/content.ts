@@ -202,18 +202,27 @@ export const projects = [
     category: "AI / Agritech",
   },
   {
-    id: "project-detectx",
-    client: "Plant Disease AI",
-    title: "DetectX Web App",
-    description: "An AI-powered web application that identifies plant diseases from images of leaves. Uses a MobileNetV2 neural network trained on 38 classes to instantly diagnose crop health and provide treatments.",
-    metrics: [
-      { label: "Accuracy", value: "High" },
-      { label: "Type", value: "Web App" },
-      { label: "Industry", value: "Agriculture" }
-    ],
-    stack: ["Flask", "Keras", "Tailwind CSS"],
-    category: "AI / Agritech",
-  },
+  id: "project-saththar-feeds",
+  client: "Saththar Feeds",
+  title: "Saththar Feeds Billing System",
+  description: "A comprehensive billing and inventory management web application for pet feed businesses. Features customer and admin portals, PDF invoice generation, inventory management, and an AI-powered product recommendation system that suggests the most suitable pet feed based on the pet's age.",
+  metrics: [
+    { label: "Platform", value: "Web App" },
+    { label: "AI Feature", value: "Feed Advisor" },
+    { label: "Industry", value: "Retail" }
+  ],
+  stack: [
+    "PHP",
+    "MySQL",
+    "JavaScript",
+    "HTML5",
+    "CSS3",
+    "FPDF",
+    "Python",
+    "Scikit-learn"
+  ],
+  category: "Retail Management / AI",
+},
     {
   id: "project-herit-edge",
   client: "E-Commerce",
@@ -236,6 +245,26 @@ export const projects = [
     "Uvicorn"
   ],
   category: "AI / E-Commerce",
+},
+{
+  id: "valdore-estates",
+  client: "Valdore Estates",
+  title: "Real Estate Property Platform",
+  description: "A modern frontend real estate platform that allows users to explore property listings, view detailed information, and connect with brokers. Built with a responsive design, smooth animations, and an intuitive browsing experience for discovering residential and commercial properties.",
+  metrics: [
+    { label: "Platform", value: "Web App" },
+    { label: "Type", value: "Frontend Website" },
+    { label: "Industry", value: "Real Estate" }
+  ],
+  stack: [
+    "React 19",
+    "Vite",
+    "Tailwind CSS",
+    "React Router",
+    "Framer Motion",
+    "Lucide React"
+  ],
+  category: "Real Estate / Frontend Development",
 },
   {
     id: "project-restaurant",

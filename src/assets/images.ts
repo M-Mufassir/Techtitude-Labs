@@ -27,6 +27,11 @@ import herit1 from './projects_images/Heritedge/Herit-Edge-1.png';
 import herit2 from './projects_images/Heritedge/Herit-Edge-2.png';
 import herit3 from './projects_images/Heritedge/Herit-Edge-3.png';
 
+import saththar from './projects_images/saththarfeeds/saththar_feeds.png';
+
+import valdore1 from './projects_images/Valdore_Estates/Estate-1.png';
+import valdore2 from './projects_images/Valdore_Estates/Estate-2.png';
+
 // Test images from Our_Work folder
 import testImage1 from './Our_Work/image-1.jpg';
 import testImage2 from './Our_Work/image-2.jpg';
@@ -83,6 +88,8 @@ export const velocityReelImages = {
 
 export const proofLedgerImages: Record<string, string[]> = {
   "project-pos": [pos1, pos2, pos3, pos4],
+  "project-saththar-feeds": [saththar],
+  "valdore-estates": [valdore1, valdore2],
   "project-detectx": [detect1, detect2],
   "project-herit-edge": [herit1, herit2, herit3],
   "project-restaurant": [rest1, rest2, rest3],
