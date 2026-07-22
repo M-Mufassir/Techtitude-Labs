@@ -176,18 +176,18 @@ export const teamMembersContent = [
 ];
 
 export const projects = [
-    {
-    id: "project-pos",
-    client: "POS System",
-    title: "Desktop Application",
-    description: "A highly scalable and modern Point of Sale system built for all kinds of businesses. Perfect for groceries, phone shops, wholesale shops, and supermarkets.",
+  {
+    id: "project-hardware",
+    client: "Industrial Catalog",
+    title: "Hardware Website",
+    description: "A robust digital presence for hardware components and industrial supplies, making it easy for customers to browse extensive catalogs and request quotes.",
     metrics: [
-      { label: "Scalability", value: "High" },
-      { label: "Type", value: "Desktop" },
-      { label: "Business", value: "All" }
+      { label: "Catalog Size", value: "Massive" },
+      { label: "Type", value: "Showcase" },
+      { label: "Industry", value: "Hardware" }
     ],
-    stack: ["Modern", "Scalable", "Desktop"],
-    category: "Retail Tech",
+    stack: ["Web", "Showcase", "B2B"],
+    category: "Industrial",
   },
   {
     id: "project-detectx",
@@ -306,18 +306,18 @@ export const projects = [
     stack: ["Web App", "Scalable", "Responsive"],
     category: "Services",
   },
-  {
-    id: "project-hardware",
-    client: "Industrial Catalog",
-    title: "Hardware Website",
-    description: "A robust digital presence for hardware components and industrial supplies, making it easy for customers to browse extensive catalogs and request quotes.",
+    {
+    id: "project-pos",
+    client: "POS System",
+    title: "Desktop Application",
+    description: "A highly scalable and modern Point of Sale system built for all kinds of businesses. Perfect for groceries, phone shops, wholesale shops, and supermarkets.",
     metrics: [
-      { label: "Catalog Size", value: "Massive" },
-      { label: "Type", value: "Showcase" },
-      { label: "Industry", value: "Hardware" }
+      { label: "Scalability", value: "High" },
+      { label: "Type", value: "Desktop" },
+      { label: "Business", value: "All" }
     ],
-    stack: ["Web", "Showcase", "B2B"],
-    category: "Industrial",
+    stack: ["Modern", "Scalable", "Desktop"],
+    category: "Retail Tech",
   },
 ];
 
