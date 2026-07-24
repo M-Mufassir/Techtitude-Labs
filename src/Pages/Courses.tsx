@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
 import { CardStack, type CardStackItem } from "../components/CardStack";
+import Testimonials from "../components/Testimonials";
 //import { velocityReelImages } from "../assets/images";
 
 import workshopImg1 from "../assets/Workshop_Images/images-1-v2.jpeg";
@@ -203,6 +204,8 @@ export default function Courses() {
             className="max-w-4xl mx-auto"
           />
         </div>
+
+        <Testimonials />
       </section>
 
       {/* 5. Proof & Connection */}
