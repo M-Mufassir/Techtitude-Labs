@@ -60,13 +60,13 @@ export default function CircuitGrid({ active, color = '#7B2CBF' }: CircuitGridPr
       {PATHS.map((d, i) => (
         <path
           key={`trace-${i}`}
+          className="animated-trace"
           d={d}
           fill="none"
           stroke={color}
           strokeWidth={1.4}
           strokeLinecap="round"
           strokeDasharray="12 220"
-          filter="url(#circuit-glow)"
           style={{
             animation: `circuit-travel ${active ? 2.2 : 6}s linear infinite`,
             animationDelay: `${i * 0.35}s`,
@@ -78,6 +78,14 @@ export default function CircuitGrid({ active, color = '#7B2CBF' }: CircuitGridPr
         @keyframes circuit-travel {
           from { stroke-dashoffset: 0; }
           to   { stroke-dashoffset: -600; }
+        }
+        .animated-trace {
+          filter: url(#circuit-glow);
+        }
+        @media (max-width: 768px) {
+          .animated-trace {
+            filter: none !important;
+          }
         }
       `}</style>
     </svg>
