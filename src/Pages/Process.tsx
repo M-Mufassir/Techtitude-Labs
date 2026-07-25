@@ -1,78 +1,9 @@
-import { useState  } from "react";
-import type {ReactNode} from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import {
-  ArrowRight, Compass, Layers3, Hammer, ShieldCheck, Rocket,
-  Code2, Smartphone, BrainCircuit, Cpu
-} from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import Reveal from "../components/Reveal";
-
-type DomainKey = "software" | "webmobile" | "ai" | "hardware";
-
-const DOMAINS: Record<DomainKey, { label: string; icon: ReactNode }> = {
-  software: { label: "Software", icon: <Code2 size={14} /> },
-  webmobile: { label: "Web & Mobile", icon: <Smartphone size={14} /> },
-  ai: { label: "AI & ML", icon: <BrainCircuit size={14} /> },
-  hardware: { label: "Hardware", icon: <Cpu size={14} /> },
-};
-
-type Step = {
-  id: string;
-  title: string;
-  icon: ReactNode;
-  desc: string;
-  detail: string;
-  deliverables: string[];
-  domains: DomainKey[];
-};
-
-const steps: Step[] = [
-  {
-    id: "01",
-    title: "Discovery & Scope",
-    icon: <Compass size={24} />,
-    desc: "We dive into the problem before touching a tool. Constraints, goals, and success metrics get defined and challenged upfront, whatever we're building.",
-    detail: "This is where we figure out what's actually being built — a product, a platform, a model, or a device — and draft the technical scope that everything else follows.",
-    deliverables: ["Requirements Document", "Technical Scope & Architecture Draft", "Timeline & Budget"],
-    domains: ["software", "webmobile", "ai", "hardware"],
-  },
-  {
-    id: "02",
-    title: "Design & Prototyping",
-    icon: <Layers3 size={24} />,
-    desc: "Ideas get translated into something tangible before full commitment — an interface, a data pipeline, or a working proof of concept.",
-    detail: "Depending on the project this could mean interactive UI prototypes, model architecture design, or a first-pass circuit and enclosure layout.",
-    deliverables: ["Interactive Prototype / Design System", "Architecture or Model Plan", "Feedback Loop with You"],
-    domains: ["software", "webmobile", "ai", "hardware"],
-  },
-  {
-    id: "03",
-    title: "Core Build",
-    icon: <Hammer size={24} />,
-    desc: "The heaviest phase. We build in focused, iterative cycles — real progress you can see and test at every stage, not a black box until launch.",
-    detail: "Application code, trained models, or physical builds — engineered the same disciplined way, with regular checkpoints instead of a single big reveal.",
-    deliverables: ["Working Build / Increment", "Progress Checkpoints", "Documentation as We Go"],
-    domains: ["software", "webmobile", "ai", "hardware"],
-  },
-  {
-    id: "04",
-    title: "Testing & Validation",
-    icon: <ShieldCheck size={24} />,
-    desc: "We try to break what we made before anyone else does. Every deliverable is stress-tested against real conditions, not just the happy path.",
-    detail: "This spans functional and security testing, model accuracy and edge-case validation, or physical stress and reliability testing — matched to what we built.",
-    deliverables: ["Test Reports", "Performance / Accuracy Benchmarks", "Issue Log & Fixes"],
-    domains: ["software", "webmobile", "ai", "hardware"],
-  },
-  {
-    id: "05",
-    title: "Launch & Support",
-    icon: <Rocket size={24} />,
-    desc: "Getting it into the real world and making sure it keeps working there. We stay close after handoff instead of disappearing at delivery.",
-    detail: "Deployment, release, or field rollout — followed by a defined support window so early issues get caught and fixed fast.",
-    deliverables: ["Deployment / Release", "Handoff Documentation", "Post-Launch Support Window"],
-    domains: ["software", "webmobile", "ai", "hardware"],
-  },
-];
+import { Icon } from "../lib/icons";
+import { processDomains, processSteps } from "../data/content";
 
 export default function Process() {
   const [openId, setOpenId] = useState<string | null>(null);
@@ -108,7 +39,7 @@ export default function Process() {
           <div className="absolute left-[39px] md:left-[50px] top-0 bottom-0 w-[2px] bg-gradient-to-b from-[#7B2CBF]/50 via-[#00AEEF]/20 to-transparent z-0" />
 
           <div className="flex flex-col gap-16 md:gap-20">
-            {steps.map((step) => {
+            {processSteps.map((step) => {
               const isOpen = openId === step.id;
               return (
                 <div key={step.id} className="relative z-10 flex flex-col md:flex-row gap-8 md:gap-16 items-start group">
@@ -116,7 +47,7 @@ export default function Process() {
                   {/* Node / Icon */}
                   <Reveal delay={0.1}>
                     <div className="flex items-center justify-center w-20 h-20 rounded-full bg-[#070B14] border-2 border-[#7B2CBF]/30 shadow-[0_0_20px_rgba(123,44,191,0.2)] group-hover:shadow-[0_0_40px_rgba(0,174,239,0.35)] group-hover:scale-110 group-hover:border-[#00AEEF]/60 transition-all duration-500 shrink-0 text-[#7B2CBF] group-hover:text-[#00AEEF]">
-                      {step.icon}
+                      <Icon name={step.icon} size={24} />
                     </div>
                   </Reveal>
 
@@ -150,8 +81,8 @@ export default function Process() {
                               key={d}
                               className="flex items-center gap-1.5 text-xs font-mono text-[#8A99AD] border border-white/10 rounded-full px-3 py-1.5 group-hover:border-white/20 transition-colors"
                             >
-                              {DOMAINS[d].icon}
-                              {DOMAINS[d].label}
+                              <Icon name={processDomains[d].icon} size={14} />
+                              {processDomains[d].label}
                             </span>
                           ))}
                         </div>

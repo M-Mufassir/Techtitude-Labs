@@ -3,21 +3,23 @@ import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
 import { CardStack, type CardStackItem } from "../components/CardStack";
 import Testimonials from "../components/Testimonials";
-//import { velocityReelImages } from "../assets/images";
+import { workshopSessionImages } from "../assets/images";
+import {
+  coursesLiveCounters,
+  coursesEcosystemCards,
+  coursesCareerSteps,
+  coursesMasterclasses,
+  courseWorkshopStudents,
+  coursesFAQs,
+  coursesEnrollTracks,
+} from "../data/content";
 
-import workshopImg1 from "../assets/Workshop_Images/images-1-v2.jpeg";
-import workshopImg2 from "../assets/Workshop_Images/images-2-v2.jpeg";
-import workshopImg3 from "../assets/Workshop_Images/images-3-v2.jpeg";
-import workshopImg4 from "../assets/Workshop_Images/images-4-v2.jpg";
-import workshopImg5 from "../assets/Workshop_Images/images-5-v2.jpg";
-
-const workshopStudents: CardStackItem[] = [
-  { id: 1, title: "Code Core Batch 04", description: "O/L ICT students learning HTML basics.", imageSrc: workshopImg1 },
-  { id: 2, title: "React Workshop", description: "Advanced web engineering students building dashboards.", imageSrc: workshopImg2 },
-  { id: 3, title: "Python Data Science", description: "Introductory session to data pipelines.", imageSrc: workshopImg3 },
-  { id: 4, title: "AI & ML Seminar", description: "Exploring neural networks with our future tech batch.", imageSrc: workshopImg4 },
-  { id: 5, title: "UI/UX Prototyping", description: "Figma design workflows in action.", imageSrc: workshopImg5 }
-];
+const workshopStudents: CardStackItem[] = courseWorkshopStudents.map((student) => ({
+  id: student.id,
+  title: student.title,
+  description: student.description,
+  imageSrc: workshopSessionImages[student.imageKey as keyof typeof workshopSessionImages],
+}));
 
 export default function Courses() {
   return (
@@ -61,18 +63,12 @@ export default function Courses() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16"
           >
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">All Around Sri Lanka</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Active Students</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">More</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Projects Built</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-[#00AEEF] font-mono">03</div>
-              <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">Days to Workshop</div>
-            </div>
+            {coursesLiveCounters.map((counter) => (
+              <div key={counter.label} className="text-center">
+                <div className="text-4xl font-bold text-[#00AEEF] font-mono">{counter.value}</div>
+                <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">{counter.label}</div>
+              </div>
+            ))}
           </motion.div>
         </div>
       </section>
@@ -82,45 +78,16 @@ export default function Courses() {
         <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-12">The Ecosystem</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Card 1 (Double Width) */}
-          <div className="lg:col-span-2 relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-[#00AEEF] uppercase mb-4 block">Grade 10 & 11 ICT</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">ICT Hands-on For O/L Students</h3>
-              <p className="text-gray-400 font-body max-w-md">Complete syllabus coverage paired with hand on practical sessions. Designed specifically to build strong foundational logic early.</p>
+          {coursesEcosystemCards.map((card) => (
+            <div key={card.title} className={`${card.span} relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden`}>
+              <div className={card.glow} />
+              <div className="relative z-10">
+                <span className={`text-xs font-mono tracking-widest uppercase mb-4 block ${card.accent ? "text-[#00AEEF]" : "text-gray-500"}`}>{card.tag}</span>
+                <h3 className="text-2xl font-bold font-display text-white mb-4">{card.title}</h3>
+                <p className={`text-gray-400 font-body ${card.descClass}`}>{card.desc}</p>
+              </div>
             </div>
-          </div>
-
-          {/* Card 2 */}
-          <div className="relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute bottom-0 right-0 w-32 h-32 bg-[#00AEEF]/10 blur-[40px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Engineering Foundation</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Path To Web Engineering</h3>
-              <p className="text-gray-400 font-body text-sm">Introduction to Software Engineering and Fullstack Projects with New Technologies.</p>
-            </div>
-          </div>
-
-          {/* Card 3 */}
-          <div className="relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-[#00AEEF]/10 blur-[40px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Future Tech</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">Next-Gen AI & ML</h3>
-              <p className="text-gray-400 font-body text-sm">Hands-on Practical with Prompt Engineering and their Application for Learning New things.</p>
-            </div>
-          </div>
-
-          {/* Card 4 (Double Width on Tablet, Single on Desktop) */}
-          <div className="md:col-span-2 lg:col-span-2 relative glass rounded-3xl p-8 hover:border-[#00AEEF]/50 transition-colors duration-500 group overflow-hidden">
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#00AEEF]/10 blur-[60px] rounded-full group-hover:bg-[#00AEEF]/20 transition-colors duration-500" />
-            <div className="relative z-10">
-              <span className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4 block">Advanced Level ICT</span>
-              <h3 className="text-2xl font-bold font-display text-white mb-4">ICT Hands-on For Advanced Level</h3>
-              <p className="text-gray-400 font-body max-w-md">Get into the real world with having knowledge with Advanced Level ICT, and Developing Yourselves with te Tech Field.</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
@@ -136,11 +103,7 @@ export default function Courses() {
             <div className="absolute left-4 md:left-8 top-0 bottom-0 w-px bg-gradient-to-b from-[#00AEEF]/50 via-[#00AEEF]/20 to-transparent" />
             
             <div className="space-y-12 pl-12 md:pl-20 relative">
-              {[
-                { step: "01", title: "Foundational Deep-Dive", desc: "Mastering the Theory that align with the practical knowledge." },
-                { step: "02", title: "Successfully Complete A/L and O/L", desc: "with the hand-on practicals, and gained Knowledge, complete the milestone." },
-                { step: "03", title: "Career Development Bootcamps", desc: "Get into the real world with the knowledge of Software Engineering fondations and real world experience." }
-              ].map((item, i) => (
+              {coursesCareerSteps.map((item, i) => (
                 <div key={i} className="relative group">
                   {/* Glowing Node */}
                   <div className="absolute -left-12 md:-left-20 top-1 w-3 h-3 rounded-full bg-[#00AEEF] shadow-[0_0_15px_rgba(0,174,239,0.8)]" />
@@ -170,24 +133,17 @@ export default function Courses() {
                 </tr>
               </thead>
               <tbody className="text-white font-body text-sm md:text-base">
-                <tr className="border-b border-white/5 hover:bg-white/5 transition-colors">
-                  <td className="py-6">August, 2026</td>
-                  <td className="py-6 font-medium">O/L ICT Practical Workshop For grade 10 & 11 Students</td>
-                  <td className="py-6 text-right">
-                    <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
-                      Reserve Seat
-                    </button>
-                  </td>
-                </tr>
-                <tr className="hover:bg-white/5 transition-colors">
-                  <td className="py-6">October, 2026</td>
-                  <td className="py-6 font-medium">HTML and Programming Foundations for O/L Curriculum</td>
-                  <td className="py-6 text-right">
-                    <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
-                      Reserve Seat
-                    </button>
-                  </td>
-                </tr>
+                {coursesMasterclasses.map((row, idx) => (
+                  <tr key={row.date} className={idx !== coursesMasterclasses.length - 1 ? "border-b border-white/5 hover:bg-white/5 transition-colors" : "hover:bg-white/5 transition-colors"}>
+                    <td className="py-6">{row.date}</td>
+                    <td className="py-6 font-medium">{row.topic}</td>
+                    <td className="py-6 text-right">
+                      <button className="px-5 py-2 bg-[#00AEEF]/10 text-[#00AEEF] hover:bg-[#00AEEF] hover:text-black rounded-full font-semibold transition-all duration-300">
+                        Reserve Seat
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
@@ -214,11 +170,7 @@ export default function Courses() {
           {/* FAQ */}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-8">Questions?</h2>
-            <Accordion items={[
-              { title: "Do I need to know the Basics", content: "Not for the Practicals, We start from the absolute basics of theory with a clear explainations and then to the practicals." },
-              { title: "Are classes online or in-person?", content: "We offer hybrid models. You can join the live streams from anywhere or attend in-person sessions at our campus." },
-              { title: "Do you provide Certificates", content: "Our bootcamps & Workshops based on the course content we provide a completion certification." }
-            ]} />
+            <Accordion items={coursesFAQs} />
           </div>
 
           {/* Enroll Form */}
@@ -233,10 +185,9 @@ export default function Courses() {
                 />
                 <select className="w-full bg-transparent border-b border-white/20 px-0 py-4 text-gray-400 font-body focus:outline-none focus:border-[#00AEEF] transition-colors appearance-none">
                   <option value="" disabled selected>Select a Track</option>
-                  <option value="core">Code Core</option>
-                  <option value="web">Web Engineering</option>
-                  <option value="ai">Next-Gen AI & ML</option>
-                  <option value="design">UI/UX Design</option>
+                  {coursesEnrollTracks.map((track) => (
+                    <option key={track.value} value={track.value}>{track.label}</option>
+                  ))}
                 </select>
                 <button type="button" className="mt-8 px-8 py-4 bg-[#00AEEF] text-black font-bold rounded-full hover:shadow-[0_0_30px_rgba(0,174,239,0.4)] transition-shadow duration-300">
                   Submit Application

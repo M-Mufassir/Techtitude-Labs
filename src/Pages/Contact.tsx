@@ -1,33 +1,11 @@
 import { type FormEvent, useState } from "react";
-import { Mail, Phone, MessageCircle, ArrowUpRight, GraduationCap, Briefcase, ChevronRight } from "lucide-react";
+import { ArrowUpRight, GraduationCap, Briefcase, ChevronRight } from "lucide-react";
 import TraceBackground from "../components/TraceBackground";
 import Reveal from "../components/Reveal";
 import { motion, AnimatePresence } from "framer-motion";
 import WhatsAppButton from "../components/WhatsAppButton";
-
-const contacts = [
-  {
-    title: "Email",
-    value: "techtitude.labs@gmail.com",
-    link: "mailto:techtitude.labs@gmail.com",
-    icon: Mail,
-    description: "For courses, projects & business inquiries",
-  },
-  {
-    title: "WhatsApp",
-    value: "+94 74 074 7677",
-    link: "https://wa.me/94740747677",
-    icon: MessageCircle,
-    description: "Fast communication",
-  },
-  {
-    title: "Phone",
-    value: "+94 74 074 7677",
-    link: "tel:+94740747677",
-    icon: Phone,
-    description: "General inquiries",
-  },
-];
+import { Icon } from "../lib/icons";
+import { contactChannels, contactAcademyGrades, contactBatchDays, contactStudioTimelines, contactStudioStacks } from "../data/content";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'academy' | 'studio'>('academy');
@@ -172,25 +150,22 @@ export default function Contact() {
 
             <div className="space-y-4 mt-8 xl:mt-4">
               <p className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4">Direct Channels</p>
-              {contacts.map((contact) => {
-                const Icon = contact.icon;
-                return (
-                  <a
-                    key={contact.value}
-                    href={contact.link}
-                    target={contact.title === "WhatsApp" ? "_blank" : undefined}
-                    className="group flex gap-4 items-center p-4 rounded-2xl bg-[#161618]/50 border border-white/5 hover:border-white/20 transition-all"
-                  >
-                    <div className="h-10 w-10 rounded-full bg-[#070B14] border border-white/5 flex items-center justify-center text-gray-400 group-hover:text-white transition-colors shadow-lg">
-                      <Icon size={18} />
-                    </div>
-                    <div>
-                      <p className="font-mono text-xs text-gray-400">{contact.title}</p>
-                      <p className="text-white font-medium text-sm mt-1">{contact.value}</p>
-                    </div>
-                  </a>
-                );
-              })}
+              {contactChannels.map((contact) => (
+                <a
+                  key={contact.value}
+                  href={contact.link}
+                  target={contact.title === "WhatsApp" ? "_blank" : undefined}
+                  className="group flex gap-4 items-center p-4 rounded-2xl bg-[#161618]/50 border border-white/5 hover:border-white/20 transition-all"
+                >
+                  <div className="h-10 w-10 rounded-full bg-[#070B14] border border-white/5 flex items-center justify-center text-gray-400 group-hover:text-white transition-colors shadow-lg">
+                    <Icon name={contact.icon} size={18} />
+                  </div>
+                  <div>
+                    <p className="font-mono text-xs text-gray-400">{contact.title}</p>
+                    <p className="text-white font-medium text-sm mt-1">{contact.value}</p>
+                  </div>
+                </a>
+              ))}
             </div>
           </Reveal>
 
@@ -252,12 +227,9 @@ export default function Contact() {
                             className="w-full h-12 px-4 bg-[#0b101e]/60 border border-[#00AEEF] text-white text-xs rounded-xl appearance-none cursor-pointer focus:outline-none focus:ring-1 focus:ring-[#00AEEF]/50 transition-all duration-300 font-medium"
                           >
                             <option value="" disabled className="bg-[#070B14] text-white/50">Choose a class...</option>
-                            <option value="grade-6" className="bg-[#070B14] text-white">Grade 6 ICT </option>
-                            <option value="grade-7" className="bg-[#070B14] text-white">Grade 7 ICT </option>
-                            <option value="grade-8" className="bg-[#070B14] text-white">Grade 8 ICT </option>
-                            <option value="grade-9" className="bg-[#070B14] text-white">Grade 9 ICT </option>
-                            <option value="grade-10" className="bg-[#070B14] text-white">Grade 10 ICT</option>
-                            <option value="grade-11" className="bg-[#070B14] text-white">Grade 11 ICT</option>
+                            {contactAcademyGrades.map((grade) => (
+                              <option key={grade.value} value={grade.value} className="bg-[#070B14] text-white">{grade.label}</option>
+                            ))}
                           </select>
                           {/* Premium Custom Micro-Chevron Indicator */}
                           <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/40 group-hover:text-[#00AEEF] transition-colors duration-300">
@@ -282,8 +254,9 @@ export default function Contact() {
                             className="w-full h-12 px-4 bg-[#0b101e]/40 border border-white/10 text-white text-xs rounded-xl appearance-none cursor-pointer focus:outline-none focus:border-[#00AEEF]/60 focus:ring-1 focus:ring-[#00AEEF]/30 transition-all duration-300 font-medium group-hover:border-white/20"
                           >
                             <option value="" disabled className="bg-[#070B14] text-white/50">Select preferred day...</option>
-                            <option value="saturday" className="bg-[#070B14] text-white">Saturday Batches</option>
-                            <option value="sunday" className="bg-[#070B14] text-white">Sunday Batches</option>
+                            {contactBatchDays.map((day) => (
+                              <option key={day.value} value={day.value} className="bg-[#070B14] text-white">{day.label}</option>
+                            ))}
                           </select>
                           {/* Premium Custom Micro-Chevron Indicator */}
                           <div className="absolute inset-y-0 right-4 flex items-center pointer-events-none text-white/40 group-hover:text-white/70 transition-colors duration-300">
@@ -379,10 +352,9 @@ export default function Contact() {
                         <label className="font-mono text-xs text-gray-400 ml-2">Target Timeline</label>
                         <div className="mt-2 relative">
                           <select name="timeline" required className="w-full rounded-2xl bg-[#0A0A0C] border border-white/5 px-5 py-4 text-sm text-white appearance-none outline-none focus:border-[#7B2CBF] focus:ring-1 focus:ring-[#7B2CBF] transition-all">
-                            <option value="ASAP">ASAP (Expedited)</option>
-                            <option value="1-3 Months">1-3 Months</option>
-                            <option value="3-6 Months">3-6 Months</option>
-                            <option value="6+ Months">6+ Months</option>
+                            {contactStudioTimelines.map((timeline) => (
+                              <option key={timeline.value} value={timeline.value}>{timeline.label}</option>
+                            ))}
                           </select>
                           <ChevronRight className="absolute right-5 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none rotate-90" size={16} />
                         </div>
@@ -393,7 +365,7 @@ export default function Contact() {
                     <div>
                       <label className="font-mono text-xs text-gray-400 ml-2 block mb-3">Required Capabilities (Optional)</label>
                       <div className="flex flex-wrap gap-2">
-                        {['Web App', 'Final Year Projects', 'E-Commerce', 'AI/ML Integration', 'Automation/n8n', 'UI/UX Redesign','Wordpress Sites','Other'].map(tech => (
+                        {contactStudioStacks.map(tech => (
                           <label key={tech} className="cursor-pointer relative">
                             <input type="checkbox" name="stack" value={tech} className="peer sr-only" />
                             <div className="px-4 py-2 rounded-xl border border-white/10 bg-[#0A0A0C] text-sm text-gray-400 peer-checked:bg-[#7B2CBF]/10 peer-checked:border-[#7B2CBF] peer-checked:text-white transition-all">

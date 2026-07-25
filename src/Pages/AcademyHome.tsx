@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Cpu, Monitor, Zap, Clock, ChevronRight } from "lucide-react";
+import { ArrowRight, Code2, Clock, ChevronRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import { FileTree } from "../components/FileTree";
-import { fileStructure } from "../data/content";
+import { Icon } from "../lib/icons";
+import { fileStructure, academyPillars, academyShowcaseProjects, academyNextMasterclass } from "../data/content";
 
 // Sub-components
 const Countdown = () => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date("August 2, 2026 09:00:00").getTime();
+    const targetDate = new Date(academyNextMasterclass.targetDate).getTime();
     const now = new Date().getTime();
     const difference = targetDate - now;
 
@@ -51,47 +52,6 @@ const Countdown = () => {
 
 
 export default function AcademyHome() {
-  const pillars = [
-    {
-      title: "A/L and O/L ICT Practicals",
-      icon: <Code2 size={24} className="text-[#00AEEF]" />,
-      desc: "O/L & A/L ICT curriculums mapped to real-world tech industry standards.",
-      colSpan: "col-span-1 md:col-span-2",
-      bg: "bg-gradient-to-br from-[#00AEEF]/10 to-transparent",
-    },
-    {
-      title: "ICT Fundamentals",
-      icon: <Zap size={24} className="text-[#00AEEF]" />,
-      desc: "Basics of ICT with Logic theory, Networking fundamentals and Troubleshooting ",
-      colSpan: "col-span-1",
-      bg: "bg-gradient-to-bl from-pink-500/10 to-transparent",
-      
-    },
-    {
-      title: "Basics of Programming",
-      icon: <Cpu size={24} className="text-[#00AEEF]" />,
-      desc: "Programming Fundamentals including basic core principles like OOP principles",
-      colSpan: "col-span-1",
-      bg: "bg-gradient-to-br from-[#7B2CBF]/10 to-transparent",
-    },
-    
-    {
-      title: "Software Development",
-      icon: <Monitor size={24} className="text-[#00AEEF]" />,
-      desc: "Python, JavaScript, and C++. The foundation of modern software engineering.",
-      colSpan: "col-span-1 md:col-span-2",
-      bg: "bg-gradient-to-tr from-[#00AEEF]/5 to-transparent",
-    }
-    
-  ];
-
-  const showcaseProjects = [
-    //after first workshop or practical, can update
-    { title: "Business Website", type: "Web Development", author: "Mohamed" },
-    // { title: "EcoTrack App", type: "Mobile Development", author: "David M." },
-    // { title: "Defi Exchange UI", type: "UI/UX Design", author: "Aisha T." },
-  ];
-
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#00AEEF]/30 overflow-clip">
       <div className="max-w-7xl mx-auto px-6">
@@ -134,14 +94,14 @@ export default function AcademyHome() {
             </h2>
           </Reveal>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {pillars.map((pillar, idx) => (
+            {academyPillars.map((pillar, idx) => (
               <Reveal key={idx} delay={idx * 0.1} className={pillar.colSpan}>
                 <div className={`h-full ${pillar.bg} border border-white/5 rounded-3xl p-8 hover:border-[#00AEEF]/30 transition-colors duration-500 group relative overflow-hidden`}>
                   <div className="absolute top-0 right-0 p-8 opacity-0 group-hover:opacity-10 transition-opacity duration-500 transform translate-x-4 group-hover:translate-x-0">
-                    {pillar.icon}
+                    <Icon name={pillar.icon} size={24} className="text-[#00AEEF]" />
                   </div>
                   <div className="w-12 h-12 bg-[#070B14] rounded-2xl flex items-center justify-center border border-white/10 mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {pillar.icon}
+                    <Icon name={pillar.icon} size={24} className="text-[#00AEEF]" />
                   </div>
                   <h3 className="text-2xl font-bold font-display mb-3">{pillar.title}</h3>
                   <p className="text-[#8A99AD] leading-relaxed">{pillar.desc}</p>
@@ -161,8 +121,8 @@ export default function AcademyHome() {
                 <div className="flex items-center gap-2 text-[#00AEEF] font-mono text-sm uppercase tracking-widest mb-4">
                   <Clock size={16} /> Next Masterclass
                 </div>
-                <h2 className="text-4xl font-bold font-display mb-4">Grade 10 & 11 O/L ICT - HTML Fundamentals Module</h2>
-                <p className="text-[#8A99AD] mb-8">Join our ICT workshop and learn HTML fundamentals through practical sessions. Build your first webpage, understand web structures, and develop essential skills for your O/L ICT journey.</p>
+                <h2 className="text-4xl font-bold font-display mb-4">{academyNextMasterclass.title}</h2>
+                <p className="text-[#8A99AD] mb-8">{academyNextMasterclass.description}</p>
                 <Link to="/workshops" className="inline-flex items-center gap-2 text-white font-bold hover:text-[#00AEEF] transition-colors border-b border-white/20 pb-1 hover:border-[#00AEEF]">
                   View All Workshops <ChevronRight size={16} />
                 </Link>
@@ -214,7 +174,7 @@ export default function AcademyHome() {
           </Reveal>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {showcaseProjects.map((project, idx) => (
+            {academyShowcaseProjects.map((project, idx) => (
               <Reveal key={idx} delay={idx * 0.1}>
                 <div className="group cursor-pointer">
                   <div className="aspect-[4/3] bg-[#0B101E] border border-white/5 rounded-2xl mb-4 overflow-hidden relative">

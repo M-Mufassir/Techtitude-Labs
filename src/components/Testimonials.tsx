@@ -1,62 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-
-const testimonials = [
-  {
-    text: "The hands-on approach to learning HTML and CSS completely changed my perspective. I went from knowing nothing to building my first website in just a few days!",
-    image: "https://randomuser.me/api/portraits/women/1.jpg",
-    name: "Briana Patton",
-    role: "O/L ICT Student",
-  },
-  {
-    text: "The React workshop was incredibly well-structured. The instructors made complex state management concepts easy to grasp for beginners.",
-    image: "https://randomuser.me/api/portraits/men/2.jpg",
-    name: "Bilal Ahmed",
-    role: "Web Engineering Batch",
-  },
-  {
-    text: "Python Data Science pipelines always seemed intimidating, but this course broke it down perfectly. I now feel confident exploring machine learning.",
-    image: "https://randomuser.me/api/portraits/women/3.jpg",
-    name: "Saman Malik",
-    role: "Data Science Enthusiast",
-  },
-  {
-    text: "I loved the AI & ML seminar! The practical prompt engineering sessions really opened my eyes to how I can use AI for rapid prototyping.",
-    image: "https://randomuser.me/api/portraits/men/4.jpg",
-    name: "Omar Raza",
-    role: "Future Tech Batch",
-  },
-  {
-    text: "Figma design workflows were taught beautifully. The UI/UX prototyping exercises helped me build a solid portfolio piece I'm really proud of.",
-    image: "https://randomuser.me/api/portraits/women/5.jpg",
-    name: "Zainab Hussain",
-    role: "Design Student",
-  },
-  {
-    text: "The mentors are so supportive. They don't just teach theory; they ensure you get your hands dirty with real-world coding problems.",
-    image: "https://randomuser.me/api/portraits/women/6.jpg",
-    name: "Aliza Khan",
-    role: "A/L ICT Student",
-  },
-  {
-    text: "Getting into software engineering felt like a huge leap, but the foundation course made the transition incredibly smooth and enjoyable.",
-    image: "https://randomuser.me/api/portraits/men/7.jpg",
-    name: "Farhan Siddiqui",
-    role: "Engineering Foundation",
-  },
-  {
-    text: "The community here is amazing. Being able to collaborate with other students on full-stack projects really accelerated my learning.",
-    image: "https://randomuser.me/api/portraits/women/8.jpg",
-    name: "Sana Sheikh",
-    role: "Web Dev Bootcamp",
-  },
-  {
-    text: "From basic HTML to advanced JavaScript, the curriculum is perfectly aligned with what the tech industry actually demands today.",
-    image: "https://randomuser.me/api/portraits/men/9.jpg",
-    name: "Hassan Ali",
-    role: "Code Core Batch 04",
-  },
-];
+import { testimonials } from "../data/content";
 
 export const TestimonialsColumn = (props: {
   className?: string;

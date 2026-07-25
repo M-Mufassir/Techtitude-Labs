@@ -1,9 +1,10 @@
 import { motion } from "framer-motion";
+import { siteConfig } from "../data/content";
 
 export default function WhatsAppButton() {
   return (
     <motion.a
-      href="https://wa.me/94740747677"
+      href={siteConfig.whatsapp.href}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-24 lg:bottom-8 right-4 lg:right-8 z-[100] flex items-center justify-center w-14 h-14 bg-[#25D366] text-white rounded-full shadow-lg hover:shadow-[#25D366]/50 transition-shadow duration-300"

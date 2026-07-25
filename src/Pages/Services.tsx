@@ -3,6 +3,7 @@ import TiltCard from "../components/TiltCard";
 import Marquee from "../components/Marquee";
 import ProjectShowcase from "../components/ProjectShowcase";
 import CircuitGrid from "../components/CircuitGrid";
+import { servicesCapabilityCards, servicesTechStack, servicesClientLogos, servicesRoadmap, servicesProjectScopes } from "../data/content";
 export default function Services() {
   return (
     <motion.div
@@ -44,47 +45,17 @@ export default function Services() {
 {/* 2. Core Engineering Capabilities */}
 <section className="relative px-4 md:px-6 py-24 max-w-7xl mx-auto">
   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-
-    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-      <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
-        Software Engineering & Digital Solutions
-      </h3>
-      <p className="text-gray-400 font-body relative z-10 max-w-md">
-        Designing scalable software, enterprise applications, and digital platforms that solve real-world business challenges.
-      </p>
-    </TiltCard>
-
-    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-      <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
-        Web, Mobile & Cloud Applications
-      </h3>
-      <p className="text-gray-400 font-body relative z-10 max-w-md">
-        Building secure, high-performance web platforms, mobile applications, and cloud-connected systems for modern businesses.
-      </p>
-    </TiltCard>
-
-    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
-        AI, Automation & Smart Systems
-      </h3>
-      <p className="text-gray-400 font-body relative z-10 max-w-md">
-        Integrating artificial intelligence, intelligent automation, and data-driven solutions to improve productivity and decision making.
-      </p>
-    </TiltCard>
-
-    <TiltCard className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
-      <div className="absolute top-0 left-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
-      <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
-        Technology Education & Innovation
-      </h3>
-      <p className="text-gray-400 font-body relative z-10 max-w-md">
-        Empowering students, professionals, and organizations through hands-on workshops, practical learning, and emerging technologies.
-      </p>
-    </TiltCard>
-
+    {servicesCapabilityCards.map((card) => (
+      <TiltCard key={card.title} className="p-8 h-[320px] group border border-white/5 hover:border-[#7B2CBF]/40 flex flex-col justify-end overflow-hidden">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-[#7B2CBF]/10 blur-[60px] rounded-full group-hover:bg-[#7B2CBF]/25 transition-colors duration-500" />
+        <h3 className="text-2xl font-bold font-display text-white mb-3 relative z-10">
+          {card.title}
+        </h3>
+        <p className="text-gray-400 font-body relative z-10 max-w-md">
+          {card.desc}
+        </p>
+      </TiltCard>
+    ))}
   </div>
 </section>
 
@@ -96,42 +67,16 @@ export default function Services() {
             <p className="text-gray-400 font-body mb-8">We don't limit ourselves to one tool. We pick the bleeding-edge stack that makes the most sense for the scale of your infrastructure.</p>
           </div>
           <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
-            {/* Frontend */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#7B2CBF]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Frontend Architecture</h4>
-              <div className="flex flex-wrap gap-2">
-                {["React", "Next.js", "Tailwind CSS", "TypeScript", "Framer Motion"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
+            {servicesTechStack.map((stack) => (
+              <div key={stack.category} className="glass rounded-2xl p-6 border-t-2" style={{ borderTopColor: stack.borderColor }}>
+                <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">{stack.category}</h4>
+                <div className="flex flex-wrap gap-2">
+                  {stack.items.map(tech => (
+                    <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-            {/* Backend */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#b37be8]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Backend & Database</h4>
-              <div className="flex flex-wrap gap-2">
-                {["Node.js", "Python", "PostgreSQL", "MongoDB", "AWS", "Vercel"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
-              </div>
-            </div>
-            {/* Automation */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#e0c4ff]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Automation Engines</h4>
-              <div className="flex flex-wrap gap-2">
-                {["n8n", "Webhooks", "REST APIs", "GraphQL", "Zapier", "Make"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
-              </div>
-            </div>
-            {/*Robotics & Embedded Systems */}
-            <div className="glass rounded-2xl p-6 border-t-2 border-[#e0c4ff]">
-              <h4 className="text-sm font-mono text-gray-500 uppercase tracking-wider mb-6">Robotics & Embedded Systems</h4>
-              <div className="flex flex-wrap gap-2">
-                {["Embedded C", "ROS 2", "Python", "ESP-32","Raspberry Pi", "Linux"].map(tech => (
-                  <span key={tech} className="px-3 py-1.5 bg-white/5 border border-white/10 rounded-md text-sm text-gray-300 font-mono">{tech}</span>
-                ))}
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </section>
@@ -144,7 +89,7 @@ export default function Services() {
         {/* Client Logos Marquee */}
         <div className="mb-24 opacity-60">
           <Marquee speed={30}>
-            {["Acme Corp", "Global Tech", "Stark Industries", "Wayne Enterprises", "Cyberdyne", "Umbrella Corp", "Massive Dynamic"].map((logo) => (
+            {servicesClientLogos.map((logo) => (
               <span key={logo} className="text-2xl font-display font-bold text-gray-500 uppercase tracking-widest">{logo}</span>
             ))}
           </Marquee>
@@ -163,10 +108,9 @@ export default function Services() {
                 <div className="hidden md:flex flex-col gap-6">
                   <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Our Development Pipeline</span>
                   <div className="flex items-center justify-between text-sm text-gray-300 font-mono border-l-2 border-[#7B2CBF]/30 pl-4 space-y-4 flex-col items-start">
-                    <div>1. Discovery Framework</div>
-                    <div>2. UI/UX Interactive Prototyping</div>
-                    <div>3. Agile Engineering</div>
-                    <div>4. Automated Testing & Deployment</div>
+                    {servicesRoadmap.map((item, idx) => (
+                      <div key={item}>{idx + 1}. {item}</div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -188,10 +132,9 @@ export default function Services() {
                   <div className="flex flex-col gap-2">
                     <label className="text-xs font-mono text-gray-400 uppercase tracking-wider">Project Scope</label>
                     <select className="bg-white/5 border border-white/10 rounded-lg p-3 text-white focus:outline-none focus:border-[#7B2CBF] transition-colors appearance-none">
-                      <option className="bg-[#070B14]">Custom Software / Web App</option>
-                      <option className="bg-[#070B14]">E-Commerce Architecture</option>
-                      <option className="bg-[#070B14]">AI & Automation Tools</option>
-                      <option className="bg-[#070B14]">Digital Transformation</option>
+                      {servicesProjectScopes.map((scope) => (
+                        <option key={scope} className="bg-[#070B14]">{scope}</option>
+                      ))}
                     </select>
                   </div>
 

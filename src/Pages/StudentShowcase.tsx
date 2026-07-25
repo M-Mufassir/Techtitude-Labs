@@ -1,67 +1,14 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Cpu, ArrowUpRight, Filter } from "lucide-react";
+import { ArrowUpRight, Filter } from "lucide-react";
 import Reveal from "../components/Reveal";
+import { Icon } from "../lib/icons";
+import { studentShowcaseFilters, studentShowcaseProjects } from "../data/content";
 
 export default function StudentShowcase() {
   const [activeFilter, setActiveFilter] = useState("All");
 
-  const filters = ["All", "AI", "Practicals", "Development"];
-
-  const projects = [
-    {
-      id: 1,
-      title: "Hand Controlled Car",
-      category: "AI & Embedded System Model",
-      student: "Umar Rashid",
-      desc: "A Hand controlled car DIY Project that operate with hand gesture signals - using Open CV library",
-      icon: <Cpu size={32} className="text-[#00AEEF]" />,
-      colSpan: "col-span-1 md:col-span-2 row-span-2",
-      bg: "bg-gradient-to-br from-[#00AEEF]/10 to-[#070B14]",
-    },
-    // {
-    //   id: 2,
-    //   title: "DeFi Dashboard",
-    //   category: "Web App",
-    //   student: "Aisha T.",
-    //   desc: "A sleek, responsive web3 dashboard tracking real-time crypto pairs using React and WebSockets.",
-    //   icon: <Code2 size={32} className="text-white/50" />,
-    //   colSpan: "col-span-1",
-    //   bg: "bg-[#0B101E]",
-    // },
-    // {
-    //   id: 3,
-    //   title: "EcoTrack",
-    //   category: "Mobile App",
-    //   student: "David M.",
-    //   desc: "React Native application helping users track and offset their daily carbon footprint.",
-    //   icon: <MonitorSmartphone size={32} className="text-white/50" />,
-    //   colSpan: "col-span-1",
-    //   bg: "bg-[#0B101E]",
-    // },
-    // {
-    //   id: 4,
-    //   title: "Atlas CRM",
-    //   category: "Web App",
-    //   student: "Marcus R.",
-    //   desc: "A full-stack Next.js CRM system built for local boutique hotels to manage bookings and staff.",
-    //   icon: <Code2 size={32} className="text-white/50" />,
-    //   colSpan: "col-span-1 md:col-span-2",
-    //   bg: "bg-[#0B101E]",
-    // },
-    // {
-    //   id: 5,
-    //   title: "VisionScan",
-    //   category: "AI Model",
-    //   student: "Elena G.",
-    //   desc: "Computer vision model detecting structural cracks in civil engineering blueprints.",
-    //   icon: <Cpu size={32} className="text-white/50" />,
-    //   colSpan: "col-span-1",
-    //   bg: "bg-[#0B101E]",
-    // }
-  ];
-
-  const filteredProjects = projects.filter(
+  const filteredProjects = studentShowcaseProjects.filter(
     (p) => activeFilter === "All" || p.category === activeFilter
   );
 
@@ -88,7 +35,7 @@ export default function StudentShowcase() {
               {/* FILTERS */}
               <div className="flex items-center gap-2 overflow-x-auto pb-2 md:pb-0 scrollbar-hide">
                 <Filter size={16} className="text-[#8A99AD] mr-2 hidden sm:block" />
-                {filters.map(f => (
+                {studentShowcaseFilters.map(f => (
                   <button
                     key={f}
                     onClick={() => setActiveFilter(f)}
@@ -123,7 +70,7 @@ export default function StudentShowcase() {
                   <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
                     <div className="flex items-start justify-between">
                       <div className="w-14 h-14 rounded-2xl bg-[#070B14] border border-white/10 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-500">
-                        {project.icon}
+                        <Icon name={project.icon} size={32} className={project.iconClass} />
                       </div>
                       <span className="px-3 py-1 rounded-md bg-[#070B14]/50 border border-white/5 font-mono text-xs text-[#8A99AD] backdrop-blur-sm">
                         {project.category}

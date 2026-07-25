@@ -1,6 +1,7 @@
 import { NavLink, useLocation } from "react-router-dom";
 import Logo from "./Logo";
 import NeuralBackground from "./NeuralBackground";
+import { siteConfig, navigation } from "../data/content";
 
 export default function Footer() {
   const location = useLocation();
@@ -28,16 +29,15 @@ export default function Footer() {
 
           <div className="font-mono text-sm text-muted flex flex-col gap-2">
             <span className="text-ink/70 mb-1">// sitemap</span>
-            <NavLink to="/about" className="hover:text-accent w-fit transition-colors">About</NavLink>
-            <NavLink to="/services" className="hover:text-accent w-fit transition-colors">Services</NavLink>
-            <NavLink to="/courses" className="hover:text-accent w-fit transition-colors">Courses</NavLink>
-            <NavLink to="/contact" className="hover:text-accent w-fit transition-colors">Contact</NavLink>
+            {navigation.footer.map((link) => (
+              <NavLink key={link.path} to={link.path} className="hover:text-accent w-fit transition-colors">{link.label}</NavLink>
+            ))}
           </div>
 
           <div className="font-mono text-sm text-muted flex flex-col gap-2">
             <span className="text-ink/70 mb-1">// reach us</span>
-            <a href="mailto:techtitude.labs@gmail.com" className="hover:text-accent w-fit transition-colors">
-              techtitude.labs@gmail.com
+            <a href={`mailto:${siteConfig.email}`} className="hover:text-accent w-fit transition-colors">
+              {siteConfig.email}
             </a>
             <span className="mt-2 text-ink/40 w-full text-left">Learn &middot; Build &middot; Innovate</span>
           </div>

@@ -51,6 +51,30 @@ import coFounderImage from './Team_Members/Co- Founder.png';
 import ctoImage from './Team_Members/CTO.png';
 import softwareEngineerImage from './Team_Members/Software Engineer.png';
 
+// Workshop student sessions (Courses page card stack)
+import workshopImg1 from './Workshop_Images/images-1-v2.jpeg';
+import workshopImg2 from './Workshop_Images/images-2-v2.jpeg';
+import workshopImg3 from './Workshop_Images/images-3-v2.jpeg';
+import workshopImg4 from './Workshop_Images/images-4-v2.jpg';
+import workshopImg5 from './Workshop_Images/images-5-v2.jpg';
+
+export const workshopSessionImages = {
+  "workshop-1": workshopImg1,
+  "workshop-2": workshopImg2,
+  "workshop-3": workshopImg3,
+  "workshop-4": workshopImg4,
+  "workshop-5": workshopImg5,
+};
+
+// Student build showcase (Builds page)
+import cafeWebsiteImage from './Students_Works/Cafe_website.png';
+import robotArmImage from './Students_Works/robot_arm.png';
+
+export const studentBuildImages = {
+  "cafe-website": cafeWebsiteImage,
+  "robot-arm": robotArmImage,
+};
+
 export const projectShowcaseImages = {
   "image-1": testImage5,
   "image-2": testImage1,

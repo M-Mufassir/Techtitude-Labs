@@ -1,23 +1,8 @@
 import { ArrowUpRight, Code2, Database, Layout } from "lucide-react";
 import Reveal from "../components/Reveal";
-import { projects } from "../data/content";
+import { projects, type Project } from "../data/content";
 import { proofLedgerImages } from "../assets/images";
 import ImageSlideshow from "../components/ImageSlideshow";
-
-interface ProjectMetric {
-  label: string;
-  value: string;
-}
-
-interface Project {
-  id: string;
-  client: string;
-  title: string;
-  description: string;
-  metrics: ProjectMetric[];
-  stack: string[];
-  category: string;
-}
 
 export default function Portfolio() {
   return (
