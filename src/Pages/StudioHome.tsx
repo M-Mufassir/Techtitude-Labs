@@ -125,7 +125,7 @@ export default function StudioHome() {
 
             <iframe
             className="w-full h-full"
-            src="https://www.youtube.com/embed/CeAxevbaCF0?autoplay=1&mute=1&loop=1&playlist=CeAxevbaCF0&controls=0&rel=0&modestbranding=1&playsinline=1"
+            src="https://www.youtube.com/embed/Lauix4wsKEM?autoplay=1&mute=1&loop=1&playlist=Lauix4wsKEM&controls=0&rel=0&modestbranding=1&playsinline=1"
             title="Engineering Showcase"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
             allowFullScreen
