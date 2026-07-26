@@ -681,7 +681,7 @@ export const servicesCapabilityCards = [
     desc: "Designing scalable software, enterprise applications, and digital platforms that solve real-world business challenges.",
   },
   {
-    title: "Web, Mobile & Cloud Applications",
+    title: "Web, Mobile Applications",
     desc: "Building secure, high-performance web platforms, mobile applications, and cloud-connected systems for modern businesses.",
   },
   {
