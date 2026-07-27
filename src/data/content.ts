@@ -424,7 +424,39 @@ export const siteConfig = {
     number: "+94 74 074 7677",
     href: "https://wa.me/94740747677",
   },
+  socials: {
+    instagram: "https://www.instagram.com/techtitude_labs/",
+    facebook: "https://www.facebook.com/techtitudelabs/",
+    linkedin: "https://www.linkedin.com/company/techtitude-labs/",
+  },
 };
+
+export const socialLinks = [
+  {
+    title: "Instagram",
+    href: "https://www.instagram.com/techtitude_labs/",
+    icon: "Instagram",
+    username: "@techtitude_labs",
+    colorClass: "group-hover:border-pink-500/60 group-hover:bg-pink-500/10 group-hover:text-pink-400 group-hover:shadow-[0_0_20px_rgba(236,72,153,0.3)]",
+    textHoverClass: "group-hover:text-pink-400",
+  },
+  {
+    title: "Facebook",
+    href: "https://www.facebook.com/techtitudelabs/",
+    icon: "Facebook",
+    username: "Techtitude Labs",
+    colorClass: "group-hover:border-blue-500/60 group-hover:bg-blue-500/10 group-hover:text-blue-400 group-hover:shadow-[0_0_20px_rgba(59,130,246,0.3)]",
+    textHoverClass: "group-hover:text-blue-400",
+  },
+  {
+    title: "LinkedIn",
+    href: "https://www.linkedin.com/company/techtitude-labs/",
+    icon: "Linkedin",
+    username: "TechTitude Labs",
+    colorClass: "group-hover:border-cyan-500/60 group-hover:bg-cyan-500/10 group-hover:text-cyan-400 group-hover:shadow-[0_0_20px_rgba(6,182,212,0.3)]",
+    textHoverClass: "group-hover:text-cyan-400",
+  },
+];
 
 export interface NavLink {
   label: string;

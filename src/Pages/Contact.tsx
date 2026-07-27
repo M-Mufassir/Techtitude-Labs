@@ -5,7 +5,7 @@ import Reveal from "../components/Reveal";
 import { motion, AnimatePresence } from "framer-motion";
 import WhatsAppButton from "../components/WhatsAppButton";
 import { Icon } from "../lib/icons";
-import { contactChannels, contactAcademyGrades, contactBatchDays, contactStudioTimelines, contactStudioStacks } from "../data/content";
+import { contactChannels, contactAcademyGrades, contactBatchDays, contactStudioTimelines, contactStudioStacks, socialLinks } from "../data/content";
 
 export default function Contact() {
   const [activeTab, setActiveTab] = useState<'academy' | 'studio'>('academy');
@@ -166,6 +166,30 @@ export default function Contact() {
                   </div>
                 </a>
               ))}
+            </div>
+
+            {/* FOLLOW US SOCIAL MEDIA ICONS */}
+            <div className="space-y-4 mt-8">
+              <p className="text-xs font-mono tracking-widest text-gray-500 uppercase mb-4">Follow Us</p>
+              <div className="grid grid-cols-3 gap-3">
+                {socialLinks.map((social) => (
+                  <a
+                    key={social.title}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.title}
+                    className="group relative flex flex-col items-center justify-center gap-2.5 p-4 rounded-2xl bg-[#161618]/60 border border-white/5 hover:border-white/20 transition-all duration-300 overflow-hidden"
+                  >
+                    <div className={`h-11 w-11 rounded-xl bg-[#070B14] border border-white/10 flex items-center justify-center text-gray-400 transition-all duration-300 shadow-lg group-hover:scale-110 ${social.colorClass}`}>
+                      <Icon name={social.icon} size={20} />
+                    </div>
+                    <span className={`font-mono text-xs text-gray-300 transition-colors font-medium ${social.textHoverClass}`}>
+                      {social.title}
+                    </span>
+                  </a>
+                ))}
+              </div>
             </div>
           </Reveal>
 
