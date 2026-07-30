@@ -30,7 +30,7 @@ export default function Contact() {
     const background = data.get("background");
 
     const subject = `Academy Enrollment: ${name} - ${course}`;
-    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nLocation: ${location}\nCourse: ${course}\nPreferred Intake: ${intake}\nAcademic Background: ${background}`;
+    const formData = { name, email, phone, location, course, intake, background };
 
     try {
       const response = await fetch('/api/contact', {
@@ -38,7 +38,7 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ subject, body, senderEmail: email, senderName: name, formType: 'academy' }),
+        body: JSON.stringify({ subject, senderEmail: email, senderName: name, formType: 'academy', formData }),
       });
 
       if (response.ok) {
@@ -74,7 +74,7 @@ export default function Contact() {
     const stacks = Array.from(form.querySelectorAll('input[name="stack"]:checked')).map(el => (el as HTMLInputElement).value).join(', ');
 
     const subject = `New Project Inquiry: ${company || name}`;
-    const body = `Name: ${name}\nEmail: ${email}\nPhone: ${phone}\nCompany: ${company || "N/A"}\nBudget: LKR ${budget}+\nTimeline: ${timeline}\nTech Stack: ${stacks || "Not specified"}\n\nProject Details:\n${details}`;
+    const formData = { name, email, phone, company: company || "N/A", budget: `LKR ${budget}+`, timeline, stacks: stacks || "Not specified", details };
 
     try {
       const response = await fetch('/api/contact', {
@@ -82,7 +82,7 @@ export default function Contact() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ subject, body, senderEmail: email, senderName: name, formType: 'studio' }),
+        body: JSON.stringify({ subject, senderEmail: email, senderName: name, formType: 'studio', formData }),
       });
 
       if (response.ok) {
