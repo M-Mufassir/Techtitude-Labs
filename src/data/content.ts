@@ -873,6 +873,7 @@ export const workshops = [
   {
     id: "ws-001",
     title: "Grade 10 & 11 O/L ICT - Number Systems and Logic Gates",
+    description: "Master number base conversions, binary arithmetic, and logic gate truth tables. Gain a solid foundation in the core mathematics of computer systems.",
     date: "Aug 16, 2026",
     time: "9:00 AM - 11:00 AM",
     location: "Thihariya",
@@ -885,6 +886,7 @@ export const workshops = [
   {
     id: "ws-003",
     title: "Grade 10 & 11 O/L ICT - Microsoft Tools",
+    description: "Learn essential productivity tools. Master Microsoft Word formatting, Excel formulas, and PowerPoint presentations for academic and professional success.",
     date: "Aug 23, 2026",
     time: "9:00 AM - 11:00 AM",
     location: "Thihariya",
@@ -897,6 +899,7 @@ export const workshops = [
   {
     id: "ws-002",
     title: "Grade 10 & 11 O/L ICT - HTML Fundamentals ",
+    description: "Join our ICT workshop and learn HTML fundamentals through practical sessions. Build your first webpage, understand web structures, and develop essential skills for your O/L ICT journey.",
     date: "Aug 30, 2026",
     time: "9:00 AM - 11:00 AM",
     location: "Thihariya",
@@ -909,6 +912,7 @@ export const workshops = [
   {
     id: "ws-004",
     title: "Grade 10 & 11 O/L ICT - Programming Fundamentals",
+    description: "Understand pseudocode, flowcharts, and basic programming logic. Learn how to design algorithms and solve problems programmatically.",
     date: "Sep 06, 2026",
     time: "9:00 AM - 11:00 AM",
     location: "Thihariya",

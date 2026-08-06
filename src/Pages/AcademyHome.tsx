@@ -4,14 +4,13 @@ import { ArrowRight, Code2, Clock, ChevronRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import { FileTree } from "../components/FileTree";
 import { Icon } from "../lib/icons";
-import { fileStructure, academyPillars, academyShowcaseProjects, academyNextMasterclass } from "../data/content";
+import { fileStructure, academyPillars, academyShowcaseProjects, academyNextMasterclass, workshops } from "../data/content";
 
 // Sub-components
-const Countdown = () => {
+const Countdown = ({ targetTimestamp }: { targetTimestamp: number }) => {
   const calculateTimeLeft = () => {
-    const targetDate = new Date(academyNextMasterclass.targetDate).getTime();
     const now = new Date().getTime();
-    const difference = targetDate - now;
+    const difference = targetTimestamp - now;
 
     let timeLeft = { days: 0, hours: 0, minutes: 0, seconds: 0 };
 
@@ -29,11 +28,13 @@ const Countdown = () => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
 
   useEffect(() => {
+    setTimeLeft(calculateTimeLeft());
+
     const timer = setInterval(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
-  }, []);
+  }, [targetTimestamp]);
 
   return (
     <div className="flex gap-4 items-center font-mono">
@@ -52,6 +53,40 @@ const Countdown = () => {
 
 
 export default function AcademyHome() {
+  const now = new Date().getTime();
+
+  // Find the next upcoming workshop dynamically
+  const nextWorkshop = (() => {
+    const parsedWorkshops = workshops.map(ws => {
+      const startTime = ws.time.split("-")[0].trim();
+      const dateStr = `${ws.date} ${startTime}`;
+      const timestamp = Date.parse(dateStr);
+      return { ...ws, timestamp };
+    });
+
+    const futureWorkshops = parsedWorkshops.filter(ws => !isNaN(ws.timestamp) && ws.timestamp > now);
+
+    if (futureWorkshops.length > 0) {
+      // Sort ascending to get the earliest future workshop
+      futureWorkshops.sort((a, b) => a.timestamp - b.timestamp);
+      return futureWorkshops[0];
+    }
+
+    const validWorkshops = parsedWorkshops.filter(ws => !isNaN(ws.timestamp));
+    if (validWorkshops.length > 0) {
+      // Fallback to the latest sorted workshop if all are in the past
+      validWorkshops.sort((a, b) => b.timestamp - a.timestamp);
+      return validWorkshops[0];
+    }
+
+    // Ultimate fallback if parsing fails or list is empty
+    return {
+      title: academyNextMasterclass.title,
+      description: academyNextMasterclass.description,
+      timestamp: new Date(academyNextMasterclass.targetDate).getTime()
+    };
+  })();
+
   return (
     <div className="min-h-screen bg-[#070B14] text-white pt-32 pb-24 selection:bg-[#00AEEF]/30 overflow-clip">
       <div className="max-w-7xl mx-auto px-6">
@@ -121,15 +156,15 @@ export default function AcademyHome() {
                 <div className="flex items-center gap-2 text-[#00AEEF] font-mono text-sm uppercase tracking-widest mb-4">
                   <Clock size={16} /> Next Masterclass
                 </div>
-                <h2 className="text-4xl font-bold font-display mb-4">{academyNextMasterclass.title}</h2>
-                <p className="text-[#8A99AD] mb-8">{academyNextMasterclass.description}</p>
+                <h2 className="text-4xl font-bold font-display mb-4">{nextWorkshop.title}</h2>
+                <p className="text-[#8A99AD] mb-8">{nextWorkshop.description}</p>
                 <Link to="/workshops" className="inline-flex items-center gap-2 text-white font-bold hover:text-[#00AEEF] transition-colors border-b border-white/20 pb-1 hover:border-[#00AEEF]">
                   View All Workshops <ChevronRight size={16} />
                 </Link>
               </div>
 
               <div className="relative z-10 w-full lg:w-auto flex justify-center">
-                <Countdown />
+                <Countdown targetTimestamp={nextWorkshop.timestamp} />
               </div>
             </div>
           </Reveal>

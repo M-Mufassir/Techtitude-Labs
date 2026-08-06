@@ -12,6 +12,7 @@ import {
   courseWorkshopStudents,
   coursesFAQs,
   coursesEnrollTracks,
+  workshops,
 } from "../data/content";
 
 const workshopStudents: CardStackItem[] = courseWorkshopStudents.map((student) => ({
@@ -22,6 +23,35 @@ const workshopStudents: CardStackItem[] = courseWorkshopStudents.map((student) =
 }));
 
 export default function Courses() {
+  const now = new Date().getTime();
+
+  // Find the next upcoming workshop and calculate remaining days
+  const daysToWorkshop = (() => {
+    const parsedWorkshops = workshops.map(ws => {
+      const startTime = ws.time.split("-")[0].trim();
+      const dateStr = `${ws.date} ${startTime}`;
+      const timestamp = Date.parse(dateStr);
+      return { ...ws, timestamp };
+    });
+
+    const futureWorkshops = parsedWorkshops.filter(ws => !isNaN(ws.timestamp) && ws.timestamp > now);
+
+    if (futureWorkshops.length > 0) {
+      futureWorkshops.sort((a, b) => a.timestamp - b.timestamp);
+      const diffMs = futureWorkshops[0].timestamp - now;
+      const days = Math.ceil(diffMs / (1000 * 60 * 60 * 24));
+      return days.toString().padStart(2, '0');
+    }
+    return "00";
+  })();
+
+  const liveCounters = coursesLiveCounters.map(counter => {
+    if (counter.label === "Days to Workshop") {
+      return { ...counter, value: daysToWorkshop };
+    }
+    return counter;
+  });
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -63,7 +93,7 @@ export default function Courses() {
             transition={{ duration: 1, delay: 0.8 }}
             className="mt-12 flex flex-wrap justify-center gap-8 md:gap-16"
           >
-            {coursesLiveCounters.map((counter) => (
+            {liveCounters.map((counter) => (
               <div key={counter.label} className="text-center">
                 <div className="text-4xl font-bold text-[#00AEEF] font-mono">{counter.value}</div>
                 <div className="text-xs uppercase tracking-widest text-gray-500 mt-2 font-mono">{counter.label}</div>
