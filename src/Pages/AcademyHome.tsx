@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ArrowRight, Code2, Clock, ChevronRight } from "lucide-react";
+import { ArrowRight, Clock, ChevronRight } from "lucide-react";
 import Reveal from "../components/Reveal";
 import { FileTree } from "../components/FileTree";
 import { Icon } from "../lib/icons";
+import { workshopPosters } from "../assets/images";
 import { fileStructure, academyPillars, academyShowcaseProjects, academyNextMasterclass, workshops } from "../data/content";
 
 // Sub-components
@@ -113,7 +114,7 @@ export default function AcademyHome() {
                   Explore Curriculums <ArrowRight size={18} />
                 </Link>
                 <Link to="/builds" className="px-8 py-4 bg-white/5 hover:bg-white/10 border border-white/10 text-white font-bold rounded-full transition-all duration-300 font-display">
-                  Final Year Projects
+                  Class Gallery
                 </Link>
               </div>
             </div>
@@ -198,25 +199,49 @@ export default function AcademyHome() {
               <div>
                 <h2 className="text-3xl font-bold font-display mb-2 flex items-center gap-4">
                   <span className="w-8 h-[2px] bg-[#00AEEF]"></span>
-                  Innovation Lab
+                  Class Gallery
                 </h2>
-                <p className="text-[#8A99AD]">Recent projects shipped by our students.</p>
+                <p className="text-[#8A99AD]">Glimpses from our real workshop sessions and practical classes.</p>
               </div>
-              <Link to="/student-showcase" className="px-6 py-2 border border-white/10 rounded-full text-sm font-bold hover:bg-white/5 transition-colors">
-                View Gallery
+              <Link to="/builds" className="px-6 py-2 border border-white/10 rounded-full text-sm font-bold hover:bg-white/5 transition-colors">
+                View All Photos
               </Link>
             </div>
           </Reveal>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {academyShowcaseProjects.map((project, idx) => (
-              <Reveal key={idx} delay={idx * 0.1}>
+            {/* Workshop Poster Card */}
+            <Reveal delay={0}>
+              <Link to="/builds" className="group cursor-pointer block">
+                <div className="bg-[#0B101E] border border-white/5 rounded-2xl mb-4 overflow-hidden relative flex items-center justify-center" style={{ aspectRatio: '3/4' }}>
+                  <img
+                    src={workshopPosters["ws-poster-1"]}
+                    alt="Workshop on Number Systems & Logic Gates"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  />
+                  {/* View Gallery overlay */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-2xl bg-[#070B14]/40 backdrop-blur-[2px]">
+                    <span className="px-4 py-2 rounded-full bg-[#00AEEF]/90 text-[#070B14] text-xs font-bold font-mono tracking-widest uppercase">
+                      View Gallery →
+                    </span>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold font-display mb-1 group-hover:text-[#00AEEF] transition-colors">Number Systems & Logic Gates</h3>
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-[#8A99AD]">Grade 10 & 11 — O/L ICT</span>
+                  <span className="font-mono text-white/50">16 Aug 2026</span>
+                </div>
+              </Link>
+            </Reveal>
+
+            {/* Remaining academyShowcaseProjects (placeholder cards) */}
+            {academyShowcaseProjects.slice(1).map((project, idx) => (
+              <Reveal key={idx + 1} delay={(idx + 1) * 0.1}>
                 <div className="group cursor-pointer">
                   <div className="aspect-[4/3] bg-[#0B101E] border border-white/5 rounded-2xl mb-4 overflow-hidden relative">
-                    {/* Placeholder for project image */}
                     <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-50 group-hover:opacity-100 transition-opacity duration-500" />
                     <div className="absolute inset-0 flex items-center justify-center">
-                      <Code2 size={48} className="text-white/10 group-hover:scale-110 transition-transform duration-500 group-hover:text-[#00AEEF]/20" />
+                      <Icon name="Code2" size={48} className="text-white/10 group-hover:scale-110 transition-transform duration-500 group-hover:text-[#00AEEF]/20" />
                     </div>
                   </div>
                   <h3 className="text-xl font-bold font-display mb-1 group-hover:text-[#00AEEF] transition-colors">{project.title}</h3>

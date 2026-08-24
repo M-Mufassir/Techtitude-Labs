@@ -51,19 +51,24 @@ import coFounderImage from './Team_Members/Co- Founder.png';
 import ctoImage from './Team_Members/CTO.png';
 import softwareEngineerImage from './Team_Members/Software Engineer.png';
 
-// Workshop student sessions (Courses page card stack)
-import workshopImg1 from './Workshop_Images/images-1-v2.jpeg';
-import workshopImg2 from './Workshop_Images/images-2-v2.jpeg';
-import workshopImg3 from './Workshop_Images/images-3-v2.jpeg';
-import workshopImg4 from './Workshop_Images/images-4-v2.jpg';
-import workshopImg5 from './Workshop_Images/images-5-v2.jpg';
+// Workshop 1 — Real session photos
+import workshopImg1 from './Workshop_Images/WS-1/ws11.jpeg';
+import workshopImg2 from './Workshop_Images/WS-1/ws12.jpeg';
+import workshopImg3 from './Workshop_Images/WS-1/ws13.jpeg';
+import workshopImg4 from './Workshop_Images/WS-1/ws14.jpg';
 
 export const workshopSessionImages = {
   "workshop-1": workshopImg1,
   "workshop-2": workshopImg2,
   "workshop-3": workshopImg3,
   "workshop-4": workshopImg4,
-  "workshop-5": workshopImg5,
+};
+
+// Workshop Posters
+import wsPoster1 from './WS_Posters/WS-1.jpg';
+
+export const workshopPosters = {
+  "ws-poster-1": wsPoster1,
 };
 
 // Student build showcase (Builds page)

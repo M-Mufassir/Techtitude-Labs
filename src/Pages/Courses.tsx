@@ -1,26 +1,17 @@
 import { motion } from "framer-motion";
 import Accordion from "../components/Accordion";
 import CircuitGrid from "../components/CircuitGrid";
-import { CardStack, type CardStackItem } from "../components/CardStack";
+import WorkshopPhotoGallery from "../components/WorkshopPhotoGallery";
 import Testimonials from "../components/Testimonials";
-import { workshopSessionImages } from "../assets/images";
 import {
   coursesLiveCounters,
   coursesEcosystemCards,
   coursesCareerSteps,
   coursesMasterclasses,
-  courseWorkshopStudents,
   coursesFAQs,
   coursesEnrollTracks,
   workshops,
 } from "../data/content";
-
-const workshopStudents: CardStackItem[] = courseWorkshopStudents.map((student) => ({
-  id: student.id,
-  title: student.title,
-  description: student.description,
-  imageSrc: workshopSessionImages[student.imageKey as keyof typeof workshopSessionImages],
-}));
 
 export default function Courses() {
   const now = new Date().getTime();
@@ -180,15 +171,7 @@ export default function Courses() {
         </div>
 
         <div className="mt-24 mb-16">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-display text-white mb-4">Workshop Students</h2>
-            <p className="text-gray-400">Glimpses from our recent active learning sessions and student interactions.</p>
-          </div>
-          <CardStack 
-            items={workshopStudents} 
-            autoAdvance={true} 
-            className="max-w-4xl mx-auto"
-          />
+          <WorkshopPhotoGallery animationDelay={0.3} />
         </div>
 
         <Testimonials />

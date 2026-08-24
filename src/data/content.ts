@@ -468,7 +468,7 @@ export const navigation: { academy: NavLink[]; studio: NavLink[]; footer: NavLin
     { label: "About", path: "/about" },
     { label: "Courses", path: "/courses" },
     { label: "Workshops", path: "/workshops" },
-    { label: "Builds", path: "/builds" },
+    { label: "Gallery", path: "/builds" },
     { label: "Contact", path: "/contact" },
   ],
   studio: [
