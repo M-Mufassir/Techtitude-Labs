@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, useMotionValue } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool } from 'lucide-react';
+import { BookOpen, GraduationCap, Book, Bookmark, Library, PenTool, ChevronUp, ChevronDown } from 'lucide-react';
 import Logo from './Logo';
 
 // ACADEMY: Dropping Study Materials
@@ -219,6 +219,25 @@ export default function SplitGateway() {
               <span className="w-1 h-1 rounded-full bg-[#00AEEF]"></span> ACADEMY.SYS
             </motion.div>
 
+            {/* TAP HINT — shown only when idle */}
+            <motion.div
+              animate={{
+                opacity: activeMobileZone ? 0 : 1,
+                y: activeMobileZone ? -8 : 0,
+                pointerEvents: activeMobileZone ? 'none' : 'auto',
+              }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center gap-1 mt-3"
+            >
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ChevronUp size={18} className="text-[#00AEEF]/70" strokeWidth={2} />
+              </motion.div>
+              <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Tap to enter</span>
+            </motion.div>
+
             <motion.div
               animate={{
                 height: activeMobileZone === 'academy' ? 'auto' : 0,
@@ -239,6 +258,20 @@ export default function SplitGateway() {
               </button>
             </motion.div>
           </motion.div>
+        </motion.div>
+
+        {/* DIVIDER WITH GLOW */}
+        <motion.div
+          animate={{ opacity: activeMobileZone ? 0 : 1 }}
+          transition={{ duration: 0.4 }}
+          className="relative w-full flex-shrink-0 h-[1px] z-20 pointer-events-none"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent" />
+          <motion.div
+            animate={{ x: ['0%', '100%', '0%'] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'easeInOut' }}
+            className="absolute top-0 left-0 w-1/3 h-full bg-gradient-to-r from-transparent via-[#00AEEF]/50 to-transparent"
+          />
         </motion.div>
 
         {/* DEVELOPMENT PANE */}
@@ -293,6 +326,25 @@ export default function SplitGateway() {
               className="flex items-center gap-1.5 mt-1 font-mono text-[10px] text-white/40 tracking-wider uppercase"
             >
               <span className="w-1 h-1 rounded-full bg-[#7B2CBF]"></span> DEV_STUDIO.EXE
+            </motion.div>
+
+            {/* TAP HINT — shown only when idle */}
+            <motion.div
+              animate={{
+                opacity: activeMobileZone ? 0 : 1,
+                y: activeMobileZone ? 8 : 0,
+                pointerEvents: activeMobileZone ? 'none' : 'auto',
+              }}
+              transition={{ duration: 0.4 }}
+              className="flex flex-col items-center gap-1 mt-3"
+            >
+              <span className="font-mono text-[9px] tracking-[0.2em] uppercase text-white/30">Tap to enter</span>
+              <motion.div
+                animate={{ y: [0, 5, 0] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: 'easeInOut' }}
+              >
+                <ChevronDown size={18} className="text-[#7B2CBF]/70" strokeWidth={2} />
+              </motion.div>
             </motion.div>
 
             <motion.div
