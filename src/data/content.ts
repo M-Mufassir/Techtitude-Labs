@@ -143,7 +143,7 @@ export const teamMembersContent = [
     name: 'Bashith Ahamed',
     role: 'Founder',
     qualification: 'BSc (Hons) in Computer Science',
-    social: { linkedin: 'https://www.linkedin.com/in/m-a-b-ahamad-872195413/' },
+    social: { linkedin: 'https://www.linkedin.com/in/basith-ahamad-872195413/' },
   },
   {
     id: '2',
